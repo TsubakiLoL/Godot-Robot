@@ -22,7 +22,6 @@ class_name GrapheMap
 @onready var file_name: Label = $VBoxContainer/HBoxContainer/file_name
 @onready var should_save: AcceptDialog = $should_save
 @onready var mes_window: PopupPanel = $message
-@onready var debug_mes: PopupPanel = $debug
 @onready var debug_window: Window = $DebugWindow
 
 
@@ -61,7 +60,7 @@ func save_state_root(file_path:String):
 		new_file+=".nodeset"
 	var f=FileAccess.open(new_file,FileAccess.WRITE)
 	if f!=null:
-		var str=Serializater.stringfy_state_root_new(root)
+		var str=Serializater.stringfy_state_root(root)
 		f.store_string(str)
 		f.close()
 		now_file_path=new_file
@@ -129,19 +128,6 @@ func _on_graph_edit_popup_request(position: Vector2) -> void:
 	pass # Replace with function body.
 
 
-func _on_graphe_pop_index_pressed(index: int) -> void:
-	file_changed=true
-	if not ChatNodeGraph.node_chat_class.has(index):
-		return
-	var new_node:ChatNode=ChatNodeGraph.node_chat_class[index].new(root)
-	var new_graph=preload("res://NodeChat/new_graph/tscn/chat_node_graph.tscn").instantiate() as ChatNodeGraph
-	new_graph.position_offset=(Vector2(pop_up_menu.position)+graph.scroll_offset)/graph.zoom-Vector2(get_window().position)
-	new_node.position_x=new_graph.position_offset.x
-	new_node.position_y=new_graph.position_offset.y
-	root.add_node(new_node)
-	graph.add_child(new_graph)
-	new_graph.set_real(new_node)
-	new_graph.init()
 
 func _on_graph_edit_delete_nodes_request(nodes: Array[StringName]) -> void:
 	file_changed=true
@@ -205,7 +191,7 @@ func save_as_other_file_selected(status:bool,selected_paths:PackedStringArray,se
 
 
 func debug():
-	var str=Serializater.stringfy_state_root_new(root)
+	var str=Serializater.stringfy_state_root(root)
 	#print("调试序列化成功：")
 	#print(str)
 	var res=Serializater.parse_string(str)
@@ -268,7 +254,7 @@ func debug_message(txt:String):
 
 func _on_debug_pressed() -> void:
 	#debug_mes.show()
-	var str=Serializater.stringfy_state_root_new(root)
+	var str=Serializater.stringfy_state_root(root)
 	#print("调试序列化成功：")
 	#print(str)
 	var res=Serializater.parse_string(str)

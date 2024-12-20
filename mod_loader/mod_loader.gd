@@ -33,6 +33,8 @@ var load_path:String="user://mod"
 signal mod_changed()
 
 func _ready() -> void:
+	#设置路径为可执行文件的同级mod文件夹
+	load_path=OS.get_executable_path().get_base_dir()+"/mod"
 	load_mod_from_path(load_path)
 
 #从指定的路径加载模块数据
@@ -205,3 +207,11 @@ func get_all_mod_origin_data():
 	return mod_origin_db
 	
 	pass
+#获取mod的路径，如果路径不存在则返回空字符串
+func get_mod_path(mod_name:String)->String:
+	if not mod_origin_db.has(mod_name):
+		return ""
+	var mod_data:Dictionary=mod_origin_db[mod_name]
+	if not mod_data.has("mod_path"):
+		return ""
+	return mod_data["mod_path"]

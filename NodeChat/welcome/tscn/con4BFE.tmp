@@ -154,6 +154,10 @@ layout_mode = 2
 layout_mode = 2
 text = "链接到服务器"
 
+[node name="print_debug" type="CheckBox" parent="Control/select/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "打印调试信息"
+
 [node name="online_num" type="Label" parent="Control/select/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
@@ -409,5 +413,6 @@ visible = false
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/doc" to="." method="_on_doc_pressed"]
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/editor" to="." method="_on_editor_pressed"]
 [connection signal="toggled" from="Control/select/ScrollContainer/VBoxContainer/online" to="." method="_on_online_toggled"]
+[connection signal="toggled" from="Control/select/ScrollContainer/VBoxContainer/print_debug" to="." method="_on_print_debug_toggled"]
 [connection signal="edit_file" from="Control2/TabContainer/nodeset/MarginContainer/Control/Control" to="." method="_on_control_edit_file"]
 [connection signal="linked_num_update" from="Control2/TabContainer/nodeset_market/MarginContainer/Control/Webfile" to="." method="_on_webfile_linked_num_update"]

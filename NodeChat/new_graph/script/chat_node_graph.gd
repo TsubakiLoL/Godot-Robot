@@ -13,54 +13,54 @@ extends GraphNode
 class_name ChatNodeGraph
 var real_var:ChatNode
 
-static var node_chat_class:Dictionary={
-	0:ChatNodeState,					#状态节点
-	1:ChatNodeTriger,					#触发器节点
-	2:ChatNodeSentBulletMessage,		#弹幕发送器
-	3:ChatNodeSentBulletMessageStatic,	#静态弹幕发送器
-	4:ChatNodeSentRoomMessage,			#房间信息发送器
-	5:ChatNodeSentRoomMessageStatic,	#静态房间信息发送器
-	6:ChatNodeDicToStr,					#字典字符串转换
-	7:ChatNodeChangeState,				#状态转换器
-	8:ChatNodeStrJudge,					#字符串判定器
-	9:ChatNodeSentRoomMessageMultiInput,#多输入房间信息发送器
-	10:ChatNodeAnd,						#与门
-	11:ChatNodeOr,						#或门
-	12:ChatNodeNot,						#非门
-	13:ChatNodeStrConnect,				#字符串链接器
-	14:ChatNodeStrOutput,				#静态字符串输出
-	15:ChatNodeAt,						#艾特器
-	16:ChatNodeSentBulletMessageMultiInput,#多输入弹幕信息发送器
-	17:ChatNodeRegex,					#正则匹配器
-	18:ChatNodeSetGlobalNum,            #全局变量设置器
-	19:ChatNodeSetGlobalNumWithControl, #带控制端口的全局变量设置器
-	20:ChatNodeGetGlobalNum,			#全局变量提取器
-	21:ChatNodeFloatOutput,				#数字输出器
-	22:ChatNodeFloatToStr,				#数字转字符串
-	23:ChatNodeStrToFloat,				#字符串转数字
-	24:ChatNodeFloatAddStatic,			#静态数字加法器
-	25:ChatNodeFloatAdd,				#数字加法器
-	26:ChatNodeFloatCompareStatic,		#静态数字比较器
-	27:ChatNodeFloatCompare,			#数字比较器
-	28:ChatNodeFloatMulti,				#数字乘法器
-	29:ChatNodeFloatMultiStatic,		#静态数字乘法器
-	30:ChatNodeFloatRandom,				#随机数发生器
-	31:ChatNodeTime,					#当前时间输出
-	32:ChatNodeFloatCeli,				#向上取整器
-	33:ChatNodeLike,					#点赞器
-	34:ChatNodeGetGlobalString,			#全局字符串读取器
-	35:ChatNodeAddGlobalString,			#全局字符串添加器
-	36:ChatNodeAddGlobalStringWithControl,#带控制端口的全局字符串添加器
-	37:ChatNodeClearGlobalString,		#全局变量清除器
-	38:ChatNodeGPTRequest,				#GPT请求器
-	39:ChatNodeGPTRequestWithName,		#带名字的GPT请求器
-	40:ChatNodeDicHub,					#字典集线器
-	41:ChatNodeFloatHub,				#数字集线器
-	42:ChatNodeGetUniqueString,			#全用户字符串读取器
-	43:ChatNodeAddUniqueString,			#全用户字符串添加器
-	44:ChatNodeAddUniqueStringWithControl,#带控制端口的全用户字符串添加器
-	45:ChatNodeClearUniqueString,		#全用户变量清除器
-}
+#static var node_chat_class:Dictionary={
+	#0:ChatNodeState,					#状态节点
+	#1:ChatNodeTriger,					#触发器节点
+	#2:ChatNodeSentBulletMessage,		#弹幕发送器
+	#3:ChatNodeSentBulletMessageStatic,	#静态弹幕发送器
+	#4:ChatNodeSentRoomMessage,			#房间信息发送器
+	#5:ChatNodeSentRoomMessageStatic,	#静态房间信息发送器
+	#6:ChatNodeDicToStr,					#字典字符串转换
+	#7:ChatNodeChangeState,				#状态转换器
+	#8:ChatNodeStrJudge,					#字符串判定器
+	#9:ChatNodeSentRoomMessageMultiInput,#多输入房间信息发送器
+	#10:ChatNodeAnd,						#与门
+	#11:ChatNodeOr,						#或门
+	#12:ChatNodeNot,						#非门
+	#13:ChatNodeStrConnect,				#字符串链接器
+	#14:ChatNodeStrOutput,				#静态字符串输出
+	#15:ChatNodeAt,						#艾特器
+	#16:ChatNodeSentBulletMessageMultiInput,#多输入弹幕信息发送器
+	#17:ChatNodeRegex,					#正则匹配器
+	#18:ChatNodeSetGlobalNum,            #全局变量设置器
+	#19:ChatNodeSetGlobalNumWithControl, #带控制端口的全局变量设置器
+	#20:ChatNodeGetGlobalNum,			#全局变量提取器
+	#21:ChatNodeFloatOutput,				#数字输出器
+	#22:ChatNodeFloatToStr,				#数字转字符串
+	#23:ChatNodeStrToFloat,				#字符串转数字
+	#24:ChatNodeFloatAddStatic,			#静态数字加法器
+	#25:ChatNodeFloatAdd,				#数字加法器
+	#26:ChatNodeFloatCompareStatic,		#静态数字比较器
+	#27:ChatNodeFloatCompare,			#数字比较器
+	#28:ChatNodeFloatMulti,				#数字乘法器
+	#29:ChatNodeFloatMultiStatic,		#静态数字乘法器
+	#30:ChatNodeFloatRandom,				#随机数发生器
+	#31:ChatNodeTime,					#当前时间输出
+	#32:ChatNodeFloatCeli,				#向上取整器
+	#33:ChatNodeLike,					#点赞器
+	#34:ChatNodeGetGlobalString,			#全局字符串读取器
+	#35:ChatNodeAddGlobalString,			#全局字符串添加器
+	#36:ChatNodeAddGlobalStringWithControl,#带控制端口的全局字符串添加器
+	#37:ChatNodeClearGlobalString,		#全局变量清除器
+	#38:ChatNodeGPTRequest,				#GPT请求器
+	#39:ChatNodeGPTRequestWithName,		#带名字的GPT请求器
+	#40:ChatNodeDicHub,					#字典集线器
+	#41:ChatNodeFloatHub,				#数字集线器
+	#42:ChatNodeGetUniqueString,			#全用户字符串读取器
+	#43:ChatNodeAddUniqueString,			#全用户字符串添加器
+	#44:ChatNodeAddUniqueStringWithControl,#带控制端口的全用户字符串添加器
+	#45:ChatNodeClearUniqueString,		#全用户变量清除器
+#}
 
 static var type_num:Dictionary={
 	"String":0,
@@ -87,54 +87,7 @@ static var type_name:Dictionary={
 	"Bool":"布尔类型",
 	"Float":"数字"
 }
-static var node_name:Dictionary={
-	0:"状态节点",
-	1:"触发器节点",
-	2:"弹幕发送器",
-	3:"静态弹幕发送器",
-	4:"房间信息发送器",
-	5:"静态房间信息发送器",
-	6:"字典字符串转换器",
-	7:"状态转换器",
-	8:"字符串判定器",
-	9:"多输入房间信息发送器",
-	10:"与门",
-	11:"或门",
-	12:"非门",
-	13:"字符串链接器",
-	14:"静态字符串输出",
-	15:"艾特器",
-	16:"多输入弹幕发送器",
-	17:"正则匹配器",
-	18:"全局变量设置器",
-	19:"带控制端口的全局变量设置器",
-	20:"全局变量提取器",
-	21:"数字输出器",
-	22:"数字转字符串",
-	23:"字符串转数字",
-	24:"静态数字加法器",
-	25:"数字加法器",
-	26:"静态数字比较器",
-	27:"数字比较器",
-	28:"数字乘法器",
-	29:"静态数字乘法器",
-	30:"随机数发生器",
-	31:"时间输出器",
-	32:"向上取整器",
-	33:"点赞器",
-	34:"全局字符串读取器",
-	35:"全局字符串添加器",
-	36:"带控制端口的全局字符串添加器",
-	37:"全局变量清除器",
-	38:"GPT请求器",
-	39:"带名字的GPT请求器",
-	40:"字典集线器",
-	41:"数字集线器",
-	42:"全用户字符串读取器",
-	43:"全用户字符串添加器",
-	44:"带控制端口的全用户字符串添加器",
-	45:"全用户变量清除器",
-}
+
 func _ready() -> void:
 	position_offset_changed.connect(_on_position_offset_changed)
 	resize_request.connect(_on_resize_request)
@@ -199,13 +152,11 @@ func init():
 				set_slot_enabled_right(i,true)
 				set_slot_color_right(i,type_color[real_var.output_port_array[i]])
 				set_slot_type_right(i,type_num[real_var.output_port_array[i]])
-		if real_var.type in node_name:
-			title=node_name[real_var.type]+real_var.id
-			name=real_var.id
+		title=real_var.mod_node+real_var.id
+		name=real_var.id
 
 
 func set_variable_name(value,n:String):
 	if real_var!=null and real_var.get(n)!=null:
 		real_var.set(n,value)
-	
 	pass

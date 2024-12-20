@@ -208,7 +208,7 @@ func VLR(id:String,from_node:ChatNode):
 			var parent_data=stack_data.back()
 			now_node.act(parent_data[parent_node.next_node_array[parent_index][1]],parent_node.next_node_array[parent_index][2],id)
 			stack_index[stack_index.size()-1]+=1
-			if now_node.next_node_array.size()!=0 and( not now_node is ChatNodeState) and now_node.is_out_ready:
+			if now_node.next_node_array.size()!=0 and now_node.is_out_ready:
 				stack.append(now_next[0])
 				stack_index.append(0)
 				stack_data.append(now_node.output_port_data)
@@ -226,7 +226,7 @@ func VLR_debug(id:String,from_node:ChatNode):
 	stack_data.append(from_node.output_port_data)
 	var frame_data:Dictionary={
 		"id":from_node.id,
-		"type":from_node.type,
+		"type":from_node.mod_node,
 		"input_data_type":[],
 		"input_data_arr":[],
 		"output_data_type":from_node.output_port_array.duplicate(),
@@ -253,11 +253,11 @@ func VLR_debug(id:String,from_node:ChatNode):
 				#stack_index.append(0)
 				#stack_data.append(now_node.output_port_data)
 			#now_node.is_out_ready=false
-			if ( not now_node is ChatNodeState) and now_node.is_out_ready:
+			if now_node.is_out_ready:
 				
 				var frame_data_n:Dictionary={
 					"id":now_node.id,
-					"type":now_node.type,
+					"type":now_node.mod_node,
 					"input_data_type":now_node.input_port_array.duplicate(),
 					"input_data_arr":now_node.input_port_data.duplicate(),
 					"output_data_type":now_node.output_port_array.duplicate(),

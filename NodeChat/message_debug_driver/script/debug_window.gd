@@ -75,7 +75,7 @@ func create_tree_from_frame(debug_cache:Array):
 		for j in i.frame:
 			var it=item.create_child()
 			tree_cache[it]=j
-			it.set_text(0,ChatNodeGraph.node_name[j.type]+str(j.id))
+			it.set_text(0,j.type+str(j.id))
 			var input=it.create_child()
 			input.set_text(0,"输入")
 			tree_cache[input]=j

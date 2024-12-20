@@ -118,10 +118,6 @@ func _on_editor_pressed() -> void:
 	pass # Replace with function body.
 
 
-func _on_print_debug_toggled(toggled_on: bool) -> void:
-	#IIROSE.need_debug_message=toggled_on
-	pass # Replace with function body.
-
 
 func _on_webfile_linked_num_update(num_int: int) -> void:
 	%online_num.text="当前在线用户:"+str(num_int)
