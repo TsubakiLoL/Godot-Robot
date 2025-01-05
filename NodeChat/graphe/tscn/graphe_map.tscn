@@ -88,7 +88,6 @@ text = "消息
 
 [node name="GraphEdit" parent="VBoxContainer" instance=ExtResource("2_q4deu")]
 layout_mode = 2
-scroll_offset = Vector2(0, -44)
 
 [node name="PopupPanel" parent="." instance=ExtResource("2_s8qs1")]
 visible = false

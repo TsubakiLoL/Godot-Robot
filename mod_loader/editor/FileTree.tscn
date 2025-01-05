@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://qitjvsei4ilx"]
+
+[ext_resource type="Script" path="res://mod_loader/editor/file_tree.gd" id="1_20cbp"]
+
+[node name="FileTree" type="Tree" node_paths=PackedStringArray("shortcut_context")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+shortcut_context = NodePath(".")
+script = ExtResource("1_20cbp")
+
+[node name="menu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+size = Vector2i(84, 80)
+item_count = 4
+item_0/text = "创建文件"
+item_1/text = "创建文件夹"
+item_1/id = 1
+item_2/text = "删除"
+item_2/id = 2
+item_3/text = "重命名"
+item_3/id = 3
+
+[node name="input" type="PopupPanel" parent="."]
+unique_name_in_owner = true
+title = "标题"
+initial_position = 4
+size = Vector2i(248, 36)
+borderless = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="input"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 244.0
+offset_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="line_input" type="LineEdit" parent="input/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "111111111111111111111111111111111111111111"
+expand_to_text_length = true
+
+[node name="input_finish" type="Button" parent="input/HBoxContainer"]
+layout_mode = 2
+text = "确定"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="item_selected" from="." to="." method="_on_item_selected"]
+[connection signal="id_pressed" from="menu" to="." method="_on_popup_menu_id_pressed"]
+[connection signal="popup_hide" from="input" to="." method="_on_input_popup_hide"]
+[connection signal="pressed" from="input/HBoxContainer/input_finish" to="." method="_on_input_finish_pressed"]

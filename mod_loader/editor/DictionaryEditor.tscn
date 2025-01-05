@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://dil01svx53b3l"]
+
+[ext_resource type="Script" path="res://mod_loader/editor/dictionary_editor.gd" id="1_eyux1"]
+[ext_resource type="PackedScene" uid="uid://cseygqg5d0mkr" path="res://mod_loader/editor/DictionaryEditorMono.tscn" id="2_klwg5"]
+
+[node name="DictionaryEditor" type="VBoxContainer"]
+script = ExtResource("1_eyux1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="name" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "字典名"
+
+[node name="panelControl" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "字典"
+
+[node name="panel" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="add_pos" type="VBoxContainer" parent="panel"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DictionaryEditorMono" parent="panel/add_pos" instance=ExtResource("2_klwg5")]
+layout_mode = 2
+
+[node name="DictionaryEditorMono2" parent="panel/add_pos" instance=ExtResource("2_klwg5")]
+layout_mode = 2
+
+[node name="DictionaryEditorMono3" parent="panel/add_pos" instance=ExtResource("2_klwg5")]
+layout_mode = 2
+
+[node name="add_btn" type="Button" parent="panel"]
+layout_mode = 2
+text = "+"
+
+[connection signal="pressed" from="HBoxContainer/panelControl" to="." method="_on_panel_control_pressed"]
+[connection signal="pressed" from="panel/add_btn" to="." method="_on_add_btn_pressed"]

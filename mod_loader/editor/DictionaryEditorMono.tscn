@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://cseygqg5d0mkr"]
+
+[ext_resource type="Texture2D" uid="uid://b6noluvhco5n" path="res://mod_loader/editor/res/file_icon.png" id="1_7xn34"]
+
+[node name="DictionaryEditorMono" type="HBoxContainer"]
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+expand_to_text_length = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = ":"
+
+[node name="LineEdit2" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+expand_to_text_length = true
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(27.685, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("1_7xn34")
+expand_icon = true
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "删除"

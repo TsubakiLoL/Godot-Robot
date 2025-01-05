@@ -1,0 +1,292 @@
+[gd_scene load_steps=12 format=3 uid="uid://b53wndggdafbm"]
+
+[ext_resource type="Script" path="res://mod_loader/editor/mod_editor.gd" id="1_krbw4"]
+[ext_resource type="PackedScene" uid="uid://cw0p0ydu2yuwd" path="res://mod_loader/editor/ConfigPanel.tscn" id="2_1miup"]
+[ext_resource type="PackedScene" uid="uid://qitjvsei4ilx" path="res://mod_loader/editor/FileTree.tscn" id="2_npj38"]
+[ext_resource type="FontFile" uid="uid://bqjeana2jeqoc" path="res://font/SourceHanMonoSC-Regular.otf" id="3_uva0q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wys23"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e27an"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gceiu"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sb01i"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q15kv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wdgam"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_sg4f0"]
+number_color = Color(0.560712, 1, 0.52922, 1)
+symbol_color = Color(0.631373, 0.752941, 1, 1)
+function_color = Color(0.226395, 0.451442, 1, 1)
+member_variable_color = Color(1, 1, 1, 1)
+
+[node name="ModEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_krbw4")
+color_regins = {
+"\" \"": Color(1, 1, 0, 1),
+"# ": Color(0.344076, 0.344076, 0.344076, 1)
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 21.505)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wys23")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(37.25, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "X"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="vsplit" type="VSplitContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_e27an")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="ConfigPanel" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer/ScrollContainer" instance=ExtResource("2_1miup")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "加载配置"
+
+[node name="Button2" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "保存配置"
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_e27an")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel2/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxFlat_gceiu")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_gceiu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gceiu")
+
+[node name="FileTree" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel2/VBoxContainer" instance=ExtResource("2_npj38")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.65
+theme_override_styles/panel = SubResource("StyleBoxFlat_sb01i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q15kv")
+
+[node name="FilePath" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "文件目录"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="editor" type="CodeEdit" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/MarginContainer" node_paths=PackedStringArray("shortcut_context")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.4
+shortcut_context = NodePath(".")
+theme_override_fonts/font = ExtResource("3_uva0q")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wdgam")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wdgam")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_wdgam")
+theme_override_colors/line_number_color = Color(1, 1, 1, 1)
+theme_override_styles/completion = SubResource("StyleBoxEmpty_wdgam")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wdgam")
+text = "extends ChatNode
+##蔷薇消息处理节点
+var get_key:String=\"\"
+func _init(root:NodeRoot) -> void:
+	super._init(root)
+	type=6
+	input_port_array=[\"Dictionary\"]
+	variable_name_array=[\"get_key\"]
+	variable_type_array=[ChatNode.variable_type.TYPE_SELECT]
+	variable_type_more=[[[\"name\",\"uid\",\"message\"],[\"发信人名字\",\"发信人UID\",\"发信人信息内容\"]]]
+	get_key=\"name\"
+	variable_name_view=[\"输出\"]
+	output_port_array=[\"Bool\",\"String\"]
+	init_input()
+
+func process_input(id:String)->bool:
+	#print(variable_name)
+	if input_port_data[0] is Dictionary:
+		if input_port_data[0].has(get_key):
+			sent_data_to_out(true,0,id)
+			sent_data_to_out(input_port_data[0][get_key],1,id)
+			
+		else:
+			sent_data_to_out(false,0,id)
+			sent_data_to_out(\"\",1,id)
+		return true
+	else:
+		return false
+	pass
+
+
+func load_from_data(data:Dictionary):
+	super.load_from_data(data)
+	if data.has(\"get_key\"):
+		var new_mes=data[\"get_key\"]
+		get_key=new_mes
+		#print(new_mes)
+func export_data(data:Dictionary):
+	super.export_data(data)
+	#print(\"当前字典键\",variable_name)
+	data[\"get_key\"]=get_key
+"
+minimap_draw = true
+syntax_highlighter = SubResource("CodeHighlighter_sg4f0")
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_tabs = true
+line_length_guidelines = Array[int]([0])
+gutters_draw_executing_lines = true
+gutters_draw_line_numbers = true
+gutters_zero_pad_line_numbers = true
+code_completion_enabled = true
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+
+[connection signal="file_selected" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel2/VBoxContainer/FileTree" to="." method="_on_file_tree_file_selected"]
+[connection signal="code_completion_requested" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/MarginContainer/editor" to="." method="_on_editor_code_completion_requested"]
+[connection signal="gui_input" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/MarginContainer/editor" to="." method="_on_editor_gui_input"]
+[connection signal="symbol_lookup" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/MarginContainer/editor" to="." method="_on_editor_symbol_lookup"]
+[connection signal="text_changed" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/MarginContainer/editor" to="." method="_on_editor_text_changed"]

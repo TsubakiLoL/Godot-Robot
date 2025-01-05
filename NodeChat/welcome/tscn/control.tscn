@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ch4ecmb0t6je5" path="res://NodeChat/welcome/tscn/file_system.tscn" id="1_iag73"]
 [ext_resource type="Script" path="res://NodeChat/welcome/script/control.gd" id="1_vb2ii"]
+[ext_resource type="Texture2D" uid="uid://drpbh8f2efant" path="res://RobotIcon.png" id="2_e0dpr"]
 [ext_resource type="Texture2D" uid="uid://cgt12xvgnx33x" path="res://NodeChat/welcome/res/tsubaki_1.png" id="2_mldix"]
 [ext_resource type="PackedScene" uid="uid://4itgyo6ryn02" path="res://NodeChat/WebFileSys/tscn/webfile.tscn" id="3_0o8h4"]
 [ext_resource type="PackedScene" uid="uid://vt1oy0yuew3c" path="res://NodeChat/doc/tscn/docwin.tscn" id="3_c853p"]
@@ -19,10 +20,6 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_uytei"]
 font_size = 70
 font_color = Color(0.427451, 0.427451, 0.427451, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_rrdwp"]
-font_size = 30
-font_color = Color(0.568627, 0.568627, 0.568627, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_acbw1"]
 font_size = 30
@@ -171,14 +168,23 @@ offset_top = 0.039999
 offset_right = -0.0540161
 offset_bottom = -0.0160065
 
-[node name="Label" type="Label" parent="Control/name"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/name"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "NodeChat"
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="Control/name/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_e0dpr")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/name/HBoxContainer"]
+layout_mode = 2
+text = "StarBot"
 label_settings = SubResource("LabelSettings_muesx")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -202,14 +208,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 2
-current_tab = 0
+current_tab = 1
 tabs_visible = false
 
 [node name="welcome" type="Control" parent="Control2/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="TextureRect" type="TextureRect" parent="Control2/TabContainer/welcome"]
+visible = false
 modulate = Color(0.407843, 0.407843, 0.407843, 1)
 clip_contents = true
 layout_mode = 2
@@ -251,15 +259,24 @@ layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_e0dpr")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "欢迎使用！"
 label_settings = SubResource("LabelSettings_uytei")
 
-[node name="Label2" type="Label" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer"]
+[node name="tip" type="Label" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "椿的通用机器人"
-label_settings = SubResource("LabelSettings_rrdwp")
+text = "基于Godot的通用自应答机器人"
+label_settings = SubResource("LabelSettings_acbw1")
+autowrap_mode = 3
 
 [node name="Label4" type="Label" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -288,7 +305,6 @@ text = "GitHub"
 uri = "https://github.com/TsubakiLoL/IIROSE-robot-in-Godot"
 
 [node name="nodeset" type="Control" parent="Control2/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

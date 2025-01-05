@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw0p0ydu2yuwd"]
+
+[ext_resource type="PackedScene" uid="uid://dil01svx53b3l" path="res://mod_loader/editor/DictionaryEditor.tscn" id="1_nprf1"]
+
+[node name="ConfigPanel" type="VBoxContainer"]
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "包名"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "显示名字"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DictionaryEditor" parent="." instance=ExtResource("1_nprf1")]
+layout_mode = 2
+dic_name = "单例"
+
+[node name="DictionaryEditor2" parent="." instance=ExtResource("1_nprf1")]
+layout_mode = 2
+dic_name = "节点"
+
+[node name="DictionaryEditor3" parent="." instance=ExtResource("1_nprf1")]
+layout_mode = 2
+dic_name = "面板"
