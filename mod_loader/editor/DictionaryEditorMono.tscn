@@ -1,31 +1,35 @@
 [gd_scene load_steps=2 format=3 uid="uid://cseygqg5d0mkr"]
 
-[ext_resource type="Texture2D" uid="uid://b6noluvhco5n" path="res://mod_loader/editor/res/file_icon.png" id="1_7xn34"]
+[ext_resource type="Script" path="res://mod_loader/editor/dictionary_editor_mono.gd" id="1_yio1s"]
 
 [node name="DictionaryEditorMono" type="HBoxContainer"]
+script = ExtResource("1_yio1s")
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="key" type="LineEdit" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
+text = "default"
 expand_to_text_length = true
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 text = ":"
 
-[node name="LineEdit2" type="LineEdit" parent="."]
+[node name="value" type="LineEdit" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+text = "default"
 expand_to_text_length = true
 
-[node name="Button" type="Button" parent="."]
-custom_minimum_size = Vector2(27.685, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-icon = ExtResource("1_7xn34")
-expand_icon = true
-
-[node name="Button2" type="Button" parent="."]
+[node name="delete" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "删除"
+
+[connection signal="focus_exited" from="key" to="." method="_on_key_focus_exited"]
+[connection signal="text_submitted" from="key" to="." method="_on_key_text_submitted"]
+[connection signal="focus_exited" from="value" to="." method="_on_value_focus_exited"]
+[connection signal="text_submitted" from="value" to="." method="_on_value_text_submitted"]
+[connection signal="pressed" from="delete" to="." method="_on_delete_pressed"]

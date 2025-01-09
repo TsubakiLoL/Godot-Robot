@@ -118,24 +118,21 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit"]
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_e27an")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+clip_contents = true
+layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer"]
+clip_contents = true
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer"]
@@ -144,17 +141,18 @@ size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
 [node name="ConfigPanel" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer/ScrollContainer" instance=ExtResource("2_1miup")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="load_config" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "加载配置"
 
-[node name="Button2" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="save_config" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "保存配置"
@@ -184,6 +182,7 @@ theme_override_styles/read_only = SubResource("StyleBoxFlat_gceiu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gceiu")
 
 [node name="FileTree" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel2/VBoxContainer" instance=ExtResource("2_npj38")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -229,48 +228,8 @@ theme_override_styles/read_only = SubResource("StyleBoxEmpty_wdgam")
 theme_override_colors/line_number_color = Color(1, 1, 1, 1)
 theme_override_styles/completion = SubResource("StyleBoxEmpty_wdgam")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wdgam")
-text = "extends ChatNode
-##蔷薇消息处理节点
-var get_key:String=\"\"
-func _init(root:NodeRoot) -> void:
-	super._init(root)
-	type=6
-	input_port_array=[\"Dictionary\"]
-	variable_name_array=[\"get_key\"]
-	variable_type_array=[ChatNode.variable_type.TYPE_SELECT]
-	variable_type_more=[[[\"name\",\"uid\",\"message\"],[\"发信人名字\",\"发信人UID\",\"发信人信息内容\"]]]
-	get_key=\"name\"
-	variable_name_view=[\"输出\"]
-	output_port_array=[\"Bool\",\"String\"]
-	init_input()
-
-func process_input(id:String)->bool:
-	#print(variable_name)
-	if input_port_data[0] is Dictionary:
-		if input_port_data[0].has(get_key):
-			sent_data_to_out(true,0,id)
-			sent_data_to_out(input_port_data[0][get_key],1,id)
-			
-		else:
-			sent_data_to_out(false,0,id)
-			sent_data_to_out(\"\",1,id)
-		return true
-	else:
-		return false
-	pass
-
-
-func load_from_data(data:Dictionary):
-	super.load_from_data(data)
-	if data.has(\"get_key\"):
-		var new_mes=data[\"get_key\"]
-		get_key=new_mes
-		#print(new_mes)
-func export_data(data:Dictionary):
-	super.export_data(data)
-	#print(\"当前字典键\",variable_name)
-	data[\"get_key\"]=get_key
-"
+text = "#请在左下文件系统中选中或新建文件进行编辑
+#Ctrl+S快速保存"
 minimap_draw = true
 syntax_highlighter = SubResource("CodeHighlighter_sg4f0")
 highlight_all_occurrences = true
@@ -285,6 +244,8 @@ indent_automatic = true
 auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
 
+[connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer/HBoxContainer/load_config" to="." method="_on_load_config_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer/HBoxContainer/save_config" to="." method="_on_save_config_pressed"]
 [connection signal="file_selected" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel2/VBoxContainer/FileTree" to="." method="_on_file_tree_file_selected"]
 [connection signal="code_completion_requested" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/MarginContainer/editor" to="." method="_on_editor_code_completion_requested"]
 [connection signal="gui_input" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/MarginContainer/editor" to="." method="_on_editor_gui_input"]

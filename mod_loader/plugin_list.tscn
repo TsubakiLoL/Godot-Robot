@@ -18,36 +18,51 @@ grow_vertical = 2
 script = ExtResource("1_5hvpf")
 metadata/_edit_use_anchors_ = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="reload" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "重载"
+
+[node name="new_mod" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "新建"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="plugin_view_add_pos" type="VBoxContainer" parent="ScrollContainer"]
+[node name="plugin_view_add_pos" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer" parent="ScrollContainer/plugin_view_add_pos" instance=ExtResource("1_muyts")]
+[node name="PanelContainer" parent="VBoxContainer/ScrollContainer/plugin_view_add_pos" instance=ExtResource("1_muyts")]
 layout_mode = 2
 
-[node name="PanelContainer2" parent="ScrollContainer/plugin_view_add_pos" instance=ExtResource("1_muyts")]
+[node name="PanelContainer2" parent="VBoxContainer/ScrollContainer/plugin_view_add_pos" instance=ExtResource("1_muyts")]
 layout_mode = 2
 
-[node name="PanelContainer3" parent="ScrollContainer/plugin_view_add_pos" instance=ExtResource("1_muyts")]
+[node name="PanelContainer3" parent="VBoxContainer/ScrollContainer/plugin_view_add_pos" instance=ExtResource("1_muyts")]
 layout_mode = 2
 
-[node name="PanelContainer4" parent="ScrollContainer/plugin_view_add_pos" instance=ExtResource("1_muyts")]
+[node name="PanelContainer4" parent="VBoxContainer/ScrollContainer/plugin_view_add_pos" instance=ExtResource("1_muyts")]
 layout_mode = 2
 
-[node name="PanelContainer5" parent="ScrollContainer/plugin_view_add_pos" instance=ExtResource("1_muyts")]
+[node name="PanelContainer5" parent="VBoxContainer/ScrollContainer/plugin_view_add_pos" instance=ExtResource("1_muyts")]
 layout_mode = 2
 
-[node name="PanelContainer6" parent="ScrollContainer/plugin_view_add_pos" instance=ExtResource("1_muyts")]
+[node name="PanelContainer6" parent="VBoxContainer/ScrollContainer/plugin_view_add_pos" instance=ExtResource("1_muyts")]
 layout_mode = 2
 
 [node name="DrawerContainer" type="Container" parent="."]
@@ -70,3 +85,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_piwvi")
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/reload" to="." method="_on_reload_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/new_mod" to="." method="_on_new_mod_pressed"]

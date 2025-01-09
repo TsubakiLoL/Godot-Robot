@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbe5edbd1u513"]
+
+[ext_resource type="Script" path="res://autoload/ModLoaderWinControl/base_win_mes.gd" id="1_vc44d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qupvi"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[node name="baseWinMes" type="Container"]
+custom_minimum_size = Vector2(100, 0)
+offset_right = 499.0
+offset_bottom = 162.0
+size_flags_horizontal = 10
+script = ExtResource("1_vc44d")
+button_model = 2
+disable_button = true
+animation_model = 0
+is_open = false
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_qupvi")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "测试消息"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

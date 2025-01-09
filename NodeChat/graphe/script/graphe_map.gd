@@ -67,10 +67,10 @@ func save_state_root(file_path:String):
 			
 	
 func save_now_file():
-	print("尝试保存")
 	if now_file_path!="(*)":
 		save_state_root(now_file_path)
 		file_changed=false
+		Toast.popup("保存成功")
 	else:
 		save_file()
 		file_changed=false
@@ -289,3 +289,9 @@ func _on_popup_panel_selected_node(mod: String, node: String) -> void:
 	new_graph.init()
 	
 	pass # Replace with function body.
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("save"):
+		
+		save_now_file()
+	

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dotqcwet5cply"]
+
+[ext_resource type="Script" path="res://autoload/ModLoaderWinControl/mod_loader_win_control.gd" id="1_hk8p2"]
+
+[node name="ModLoaderWinControl" type="Node"]
+script = ExtResource("1_hk8p2")

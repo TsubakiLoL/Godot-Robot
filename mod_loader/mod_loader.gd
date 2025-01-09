@@ -20,7 +20,6 @@ var mod_nodeclass_db:Dictionary={}
 
 #mod加载的触发器类型
 var mod_triger_type_name_db:Dictionary={
-	"test_1":"测试触发器1"
 }
 
 #mod加载的在主界面的面板的数据
@@ -58,8 +57,8 @@ func load_mod_from_path(path:String):
 					continue
 				if not dic.has("name"):
 					continue
-				if not dic.has("depend"):
-					continue
+				#if not dic.has("depend"):
+					#continue
 				var mod_name:String=dic["name"]
 				dic["mod_path"]=sub_path
 				install_mod(mod_name,dic)
@@ -215,3 +214,44 @@ func get_mod_path(mod_name:String)->String:
 	if not mod_data.has("mod_path"):
 		return ""
 	return mod_data["mod_path"]
+func reload():
+	#清空数据
+	
+	#mod加载数据
+	mod_origin_db={}
+	#mod自动加载集
+	mod_autoload_db={}
+	#mod节点类集
+	mod_nodeclass_db={}
+
+
+	#mod加载的触发器类型
+	mod_triger_type_name_db={}
+
+	#mod加载的在主界面的面板的数据
+	mod_panel_db={}
+	load_mod_from_path(load_path)
+	
+	
+	
+	pass
+#监测当前是否具有此名字的mod
+func has_mod(mod_name:String)->bool:
+	return mod_origin_db.has(mod_name)
+
+
+#获取mod加载的根节点
+func get_load_path():
+	var path:String=load_path
+	if not path.ends_with("/"):
+		path+="/"
+	return path
+
+#删除mod
+func delete_mod(mod_name:String):
+	var path=get_mod_path(mod_name)
+	if path=="":
+		return
+	#删除文件夹
+	OS.move_to_trash(ProjectSettings.globalize_path(path))
+	reload()

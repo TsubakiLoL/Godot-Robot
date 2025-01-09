@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cw0p0ydu2yuwd"]
+[gd_scene load_steps=4 format=3 uid="uid://cw0p0ydu2yuwd"]
 
+[ext_resource type="Script" path="res://mod_loader/editor/config_panel.gd" id="1_cupdl"]
 [ext_resource type="PackedScene" uid="uid://dil01svx53b3l" path="res://mod_loader/editor/DictionaryEditor.tscn" id="1_nprf1"]
+[ext_resource type="PackedScene" uid="uid://bltm517wxy1ib" path="res://mod_loader/editor/dictionary_editor_panel.tscn" id="3_ome1f"]
 
 [node name="ConfigPanel" type="VBoxContainer"]
+clip_contents = true
 size_flags_horizontal = 3
+script = ExtResource("1_cupdl")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -13,9 +17,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "包名"
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+[node name="package_name" type="LineEdit" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -25,18 +33,60 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "显示名字"
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer2"]
+[node name="name_view" type="LineEdit" parent="HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DictionaryEditor" parent="." instance=ExtResource("1_nprf1")]
+[node name="HSeparator7" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "介绍"
+
+[node name="introduction" type="TextEdit" parent="HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="autoload" parent="." instance=ExtResource("1_nprf1")]
+unique_name_in_owner = true
 layout_mode = 2
 dic_name = "单例"
 
-[node name="DictionaryEditor2" parent="." instance=ExtResource("1_nprf1")]
+[node name="HSeparator3" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="node" parent="." instance=ExtResource("1_nprf1")]
+unique_name_in_owner = true
 layout_mode = 2
 dic_name = "节点"
 
-[node name="DictionaryEditor3" parent="." instance=ExtResource("1_nprf1")]
+[node name="HSeparator4" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="triger" parent="." instance=ExtResource("1_nprf1")]
+unique_name_in_owner = true
+layout_mode = 2
+dic_name = "触发器"
+
+[node name="HSeparator5" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="panel" parent="." instance=ExtResource("3_ome1f")]
+unique_name_in_owner = true
 layout_mode = 2
 dic_name = "面板"
+
+[node name="HSeparator6" type="HSeparator" parent="."]
+layout_mode = 2

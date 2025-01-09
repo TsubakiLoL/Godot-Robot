@@ -161,11 +161,11 @@ func change_open():
 	if is_open:
 		now_keep_tween=get_tree().create_tween()
 		now_keep_tween.set_trans(animation_model)
-		now_keep_tween.tween_property(self,"rag",1,0.5)
+		now_keep_tween.tween_property(self,"rag",1,0.2)
 	else:
 		now_keep_tween=get_tree().create_tween()
 		now_keep_tween.set_trans(animation_model)
-		now_keep_tween.tween_property(self,"rag",0,0.5)
+		now_keep_tween.tween_property(self,"rag",0,0.2)
 	is_open=!is_open
 
 	

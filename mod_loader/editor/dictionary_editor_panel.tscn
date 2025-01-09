@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dil01svx53b3l"]
+[gd_scene load_steps=2 format=3 uid="uid://bltm517wxy1ib"]
 
-[ext_resource type="Script" path="res://mod_loader/editor/dictionary_editor.gd" id="1_eyux1"]
+[ext_resource type="Script" path="res://mod_loader/editor/dictionary_editor_panel.gd" id="1_gss1y"]
 
-[node name="DictionaryEditor" type="VBoxContainer"]
-script = ExtResource("1_eyux1")
+[node name="DictionaryEditorPanel" type="VBoxContainer"]
+script = ExtResource("1_gss1y")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

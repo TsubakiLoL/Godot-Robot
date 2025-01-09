@@ -14,3 +14,19 @@ func set_data(mod_origin_data:Dictionary):
 	
 	
 	pass
+
+
+func _on_edit_pressed() -> void:
+	print(origin_data["mod_path"])
+	ModLoaderWinControl.edit(origin_data["mod_path"])
+	pass # Replace with function body.
+
+
+func _on_delete_pressed() -> void:
+	%confirm.popup()
+	pass # Replace with function body.
+
+
+func _on_confirm_confirmed() -> void:
+	ModLoader.delete_mod(origin_data["name"])
+	pass # Replace with function body.

@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpvjguuhmyt18"]
+
+[ext_resource type="Script" path="res://autoload/ModLoaderWinControl/base_win.gd" id="1_2ra8n"]
+
+[node name="BaseWin" type="Window"]
+initial_position = 1
+size = Vector2i(1152, 648)
+script = ExtResource("1_2ra8n")
+
+[node name="Control" type="Control" parent="."]
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="add_pos" type="VBoxContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

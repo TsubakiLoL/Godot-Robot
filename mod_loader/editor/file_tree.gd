@@ -5,10 +5,7 @@ const DIR_ICON = preload("res://mod_loader/editor/res/dir_icon.png")
 const FILE_ICON = preload("res://mod_loader/editor/res/file_icon.png")
 signal file_selected(global_path:String)
 signal dir_selected(globla_path:String)
-func _ready() -> void:
-	#self.hide_root=true
-	root_path="user://mod/iirose"
-	reload()
+
 	
 
 var tree_cache_file:Dictionary={}
@@ -120,7 +117,7 @@ func _on_gui_input(event: InputEvent) -> void:
 
 ##弹出右键菜单
 func popup_right_window(path:String):
-	%menu.position=Vector2i(get_global_mouse_position())+get_tree().root.position
+	%menu.position=Vector2i(get_global_mouse_position())+get_window().position
 	%menu.popup()
 	pass
 
@@ -194,6 +191,7 @@ func _on_input_finish_pressed() -> void:
 		Toast.popup("当前未选中路径！")
 		return
 	match mode_cache:
+		#
 		0:
 			var path:String=res[2]
 			if res[1]!=0:
@@ -219,3 +217,17 @@ func _on_input_finish_pressed() -> void:
 	reload()
 	%input.hide()
 	pass # Replace with function body.
+
+func _get_drag_data(at_position: Vector2) -> Variant:
+	var res=get_now_dir()
+	if not res[0]:
+		return
+	if not res[1]:
+		return
+	print(res[2])
+	print(root_path)
+	var path=res[2].right(res[2].length()-root_path.length())
+	var label=Label.new()
+	label.text=path
+	set_drag_preview(label)
+	return path
