@@ -31,9 +31,36 @@ func _on_new_mod_pressed() -> void:
 func mod_create(data:Dictionary):
 	var package_name:String=data["name"]
 	var use_model:bool=data["use_model"]
+	var model_path:String=data["model_path"]
 	var name_view:String=data["name_view"]
 	if use_model:
+		var path:String=get_useful_path(package_name)
+		DirAccess.make_dir_absolute(path)
+		Zip.start_mission("解压模板",Zip.Type.UNZIP,ModLoader.get_model_path(model_path),path,
+		func():
+			var f=FileAccess.open(path+"/config.json",FileAccess.READ)
+			var write_dic:Dictionary={
+				"name":package_name,
+				"name_view":name_view,
+			}
+			if f!=null:
+				var str=f.get_as_text()
+				var json=JSON.parse_string(str)
+				if json is Dictionary:
+					json["name"]=package_name
+					json["name_view"]=name_view
+					write_dic=json
+				f.close()
+			f=FileAccess.open(path+"/config.json",FileAccess.WRITE)
+			if f!=null:
+				f.store_string(JSON.stringify(write_dic))
+				f.close()
+			ModLoader.reload()
+			
+			
+			pass
 		
+		)
 		pass
 	else:
 		var config_dic:Dictionary={
@@ -46,7 +73,7 @@ func mod_create(data:Dictionary):
 		var f=FileAccess.open(path+"/config.json",FileAccess.WRITE)
 		if f!=null:
 			f.store_string(JSON.stringify(config_dic))
-	ModLoader.reload()
+		ModLoader.reload()
 func get_useful_path(package_name:String):
 	var index:int=0
 	if not DirAccess.dir_exists_absolute(ModLoader.get_load_path()+package_name):
@@ -54,3 +81,8 @@ func get_useful_path(package_name:String):
 	while (DirAccess.dir_exists_absolute(ModLoader.get_load_path()+package_name+str(index))):
 		index+=1
 	return ModLoader.get_load_path()+package_name+str(index)
+
+
+func _on_open_file_pressed() -> void:
+	OS.shell_open(ProjectSettings.globalize_path(ModLoader.load_path))
+	pass # Replace with function body.

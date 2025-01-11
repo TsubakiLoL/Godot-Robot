@@ -22,7 +22,6 @@ title = "新建插件"
 initial_position = 1
 size = Vector2i(500, 300)
 exclusive = true
-always_on_top = true
 extend_to_title = true
 script = ExtResource("1_8wne2")
 
@@ -124,8 +123,15 @@ text = "模板"
 [node name="use_model" type="CheckBox" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
 text = "启用"
+
+[node name="model_select" type="MenuButton" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/Panel/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+flat = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2

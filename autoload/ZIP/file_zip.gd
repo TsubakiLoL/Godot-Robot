@@ -77,7 +77,7 @@ func zip_dir_thread(dir_origin:String,file_zip:String)->bool:
 			zip_packer.close()
 			DirAccess.remove_absolute(file_zip)
 			return false
-		var remove_base_dir:String=i.right(i.length()-base_dir_length)
+		var remove_base_dir:String=i.right(i.length()-base_dir_length+1)
 		zip_packer.start_file(remove_base_dir)
 		var f=FileAccess.open(i,FileAccess.READ)
 		if f==null:
@@ -141,6 +141,14 @@ func get_progress_index()->float:
 		return float(now_zip_index)/float(max_zip_index)
 ##获取当前根据文件大小计算的进度，0-1
 func get_progress_size()->float:
+	if max_file_size==0:
+		return 0
+	else:
+		return float(now_file_size)/float(max_file_size)
+	
+	
+	pass
+func get_progress()->float:
 	if max_file_size==0:
 		return 0
 	else:

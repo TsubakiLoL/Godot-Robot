@@ -28,6 +28,9 @@ var mod_panel_db:Dictionary={}
 #加载mod的路径
 var load_path:String="user://mod"
 
+#用于加载模板的路径
+var load_model_path:String="user://model"
+
 ##当系统装载的插件更改时发出
 signal mod_changed()
 
@@ -101,7 +104,7 @@ func install_mod(mod_name:String,mod_data:Dictionary):
 			var tscn=new_script.new()
 			tscn.name=i
 			add_child(tscn)
-			mod_autoload_db[i]=tscn
+			mod_autoload_db[mod_name+"/"+i]=tscn
 	#加载节点类文件
 	if mod_data.has("node"):
 		mod_nodeclass_db[mod_name]={}
@@ -216,7 +219,8 @@ func get_mod_path(mod_name:String)->String:
 	return mod_data["mod_path"]
 func reload():
 	#清空数据
-	
+	for i in get_children():
+		i.queue_free()
 	#mod加载数据
 	mod_origin_db={}
 	#mod自动加载集
@@ -255,3 +259,29 @@ func delete_mod(mod_name:String):
 	#删除文件夹
 	OS.move_to_trash(ProjectSettings.globalize_path(path))
 	reload()
+
+
+#获取全部模板
+func get_all_model()->Array[String]:
+	var dir=DirAccess.open(load_model_path)
+	if dir==null:
+		return []
+	var file_name:String=""
+	var res:Array[String]=[]
+	if dir:
+		dir.list_dir_begin()
+		file_name = dir.get_next()
+		while file_name != "":
+			if not dir.current_is_dir():
+				if file_name.ends_with(".zip"):
+					res.append(file_name)
+			file_name = dir.get_next()
+		dir.list_dir_end()
+	return res
+
+#获取模板路径
+func get_model_path(file_name:String)->String:
+	var path=load_model_path
+	if not path.ends_with("/"):
+		path+="/"
+	return path+file_name

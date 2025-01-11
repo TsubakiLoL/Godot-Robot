@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh801wv5sn1ov"]
+
+[ext_resource type="Script" path="res://autoload/ZIP/zip_test.gd" id="1_s6p36"]
+
+[node name="ZipTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s6p36")

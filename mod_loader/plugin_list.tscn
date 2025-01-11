@@ -37,6 +37,10 @@ text = "重载"
 layout_mode = 2
 text = "新建"
 
+[node name="open_file" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "打开文件目录"
+
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -88,3 +92,4 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_piwvi")
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/reload" to="." method="_on_reload_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/new_mod" to="." method="_on_new_mod_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/open_file" to="." method="_on_open_file_pressed"]

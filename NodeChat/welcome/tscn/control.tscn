@@ -208,11 +208,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 2
-current_tab = 1
+current_tab = 0
 tabs_visible = false
 
 [node name="welcome" type="Control" parent="Control2/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -305,6 +304,7 @@ text = "GitHub"
 uri = "https://github.com/TsubakiLoL/IIROSE-robot-in-Godot"
 
 [node name="nodeset" type="Control" parent="Control2/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

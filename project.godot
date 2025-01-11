@@ -28,6 +28,7 @@ GlobalConfig="*res://autoload/GlobalConfig/tscn/global_config.tscn"
 PromptMessageControler="*res://NodeChat/AutoLoad/PromptMessageControler/prompt_message_controler.tscn"
 ModLoader="*res://mod_loader/mod_loader.gd"
 ModLoaderWinControl="*res://autoload/ModLoaderWinControl/ModLoaderWinControl.tscn"
+Zip="*res://autoload/ZIP/ZIP.tscn"
 
 [debug]
 

@@ -19,12 +19,15 @@ var request_thread_stop:bool=false
 ##压缩结束后发出的信号，res为是否成功
 signal finish(res:bool)
 func start_unzip(from_file:String,to_file:String):
+	var path=to_file
+	if not path.ends_with("/"):
+		path+="/"
 	if zip_thread!=null or state!=State.STATE_FREE:
 		print("当前正在使用中！")
 		return 
 	request_thread_stop=false
 	zip_thread=Thread.new()
-	zip_thread.start(read_zip_file.bindv([from_file,to_file]))
+	zip_thread.start(read_zip_file.bindv([from_file,path]))
 	
 	
 	pass
@@ -51,22 +54,28 @@ func read_zip_file(path:String,to_file:String)->bool:
 	var now_file_size:int=0
 	for i in files:
 		now_file_size+=1
-		print(i)
-		var dir_path=(file_root+i).get_base_dir()
-		print(dir_path)
-		err=DirAccess.make_dir_recursive_absolute(dir_path)
+		var dir_path:String=""
+		if i.ends_with("/"):
+			dir_path=(file_root+i)
+			pass
+		else:
+			dir_path=(file_root+i).get_base_dir()
+		call_thread_safe("set","tips",i)
 		
+		err=DirAccess.make_dir_recursive_absolute(dir_path)
 		if err!=OK:
 			print("创建文件夹失败",dir_path)
 			print(err)
 			return false
-		var f=FileAccess.open((file_root+i),FileAccess.WRITE)
-		if f==null:
-			print("创建文件失败",file_root+i)
-			print(FileAccess.get_open_error())
-			return false
-		var data=reader.read_file(i)
-		f.store_buffer(data)
+		if not dir_path.ends_with("/"):
+			
+			var f=FileAccess.open((file_root+i),FileAccess.WRITE)
+			if f==null:
+				print("创建文件失败",file_root+i)
+				print(FileAccess.get_open_error())
+				return false
+			var data=reader.read_file(i)
+			f.store_buffer(data)
 		call_thread_safe("set","now_file_size",now_file_size)
 		pass
 	reader.close()
