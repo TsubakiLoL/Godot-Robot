@@ -74,7 +74,7 @@ func _on_editor_gui_input(event: InputEvent) -> void:
 
 var now_select_path:String=""
 func save():
-	if now_select_path!="":
+	if now_select_path!="" and not now_select_path.ends_with(".tscn"):
 		var text:String=%editor.text
 		var f=FileAccess.open(now_select_path,FileAccess.WRITE)
 		if f!=null:
@@ -90,13 +90,27 @@ func save():
 
 func _on_file_tree_file_selected(global_path: String) -> void:
 	save()
-	var f=FileAccess.open(global_path,FileAccess.READ)
-	if f!=null:
-		var str=f.get_as_text()
-		%editor.text=str
-		%FilePath.text=global_path
-		now_select_path=global_path
-	pass # Replace with function body.
+	for i in %tscn_panel.get_children():
+		i.queue_free()
+	%FilePath.text=global_path
+	if global_path.ends_with(".tscn"):
+		var tscn=load(global_path)
+		if tscn is PackedScene and tscn.can_instantiate():
+			%tscn_panel.show()
+			%editor_panel.hide()
+			%tscn_panel.add_child(tscn.instantiate())
+			now_select_path=""
+			pass
+		pass
+	else:
+		var f=FileAccess.open(global_path,FileAccess.READ)
+		if f!=null:
+			%editor_panel.show()
+			%tscn_panel.hide()
+			var str=f.get_as_text()
+			%editor.text=str
+			now_select_path=global_path
+		pass # Replace with function body.
 
 
 func _on_load_config_pressed() -> void:

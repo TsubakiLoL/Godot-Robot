@@ -37,6 +37,7 @@ signal mod_changed()
 func _ready() -> void:
 	#设置路径为可执行文件的同级mod文件夹
 	#load_path=OS.get_executable_path().get_base_dir()+"/mod"
+	#load_model_path=OS.get_executable_path().get_base_dir()+"/model"
 	load_mod_from_path(load_path)
 
 #从指定的路径加载模块数据
@@ -100,7 +101,9 @@ func install_mod(mod_name:String,mod_data:Dictionary):
 		var auto_load_dic:Dictionary=mod_data["autoload"]
 		for i in auto_load_dic.keys():
 			print("\t加载全局项:"+i)
-			var new_script:GDScript=load(mod_path+auto_load_dic[i])
+			var new_script=ResourceLoader.load(mod_path+auto_load_dic[i],"",ResourceLoader.CACHE_MODE_IGNORE_DEEP)
+			if not new_script is GDScript:
+				continue
 			var tscn=new_script.new()
 			tscn.name=i
 			add_child(tscn)
@@ -112,7 +115,10 @@ func install_mod(mod_name:String,mod_data:Dictionary):
 		#加载类数据库
 		for i in node_dic.keys():
 			print("\t加载类:"+mod_name+"/"+i)
-			var new_script:GDScript=load(mod_path+"/"+node_dic[i])
+			var new_script=ResourceLoader.load(mod_path+"/"+node_dic[i],"",ResourceLoader.CACHE_MODE_IGNORE_DEEP)
+			if not new_script is GDScript:
+				print("\t加载失败")
+				continue
 			mod_nodeclass_db[mod_name][i]=new_script
 	if mod_data.has("triger"):
 		var mod_triger_data=mod_data["triger"]
@@ -129,9 +135,13 @@ func install_mod(mod_name:String,mod_data:Dictionary):
 				var tscn=null
 				var tscn_script=null
 				if single_panel_data.has("tscn"):
-					tscn=load(mod_path+single_panel_data["tscn"])
+					tscn=ResourceLoader.load(mod_path+single_panel_data["tscn"],"",ResourceLoader.CACHE_MODE_IGNORE_DEEP)
+					if not tscn is PackedScene:
+						continue
 				if single_panel_data.has("script"):
-					tscn_script=load(mod_path+single_panel_data["script"])
+					tscn_script=ResourceLoader.load(mod_path+single_panel_data["script"],"",ResourceLoader.CACHE_MODE_IGNORE_DEEP)
+					if not tscn_script is GDScript:
+						tscn_script=null
 				mod_panel_db[mod_name].append([i,tscn,tscn_script])
 	mod_changed.emit()
 #依据mod名称卸载mod

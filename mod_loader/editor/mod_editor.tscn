@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://mod_loader/editor/mod_editor.gd" id="1_krbw4"]
 [ext_resource type="PackedScene" uid="uid://cw0p0ydu2yuwd" path="res://mod_loader/editor/ConfigPanel.tscn" id="2_1miup"]
 [ext_resource type="PackedScene" uid="uid://qitjvsei4ilx" path="res://mod_loader/editor/FileTree.tscn" id="2_npj38"]
-[ext_resource type="FontFile" uid="uid://bqjeana2jeqoc" path="res://font/SourceHanMonoSC-Regular.otf" id="3_uva0q"]
+[ext_resource type="FontFile" uid="uid://dohqkrwf3qqc" path="res://font/milky-term-cn-normal.ttf" id="4_lum6c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wys23"]
 
@@ -207,20 +207,21 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "文件目录"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer"]
+[node name="editor_panel" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="editor" type="CodeEdit" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/MarginContainer" node_paths=PackedStringArray("shortcut_context")]
+[node name="editor" type="CodeEdit" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/editor_panel" node_paths=PackedStringArray("shortcut_context")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.4
 shortcut_context = NodePath(".")
-theme_override_fonts/font = ExtResource("3_uva0q")
+theme_override_fonts/font = ExtResource("4_lum6c")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxEmpty_wdgam")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wdgam")
@@ -244,10 +245,19 @@ indent_automatic = true
 auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
 
+[node name="tscn_panel" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
 [connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer/HBoxContainer/load_config" to="." method="_on_load_config_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel/MarginContainer/VBoxContainer/HBoxContainer/save_config" to="." method="_on_save_config_pressed"]
 [connection signal="file_selected" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/vsplit/Panel2/VBoxContainer/FileTree" to="." method="_on_file_tree_file_selected"]
-[connection signal="code_completion_requested" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/MarginContainer/editor" to="." method="_on_editor_code_completion_requested"]
-[connection signal="gui_input" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/MarginContainer/editor" to="." method="_on_editor_gui_input"]
-[connection signal="symbol_lookup" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/MarginContainer/editor" to="." method="_on_editor_symbol_lookup"]
-[connection signal="text_changed" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/MarginContainer/editor" to="." method="_on_editor_text_changed"]
+[connection signal="code_completion_requested" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/editor_panel/editor" to="." method="_on_editor_code_completion_requested"]
+[connection signal="gui_input" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/editor_panel/editor" to="." method="_on_editor_gui_input"]
+[connection signal="symbol_lookup" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/editor_panel/editor" to="." method="_on_editor_symbol_lookup"]
+[connection signal="text_changed" from="VBoxContainer/MarginContainer/HBoxContainer/HSplitContainer/PanelContainer/VBoxContainer/editor_panel/editor" to="." method="_on_editor_text_changed"]

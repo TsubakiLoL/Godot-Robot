@@ -73,6 +73,7 @@ func mod_create(data:Dictionary):
 		var f=FileAccess.open(path+"/config.json",FileAccess.WRITE)
 		if f!=null:
 			f.store_string(JSON.stringify(config_dic))
+			f.close()
 		ModLoader.reload()
 func get_useful_path(package_name:String):
 	var index:int=0

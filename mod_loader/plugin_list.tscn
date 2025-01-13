@@ -4,9 +4,7 @@
 [ext_resource type="Script" path="res://tool/DrawerContainer.gd" id="1_hh26y"]
 [ext_resource type="PackedScene" uid="uid://b3q8ug0ni4qy" path="res://mod_loader/plugin_view.tscn" id="1_muyts"]
 [ext_resource type="PackedScene" uid="uid://c6m6fu5xl6fx4" path="res://mod_loader/texture_button.tscn" id="2_0exf4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_piwvi"]
-bg_color = Color(0, 0, 0, 1)
+[ext_resource type="PackedScene" uid="uid://cfay1y41ct26n" path="res://mod_loader/market/plugin_market.tscn" id="5_eudfj"]
 
 [node name="plugin_list" type="Control"]
 layout_mode = 3
@@ -84,11 +82,8 @@ button_model = 2
 animation_model = 8
 is_open = false
 
-[node name="Panel" type="Panel" parent="DrawerContainer"]
+[node name="PluginMarket" parent="DrawerContainer" instance=ExtResource("5_eudfj")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_piwvi")
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/reload" to="." method="_on_reload_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/new_mod" to="." method="_on_new_mod_pressed"]
