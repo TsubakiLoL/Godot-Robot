@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3q8ug0ni4qy"]
 
-[ext_resource type="Script" path="res://mod_loader/plugin_view.gd" id="1_2m3t4"]
+[ext_resource type="Script" uid="uid://iwgx7doowuyo" path="res://mod_loader/plugin_view.gd" id="1_2m3t4"]
 [ext_resource type="Texture2D" uid="uid://dyqg17edvfyeu" path="res://mod_loader/barcode-qr.svg" id="1_d0mw5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbsse"]

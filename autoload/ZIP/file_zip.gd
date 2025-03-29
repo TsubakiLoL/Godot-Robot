@@ -1,23 +1,18 @@
 extends Node
 ##用来将一个文件夹中所有内容压缩到指定压缩文件目录的节点
 class_name FileZip
-
 ##用来执行压缩的线程
 var zip_thread:Thread
-
 ##需要压缩的文件数目
 var max_zip_index:int=0
 ##当前已经写入的文件压缩数目
 var now_zip_index:int=0
-
 ##扫描出的需要压缩的所有文件大小（字节）
 var max_file_size:int=0
 ##当前已经压缩的文件大小（字节）
 var now_file_size:int=0
-
 ##提示信息
 var tips:String=""
-
 enum State{
 	##空闲状态
 	STATE_FREE=0,
@@ -44,8 +39,6 @@ func start_zip(dir_origin:String,file_zip:String):
 ##要求停止压缩，扫描过程中无法停止，压缩过程中会在要求停止后完成一个文件的写入后停止并销毁压缩文件
 func stop_zip():
 	request_thread_stop=true
-
-
 ##扫描和压缩线程函数
 func zip_dir_thread(dir_origin:String,file_zip:String)->bool:
 	call_thread_safe("set","now_zip_index",0)
@@ -77,7 +70,7 @@ func zip_dir_thread(dir_origin:String,file_zip:String)->bool:
 			zip_packer.close()
 			DirAccess.remove_absolute(file_zip)
 			return false
-		var remove_base_dir:String=i.right(i.length()-base_dir_length+1)
+		var remove_base_dir:String=i.right(i.length()-base_dir_length)
 		zip_packer.start_file(remove_base_dir)
 		var f=FileAccess.open(i,FileAccess.READ)
 		if f==null:

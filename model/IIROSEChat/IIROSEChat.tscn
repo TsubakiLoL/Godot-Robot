@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bkgihvpipl64u"]
 
-[ext_resource type="Script" path="res://model/IIROSEChat/iirose_chat.gd" id="1_l23bs"]
+[ext_resource type="Script" uid="uid://ckukcuvrm4u2j" path="res://model/IIROSEChat/iirose_chat.gd" id="1_l23bs"]
 [ext_resource type="PackedScene" uid="uid://bofs37ukskcud" path="res://model/IIROSEChat/ChatControl.tscn" id="2_uw38x"]
 
 [node name="IiroseChat" type="Window"]

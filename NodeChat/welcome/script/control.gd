@@ -6,30 +6,19 @@
 #	毕业设计
 #	学号：20211401239
 #----------------------
-
-
-
-
 extends Control
 @onready var tab_container: TabContainer = $Control2/TabContainer
 
 var graph_map_tscn=preload("res://NodeChat/graphe/tscn/graphe_map.tscn")
 var account_file:String="user://account.txt"
-
-
-
 func multi_mes(str:String):
 	$loginmes/ScrollContainer/login_mes_label.append_text(str+"\n")
 func _on_welcome_pressed() -> void:
 	tab_container.set_current_tab(0)
 	pass # Replace with function body.
-
-
 func _on_file_pressed() -> void:
 	tab_container.set_current_tab(1)
 	pass # Replace with function body.
-
-
 func _on_control_edit_file(path: String) -> void:
 	var new_gra=graph_map_tscn.instantiate() as GrapheMap
 	add_child(new_gra)
@@ -40,8 +29,6 @@ func _on_control_edit_file(path: String) -> void:
 func _on_flag_pressed() -> void:
 	$loginmes.popup()
 	pass # Replace with function body.
-
-
 
 func load_account():
 	var f=FileAccess.open(account_file,FileAccess.READ)
@@ -159,7 +146,7 @@ func show_mod_panel(panel):
 	for i in %mod_panel_add_pos.get_children():
 		i.hide()
 	panel.show()
-	%TabContainer.current_tab=4
+	%TabContainer.current_tab=5
 
 func _ready() -> void:
 	load_panel()
@@ -167,4 +154,9 @@ func _ready() -> void:
 
 func _on_plugin_pressed() -> void:
 	tab_container.set_current_tab(3)
+	pass # Replace with function body.
+
+
+func _on_developer_pressed() -> void:
+	tab_container.set_current_tab(4)
 	pass # Replace with function body.

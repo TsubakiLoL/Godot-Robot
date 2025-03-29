@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SingleWord" load_steps=2 format=3 uid="uid://bba2il2kgolkc"]
 
-[ext_resource type="Script" path="res://NodeChat/doc/class/single_word.gd" id="1_un1gg"]
+[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://NodeChat/doc/class/single_word.gd" id="1_un1gg"]
 
 [resource]
 script = ExtResource("1_un1gg")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://g7f4rfphh8t"]
 
-[ext_resource type="Script" path="res://mod_loader/plugin_list.gd" id="1_5hvpf"]
-[ext_resource type="Script" path="res://tool/DrawerContainer.gd" id="1_hh26y"]
+[ext_resource type="Script" uid="uid://c5e1606y427sb" path="res://mod_loader/plugin_list.gd" id="1_5hvpf"]
+[ext_resource type="Script" uid="uid://l3lrxr867tl5" path="res://tool/DrawerContainer.gd" id="1_hh26y"]
 [ext_resource type="PackedScene" uid="uid://b3q8ug0ni4qy" path="res://mod_loader/plugin_view.tscn" id="1_muyts"]
 [ext_resource type="PackedScene" uid="uid://c6m6fu5xl6fx4" path="res://mod_loader/texture_button.tscn" id="2_0exf4"]
 [ext_resource type="PackedScene" uid="uid://cfay1y41ct26n" path="res://mod_loader/market/plugin_market.tscn" id="5_eudfj"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://vt1oy0yuew3c"]
 
 [ext_resource type="PackedScene" uid="uid://cny25mi3v3pe2" path="res://NodeChat/doc/tscn/doc_main.tscn" id="1_6j4t0"]
-[ext_resource type="Script" path="res://NodeChat/doc/script/docwin.gd" id="1_biybl"]
+[ext_resource type="Script" uid="uid://b3qhck1mr1cj3" path="res://NodeChat/doc/script/docwin.gd" id="1_biybl"]
 
 [node name="Window" type="Window"]
 title = "文档"

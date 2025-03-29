@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://bit1i4ewwej1d"]
 
-[ext_resource type="Script" path="res://addons/godot_gpt/examples/function/function_example.gd" id="1_a4do1"]
+[ext_resource type="Script" uid="uid://byb5wvmvrqsy1" path="res://addons/godot_gpt/examples/function/function_example.gd" id="1_a4do1"]
 [ext_resource type="PackedScene" uid="uid://di8cv15276ai6" path="res://addons/godot_gpt/examples/chat/chat_entry/chat_entry.tscn" id="2_8egmh"]
 [ext_resource type="PackedScene" uid="uid://db4dkaa7rodme" path="res://addons/godot_gpt/examples/common/prompt_input/prompt_input.tscn" id="2_wilmk"]
-[ext_resource type="Script" path="res://addons/godot_gpt/gpt_chat_request.gd" id="3_w1qu0"]
-[ext_resource type="Script" path="res://addons/godot_gpt/gpt_function_param.gd" id="4_0bk2s"]
-[ext_resource type="Script" path="res://addons/godot_gpt/gpt_function.gd" id="5_ghg4i"]
+[ext_resource type="Script" uid="uid://b25f4r11rw3o5" path="res://addons/godot_gpt/gpt_chat_request.gd" id="3_w1qu0"]
+[ext_resource type="Script" uid="uid://cqvvftccpvety" path="res://addons/godot_gpt/gpt_function_param.gd" id="4_0bk2s"]
+[ext_resource type="Script" uid="uid://bljbmpok5egyn" path="res://addons/godot_gpt/gpt_function.gd" id="5_ghg4i"]
 
 [sub_resource type="Resource" id="Resource_4s071"]
 script = ExtResource("4_0bk2s")

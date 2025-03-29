@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dh801wv5sn1ov"]
 
-[ext_resource type="Script" path="res://autoload/ZIP/zip_test.gd" id="1_s6p36"]
+[ext_resource type="Script" uid="uid://bw4r6ihwpon26" path="res://autoload/ZIP/zip_test.gd" id="1_s6p36"]
 
 [node name="ZipTest" type="Control"]
 layout_mode = 3

@@ -58,8 +58,10 @@ func load_mod_from_path(path:String):
 				var json_path:String=sub_path+"/"+"config.json"
 				var dic=load_dictionary_from_json(json_path)
 				if dic==null:
+					file_name = dir.get_next()
 					continue
 				if not dic.has("name"):
+					file_name = dir.get_next()
 					continue
 				#if not dic.has("depend"):
 					#continue

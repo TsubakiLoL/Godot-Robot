@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://db4dkaa7rodme"]
 
-[ext_resource type="Script" path="res://addons/godot_gpt/examples/common/prompt_input/prompt_input_text.gd" id="1_p7rkl"]
-[ext_resource type="Script" path="res://addons/godot_gpt/examples/common/prompt_input/prompt_input.gd" id="1_u5coi"]
+[ext_resource type="Script" uid="uid://jc64oj5tyebh" path="res://addons/godot_gpt/examples/common/prompt_input/prompt_input_text.gd" id="1_p7rkl"]
+[ext_resource type="Script" uid="uid://dgxlrpd3l4csu" path="res://addons/godot_gpt/examples/common/prompt_input/prompt_input.gd" id="1_u5coi"]
 
 [node name="prompt_input" type="HBoxContainer"]
 offset_right = 40.0

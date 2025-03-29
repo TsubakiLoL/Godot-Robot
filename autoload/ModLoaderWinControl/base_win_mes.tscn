@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbe5edbd1u513"]
 
-[ext_resource type="Script" path="res://autoload/ModLoaderWinControl/base_win_mes.gd" id="1_vc44d"]
+[ext_resource type="Script" uid="uid://ckd73amrg6lce" path="res://autoload/ModLoaderWinControl/base_win_mes.gd" id="1_vc44d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qupvi"]
 bg_color = Color(0, 0, 0, 1)

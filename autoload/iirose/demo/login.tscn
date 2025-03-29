@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c0cdcos0cxgfu"]
 
-[ext_resource type="Script" path="res://autoload/iirose/demo/login.gd" id="1_lp4d5"]
+[ext_resource type="Script" uid="uid://djisgt10086m7" path="res://autoload/iirose/demo/login.gd" id="1_lp4d5"]
 
 [node name="PopupPanel" type="PopupPanel"]
 initial_position = 3

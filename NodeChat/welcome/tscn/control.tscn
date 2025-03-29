@@ -1,12 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://ctcut434jsvlp"]
+[gd_scene load_steps=17 format=3 uid="uid://ctcut434jsvlp"]
 
 [ext_resource type="PackedScene" uid="uid://ch4ecmb0t6je5" path="res://NodeChat/welcome/tscn/file_system.tscn" id="1_iag73"]
-[ext_resource type="Script" path="res://NodeChat/welcome/script/control.gd" id="1_vb2ii"]
+[ext_resource type="Script" uid="uid://68c0kld6ujlk" path="res://NodeChat/welcome/script/control.gd" id="1_vb2ii"]
 [ext_resource type="Texture2D" uid="uid://drpbh8f2efant" path="res://RobotIcon.png" id="2_e0dpr"]
 [ext_resource type="Texture2D" uid="uid://cgt12xvgnx33x" path="res://NodeChat/welcome/res/tsubaki_1.png" id="2_mldix"]
 [ext_resource type="PackedScene" uid="uid://4itgyo6ryn02" path="res://NodeChat/WebFileSys/tscn/webfile.tscn" id="3_0o8h4"]
 [ext_resource type="PackedScene" uid="uid://vt1oy0yuew3c" path="res://NodeChat/doc/tscn/docwin.tscn" id="3_c853p"]
 [ext_resource type="PackedScene" uid="uid://g7f4rfphh8t" path="res://mod_loader/plugin_list.tscn" id="5_yajvs"]
+[ext_resource type="PackedScene" uid="uid://dc4xifb11cg1e" path="res://mod_loader/developer/control.tscn" id="7_8curv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71rxn"]
 bg_color = Color(0.211765, 0.6, 0.6, 1)
@@ -127,6 +128,15 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_k4bsg")
 text = "插件
 "
 
+[node name="developer" type="Button" parent="Control/select/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_71rxn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k4bsg")
+text = "开发者"
+
 [node name="doc" type="Button" parent="Control/select/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
@@ -208,10 +218,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 2
-current_tab = 0
+current_tab = 4
 tabs_visible = false
 
 [node name="welcome" type="Control" parent="Control2/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -409,11 +420,46 @@ label_settings = SubResource("LabelSettings_u0o70")
 [node name="plugin_list" parent="Control2/TabContainer/plugin/MarginContainer/Control" instance=ExtResource("5_yajvs")]
 layout_mode = 1
 
+[node name="developer" type="Control" parent="Control2/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2/TabContainer/developer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Control" type="Control" parent="Control2/TabContainer/developer/MarginContainer"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="Control2/TabContainer/developer/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.118
+offset_bottom = 0.255997
+grow_horizontal = 2
+text = "开发者面板"
+label_settings = SubResource("LabelSettings_u0o70")
+
+[node name="Control" parent="Control2/TabContainer/developer/MarginContainer/Control" instance=ExtResource("7_8curv")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0987261
+metadata/_edit_use_anchors_ = true
+
 [node name="mod_panel_add_pos" type="Panel" parent="Control2/TabContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-metadata/_tab_index = 4
+metadata/_tab_index = 5
 
 [node name="docwin" parent="." instance=ExtResource("3_c853p")]
 visible = false
@@ -422,6 +468,7 @@ visible = false
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/nodeset" to="." method="_on_file_pressed"]
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/nodeset_market" to="." method="_on_nodeset_market_pressed"]
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/plugin" to="." method="_on_plugin_pressed"]
+[connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/developer" to="." method="_on_developer_pressed"]
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/doc" to="." method="_on_doc_pressed"]
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/editor" to="." method="_on_editor_pressed"]
 [connection signal="toggled" from="Control/select/ScrollContainer/VBoxContainer/online" to="." method="_on_online_toggled"]

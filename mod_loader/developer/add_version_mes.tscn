@@ -1,0 +1,262 @@
+[gd_scene load_steps=8 format=3 uid="uid://ci06uc8pxc16d"]
+
+[ext_resource type="Script" uid="uid://bhprtihsjhybr" path="res://mod_loader/developer/add_version_mes.gd" id="1_305yc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_305yc"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjnl3"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83em7"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bi55b"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rd53p"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21egt"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="AddVersionMes" type="Window"]
+title = "为插件创建新版本"
+initial_position = 2
+size = Vector2i(500, 300)
+script = ExtResource("1_305yc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_305yc")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "插件名"
+
+[node name="plugin_name" type="LineEdit" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_fjnl3")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_83em7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bi55b")
+editable = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "介绍"
+
+[node name="plugin_introduction" type="TextEdit" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_rd53p")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rd53p")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_rd53p")
+editable = false
+wrap_mode = 1
+scroll_fit_content_height = true
+scroll_fit_content_width = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "版本号"
+
+[node name="plugin_version" type="LineEdit" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_fjnl3")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_83em7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bi55b")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "包名"
+
+[node name="plugin_package_name" type="LineEdit" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_fjnl3")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_83em7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bi55b")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "文件路径/插件"
+
+[node name="file_path" type="LineEdit" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_fjnl3")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_83em7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bi55b")
+
+[node name="select_mod" type="Button" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource("StyleBoxFlat_rd53p")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rd53p")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rd53p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rd53p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rd53p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rd53p")
+text = " 选择已有插件 "
+
+[node name="mod_list" type="OptionButton" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="accept" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/focus = SubResource("StyleBoxFlat_rd53p")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_rd53p")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rd53p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rd53p")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rd53p")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rd53p")
+text = " 确定 "
+
+[node name="refuse" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_styles/focus = SubResource("StyleBoxFlat_21egt")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_21egt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_21egt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_21egt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_21egt")
+theme_override_styles/normal = SubResource("StyleBoxFlat_21egt")
+text = " 取消 "
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="item_selected" from="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer4/mod_list" to="." method="_on_mod_list_item_selected"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/refuse" to="." method="_on_refuse_pressed"]

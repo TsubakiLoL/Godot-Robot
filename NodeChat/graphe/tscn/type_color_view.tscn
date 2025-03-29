@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ei76ir8fejn7"]
 
-[ext_resource type="Script" path="res://NodeChat/graphe/script/type_color_view.gd" id="1_8c53c"]
+[ext_resource type="Script" uid="uid://dtoinvdocmj2t" path="res://NodeChat/graphe/script/type_color_view.gd" id="1_8c53c"]
 
 [node name="type_color_view" type="Control"]
 layout_mode = 3

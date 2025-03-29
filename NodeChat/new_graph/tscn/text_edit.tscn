@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dl0u8w15r0cpl"]
 
-[ext_resource type="Script" path="res://NodeChat/new_graph/script/node_chat_text_input.gd" id="1_yy0of"]
+[ext_resource type="Script" uid="uid://brxuc81vxqly3" path="res://NodeChat/new_graph/script/node_chat_text_input.gd" id="1_yy0of"]
 
 [node name="TextEdit" type="TextEdit"]
 anchors_preset = 15

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bofs37ukskcud"]
 
-[ext_resource type="Script" path="res://model/IIROSEChat/chat_control.gd" id="1_uvoak"]
+[ext_resource type="Script" uid="uid://xkuryu8jyt8v" path="res://model/IIROSEChat/chat_control.gd" id="1_uvoak"]
 [ext_resource type="Texture2D" uid="uid://di842ykugukvd" path="res://model/IIROSEChat/back.jpg" id="2_ppupx"]
 
 [sub_resource type="Gradient" id="Gradient_sop4p"]

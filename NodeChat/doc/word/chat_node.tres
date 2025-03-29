@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://cdolv551esfon" path="res://NodeChat/doc/word/chat_node_state.tres" id="1_y3lv4"]
 [ext_resource type="Resource" uid="uid://2c77dfxwuvka" path="res://NodeChat/doc/word/chat_node_triger.tres" id="2_0d3f8"]
-[ext_resource type="Script" path="res://NodeChat/doc/class/single_word.gd" id="2_kc0vx"]
+[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://NodeChat/doc/class/single_word.gd" id="2_kc0vx"]
 [ext_resource type="Resource" uid="uid://chgpwqc4d5vkb" path="res://NodeChat/doc/word/chat_node_sent_bullet_message.tres" id="3_nkxdu"]
 [ext_resource type="Resource" uid="uid://bp54yd867e0vy" path="res://NodeChat/doc/word/chat_node_sent_bullet_message_static.tres" id="4_x3fhs"]
 [ext_resource type="Resource" uid="uid://b3h862dapn5hq" path="res://NodeChat/doc/word/chat_node_sent_room_message.tres" id="5_3wdnx"]

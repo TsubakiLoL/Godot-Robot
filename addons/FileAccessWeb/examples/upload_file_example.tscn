@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cfw0x112dbwyj"]
 
-[ext_resource type="Script" path="res://addons/FileAccessWeb/examples/upload_file_example.gd" id="1_s6dap"]
+[ext_resource type="Script" uid="uid://0v08jxo6w6u1" path="res://addons/FileAccessWeb/examples/upload_file_example.gd" id="1_s6dap"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3h46t"]
 bg_color = Color(0, 0, 0, 1)

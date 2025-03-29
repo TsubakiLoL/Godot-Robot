@@ -13,7 +13,7 @@ config_version=5
 config/name="StarBot"
 config/tags=PackedStringArray("github")
 run/main_scene="res://NodeChat/welcome/tscn/control.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
 config/icon="res://RobotIcon.png"
 
@@ -29,6 +29,7 @@ PromptMessageControler="*res://NodeChat/AutoLoad/PromptMessageControler/prompt_m
 ModLoader="*res://mod_loader/mod_loader.gd"
 ModLoaderWinControl="*res://autoload/ModLoaderWinControl/ModLoaderWinControl.tscn"
 Zip="*res://autoload/ZIP/ZIP.tscn"
+AuthorAccount="*res://mod_loader/developer/autoload/author_account.tscn"
 
 [debug]
 

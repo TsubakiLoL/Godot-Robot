@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://deall8bowx48l"]
+
+[ext_resource type="Script" uid="uid://bx5p185r0ebyj" path="res://mod_loader/developer/autoload/author_account.gd" id="1_2crgx"]
+
+[node name="AuthorAccount" type="Node"]
+script = ExtResource("1_2crgx")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://4itgyo6ryn02"]
 
-[ext_resource type="Script" path="res://NodeChat/WebFileSys/script/webfile.gd" id="1_hed6b"]
+[ext_resource type="Script" uid="uid://ctavj0je73fa6" path="res://NodeChat/WebFileSys/script/webfile.gd" id="1_hed6b"]
 [ext_resource type="PackedScene" uid="uid://dpr200txdkh4p" path="res://NodeChat/WebFileSys/tscn/file_mono.tscn" id="2_c66f3"]
-[ext_resource type="Script" path="res://tool/DrawerContainer.gd" id="2_s5e2k"]
+[ext_resource type="Script" uid="uid://l3lrxr867tl5" path="res://tool/DrawerContainer.gd" id="2_s5e2k"]
 [ext_resource type="PackedScene" uid="uid://bs5r0hp1rk5ql" path="res://NodeChat/WebFileSys/tscn/filer_button.tscn" id="3_chc3o"]
 [ext_resource type="Texture2D" uid="uid://bwt6rxdr1vcu1" path="res://NodeChat/welcome/res/data.png" id="5_xxuc4"]
 

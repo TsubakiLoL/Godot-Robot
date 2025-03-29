@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b258smdmrfieh"]
 
-[ext_resource type="Script" path="res://NodeChat/graphe/script/node_select_pop.gd" id="1_66iwf"]
+[ext_resource type="Script" uid="uid://b202la866ordv" path="res://NodeChat/graphe/script/node_select_pop.gd" id="1_66iwf"]
 [ext_resource type="PackedScene" uid="uid://bb8ige5k2lk1h" path="res://NodeChat/graphe/tscn/node_select.tscn" id="1_74nrn"]
 
 [node name="PopupPanel" type="PopupPanel"]

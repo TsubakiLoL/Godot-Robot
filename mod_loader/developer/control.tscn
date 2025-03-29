@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc4xifb11cg1e"]
+
+[ext_resource type="Script" uid="uid://b1viasxa8ftli" path="res://mod_loader/developer/control.gd" id="1_1ra1v"]
+[ext_resource type="Script" uid="uid://l3lrxr867tl5" path="res://tool/DrawerContainer.gd" id="1_yjwc2"]
+[ext_resource type="PackedScene" uid="uid://cpo18ymystopj" path="res://mod_loader/developer/developer_btn.tscn" id="2_clau2"]
+[ext_resource type="PackedScene" uid="uid://dchlg7ehd5dgp" path="res://mod_loader/developer/developer.tscn" id="4_k68qs"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ra1v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="add_plugin" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "添加插件"
+
+[node name="Tree" type="Tree" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+
+[node name="DrawerContainer" type="Container" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_yjwc2")
+custom_button_size = Vector2(80, 0)
+button_tscn = ExtResource("2_clau2")
+button_model = 2
+animation_model = 8
+is_open = false
+metadata/_custom_type_script = "uid://l3lrxr867tl5"
+
+[node name="developer" parent="DrawerContainer" instance=ExtResource("4_k68qs")]
+layout_mode = 2
+
+[node name="plugin_menu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+size = Vector2i(110, 80)
+item_count = 3
+item_0/text = "新建并上传版本"
+item_0/id = 0
+item_1/text = "删除插件"
+item_1/id = 1
+item_2/text = "更改插件信息"
+item_2/id = 2
+
+[node name="version_menu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+size = Vector2i(100, 56)
+item_count = 2
+item_0/text = "更新版本"
+item_0/id = 0
+item_1/text = "删除版本"
+item_1/id = 1
+
+[node name="fresh_menu" type="PopupMenu" parent="."]
+unique_name_in_owner = true
+size = Vector2i(150, 32)
+item_count = 1
+item_0/text = "刷新"
+item_0/id = 0
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/add_plugin" to="." method="_on_add_plugin_pressed"]
+[connection signal="gui_input" from="VBoxContainer/Tree" to="." method="_on_tree_gui_input"]
+[connection signal="item_selected" from="VBoxContainer/Tree" to="." method="_on_tree_item_selected"]
+[connection signal="id_pressed" from="plugin_menu" to="." method="_on_plugin_menu_id_pressed"]
+[connection signal="id_pressed" from="version_menu" to="." method="_on_version_menu_id_pressed"]
+[connection signal="id_pressed" from="fresh_menu" to="." method="_on_fresh_menu_id_pressed"]

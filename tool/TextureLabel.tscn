@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cg8w7v1jf5sfx"]
 
-[ext_resource type="Script" path="res://tool/texture_label.gd" id="1_vo151"]
+[ext_resource type="Script" uid="uid://db6hlmmalncaj" path="res://tool/texture_label.gd" id="1_vo151"]
 
 [node name="texture_label" type="RichTextLabel"]
 offset_right = 1152.0

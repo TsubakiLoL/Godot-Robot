@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bltm517wxy1ib"]
 
-[ext_resource type="Script" path="res://mod_loader/editor/dictionary_editor_panel.gd" id="1_gss1y"]
+[ext_resource type="Script" uid="uid://b2ykp601ogk3o" path="res://mod_loader/editor/dictionary_editor_panel.gd" id="1_gss1y"]
 
 [node name="DictionaryEditorPanel" type="VBoxContainer"]
 script = ExtResource("1_gss1y")

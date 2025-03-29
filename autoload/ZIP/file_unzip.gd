@@ -43,13 +43,15 @@ func read_zip_file(path:String,to_file:String)->bool:
 	
 	var dir=DirAccess.open(file_root)
 	if dir==null:
-		
+		print("文件夹不存在")
+		print(file_root)
 		return false
 	var reader := ZIPReader.new()
 	var err := reader.open(path)
 	if err != OK:
 		return false
 	var files=reader.get_files()
+	print(files)
 	call_thread_safe("set","max_file_size",files.size())
 	var now_file_size:int=0
 	for i in files:
@@ -57,18 +59,17 @@ func read_zip_file(path:String,to_file:String)->bool:
 		var dir_path:String=""
 		if i.ends_with("/"):
 			dir_path=(file_root+i)
-			pass
 		else:
 			dir_path=(file_root+i).get_base_dir()
 		call_thread_safe("set","tips",i)
-		
+		print(dir_path)
 		err=DirAccess.make_dir_recursive_absolute(dir_path)
 		if err!=OK:
 			print("创建文件夹失败",dir_path)
 			print(err)
 			return false
-		if not dir_path.ends_with("/"):
-			
+		if not i.ends_with("/"):
+			print("尝试创建文件:"+file_root+i)
 			var f=FileAccess.open((file_root+i),FileAccess.WRITE)
 			if f==null:
 				print("创建文件失败",file_root+i)

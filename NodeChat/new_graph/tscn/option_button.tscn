@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dsg24bg5kttfn"]
 
-[ext_resource type="Script" path="res://NodeChat/new_graph/script/option_button.gd" id="1_e2ykg"]
+[ext_resource type="Script" uid="uid://8pt5nk8wpos" path="res://NodeChat/new_graph/script/option_button.gd" id="1_e2ykg"]
 
 [node name="OptionButton" type="OptionButton"]
 anchors_preset = 15

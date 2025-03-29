@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cbvf3pelp6d5q"]
 
-[ext_resource type="Script" path="res://mod_loader/editor/dictionary_editor_panel_mono.gd" id="1_5hg5e"]
+[ext_resource type="Script" uid="uid://dann1wyhuw5mo" path="res://mod_loader/editor/dictionary_editor_panel_mono.gd" id="1_5hg5e"]
 
 [node name="DictionaryEditorPanelMono" type="HBoxContainer"]
 script = ExtResource("1_5hg5e")

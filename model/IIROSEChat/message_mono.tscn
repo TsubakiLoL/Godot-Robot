@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://13w428dke6h5"]
 
-[ext_resource type="Script" path="res://model/IIROSEChat/message_mono.gd" id="1_f6sgq"]
+[ext_resource type="Script" uid="uid://com8uvpv8bosx" path="res://model/IIROSEChat/message_mono.gd" id="1_f6sgq"]
 [ext_resource type="PackedScene" uid="uid://cq6t2pmfoue07" path="res://model/message/tscn/url_label.tscn" id="3_70ytu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ydpo3"]

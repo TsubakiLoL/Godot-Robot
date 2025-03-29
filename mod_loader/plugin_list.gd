@@ -4,7 +4,7 @@ const PLUGIN_VIEW = preload("res://mod_loader/plugin_view.tscn")
 const NEW_PLUGIN = preload("res://mod_loader/new_plugin.tscn")
 func _ready() -> void:
 	update()
-	ModLoader.mod_changed.connect(update)
+	ModLoader.mod_changed.connect(update) 
 
 func update():
 	for i in %plugin_view_add_pos.get_children():

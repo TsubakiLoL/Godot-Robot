@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://psgvivswjxvb"]
 
-[ext_resource type="Script" path="res://autoload/toast/script/toast_root.gd" id="1_fss3d"]
+[ext_resource type="Script" uid="uid://cfdm6lwvs2cat" path="res://autoload/toast/script/toast_root.gd" id="1_fss3d"]
 
 [node name="toast_root" type="CanvasLayer"]
 script = ExtResource("1_fss3d")

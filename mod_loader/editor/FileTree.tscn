@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://qitjvsei4ilx"]
 
-[ext_resource type="Script" path="res://mod_loader/editor/file_tree.gd" id="1_20cbp"]
+[ext_resource type="Script" uid="uid://cgdy4ti235n37" path="res://mod_loader/editor/file_tree.gd" id="1_20cbp"]
 
 [node name="FileTree" type="Tree" node_paths=PackedStringArray("shortcut_context")]
 anchors_preset = 15

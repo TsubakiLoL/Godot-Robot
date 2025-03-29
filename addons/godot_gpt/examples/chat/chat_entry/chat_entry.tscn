@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://di8cv15276ai6"]
 
-[ext_resource type="Script" path="res://addons/godot_gpt/examples/chat/chat_entry/chat_entry.gd" id="1_bqvug"]
+[ext_resource type="Script" uid="uid://docdvwkuu1m8t" path="res://addons/godot_gpt/examples/chat/chat_entry/chat_entry.gd" id="1_bqvug"]
 
 [node name="chat_entry" type="PanelContainer" node_paths=PackedStringArray("label_node", "text_node")]
 anchors_preset = 10

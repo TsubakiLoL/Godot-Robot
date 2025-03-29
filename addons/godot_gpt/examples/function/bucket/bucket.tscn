@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cyechmip6giuw"]
 
-[ext_resource type="Script" path="res://addons/godot_gpt/examples/function/bucket/bucket.gd" id="1_3v2qb"]
+[ext_resource type="Script" uid="uid://dtjgjanmc1ysq" path="res://addons/godot_gpt/examples/function/bucket/bucket.gd" id="1_3v2qb"]
 
 [node name="PanelContainer" type="PanelContainer"]
 anchors_preset = 15

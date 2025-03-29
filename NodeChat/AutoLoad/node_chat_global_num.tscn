@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b54k5c4dt8rxe"]
 
-[ext_resource type="Script" path="res://NodeChat/AutoLoad/node_chat_global_num.gd" id="1_yeo6u"]
+[ext_resource type="Script" uid="uid://cnpp5soijn8hc" path="res://NodeChat/AutoLoad/node_chat_global_num.gd" id="1_yeo6u"]
 
 [node name="NodeChatGlobalNum" type="Node"]
 script = ExtResource("1_yeo6u")

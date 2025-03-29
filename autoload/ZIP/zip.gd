@@ -43,7 +43,7 @@ var state:State=State.FREE:
 		pass
 func mission_finished(res:bool):
 	var callback=mission_array.front()["callback"]
-	if callback is Callable and callback.is_valid():
+	if callback is Callable and callback.is_valid() and res:
 		callback.call()
 	mission_array.pop_front()
 	if mission_array.size()==0:

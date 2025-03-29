@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bv4keuf4xqvs4"]
 
-[ext_resource type="Script" path="res://addons/FileAccessWeb/examples/upload_to_server_example.gd" id="1_0rfwi"]
+[ext_resource type="Script" uid="uid://dxhsgxbpmm3mu" path="res://addons/FileAccessWeb/examples/upload_to_server_example.gd" id="1_0rfwi"]
 [ext_resource type="PackedScene" uid="uid://bjeu7kpe7vi6g" path="res://addons/FileAccessWeb/examples/upload_image_example.tscn" id="2_gtj23"]
 
 [node name="Upload To Server Example" type="Control"]

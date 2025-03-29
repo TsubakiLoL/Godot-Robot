@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cpvjguuhmyt18"]
 
-[ext_resource type="Script" path="res://autoload/ModLoaderWinControl/base_win.gd" id="1_2ra8n"]
+[ext_resource type="Script" uid="uid://djvsf36goa8on" path="res://autoload/ModLoaderWinControl/base_win.gd" id="1_2ra8n"]
 
 [node name="BaseWin" type="Window"]
 initial_position = 1

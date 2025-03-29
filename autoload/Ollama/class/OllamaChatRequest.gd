@@ -14,7 +14,6 @@ extends HTTPRequest
 class_name OllamaChatRequest
 @export var model="llama2"
 @export var API:String="http://localhost:11434/api/generate"
-
 signal request_complete(responce:String)
 signal request_failed
 

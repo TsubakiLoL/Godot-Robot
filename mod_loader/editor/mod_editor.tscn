@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://b53wndggdafbm"]
 
-[ext_resource type="Script" path="res://mod_loader/editor/mod_editor.gd" id="1_krbw4"]
+[ext_resource type="Script" uid="uid://b5jy3b6md6e5g" path="res://mod_loader/editor/mod_editor.gd" id="1_krbw4"]
 [ext_resource type="PackedScene" uid="uid://cw0p0ydu2yuwd" path="res://mod_loader/editor/ConfigPanel.tscn" id="2_1miup"]
 [ext_resource type="PackedScene" uid="uid://qitjvsei4ilx" path="res://mod_loader/editor/FileTree.tscn" id="2_npj38"]
 [ext_resource type="FontFile" uid="uid://dohqkrwf3qqc" path="res://font/milky-term-cn-normal.ttf" id="4_lum6c"]

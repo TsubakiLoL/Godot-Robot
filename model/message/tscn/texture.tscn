@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://h1bixc7oup7q"]
 
-[ext_resource type="Texture2D" uid="uid://cqq74i6qquunl" path="res://icon.svg" id="1_g3ym3"]
-[ext_resource type="Script" path="res://model/message/script/texture.gd" id="2_yq0no"]
+[ext_resource type="Texture2D" uid="uid://ctljumjvi88q3" path="res://icon.svg" id="1_g3ym3"]
+[ext_resource type="Script" uid="uid://b2h6fga6i68dx" path="res://model/message/script/texture.gd" id="2_yq0no"]
 
 [node name="TextureRect" type="TextureRect"]
 visible = false

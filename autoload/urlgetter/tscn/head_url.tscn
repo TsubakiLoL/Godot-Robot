@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cxxtv6i01nrvk"]
 
-[ext_resource type="Script" path="res://autoload/urlgetter/script/head_url.gd" id="1_7eafr"]
+[ext_resource type="Script" uid="uid://bsssbdjvehw6w" path="res://autoload/urlgetter/script/head_url.gd" id="1_7eafr"]
 
 [node name="HTTPRequest" type="HTTPRequest"]
 timeout = 120.0

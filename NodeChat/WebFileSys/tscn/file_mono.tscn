@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpr200txdkh4p"]
 
-[ext_resource type="Script" path="res://NodeChat/WebFileSys/script/file_mono.gd" id="1_jm1s8"]
+[ext_resource type="Script" uid="uid://b3icggxu2kwi0" path="res://NodeChat/WebFileSys/script/file_mono.gd" id="1_jm1s8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_34qnv"]
 font_size = 30

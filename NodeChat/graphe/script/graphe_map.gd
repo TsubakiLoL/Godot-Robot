@@ -177,19 +177,6 @@ func save_as_other_file_selected(status:bool,selected_paths:PackedStringArray,se
 		save_state_root(selected_paths[0])
 	pass
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 func debug():
 	var str=Serializater.stringfy_state_root(root)
 	#print("调试序列化成功：")

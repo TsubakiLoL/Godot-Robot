@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmgi0wgsisqg0"]
 
-[ext_resource type="Script" path="res://autoload/urlgetter/script/url_getter.gd" id="1_43m7j"]
+[ext_resource type="Script" uid="uid://y8upa2h1frl5" path="res://autoload/urlgetter/script/url_getter.gd" id="1_43m7j"]
 
 [node name="UrlGetter" type="Node"]
 script = ExtResource("1_43m7j")

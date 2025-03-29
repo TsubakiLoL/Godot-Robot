@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1ygjrriksm5v"]
 
-[ext_resource type="Script" path="res://NodeChat/message_debug_driver/script/debug_window.gd" id="1_pe2xn"]
+[ext_resource type="Script" uid="uid://66dn4nbnr7uw" path="res://NodeChat/message_debug_driver/script/debug_window.gd" id="1_pe2xn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_elc7i"]
 corner_radius_top_left = 10

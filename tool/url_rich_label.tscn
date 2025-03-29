@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cx0qayesjpi2u"]
 
-[ext_resource type="Script" path="res://tool/UrlRichLabel.gd" id="1_oo4m6"]
+[ext_resource type="Script" uid="uid://cvg5f0hr3wsjy" path="res://tool/UrlRichLabel.gd" id="1_oo4m6"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

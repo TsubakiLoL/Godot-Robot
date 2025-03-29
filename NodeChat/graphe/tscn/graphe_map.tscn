@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bsu5rhajkv0gn"]
 
-[ext_resource type="Script" path="res://NodeChat/graphe/script/graphe_map.gd" id="1_upfwo"]
+[ext_resource type="Script" uid="uid://cnc2y0fyp5bml" path="res://NodeChat/graphe/script/graphe_map.gd" id="1_upfwo"]
 [ext_resource type="PackedScene" uid="uid://6833284xwo4p" path="res://NodeChat/graphe/tscn/graph.tscn" id="2_q4deu"]
 [ext_resource type="PackedScene" uid="uid://b258smdmrfieh" path="res://NodeChat/graphe/tscn/node_select_pop.tscn" id="2_s8qs1"]
 [ext_resource type="PackedScene" uid="uid://dnv0vhp5xfvvy" path="res://autoload/iirose/demo/message_sent.tscn" id="4_5aw54"]
@@ -48,6 +48,7 @@ text = "节点集"
 flat = false
 item_count = 4
 popup/item_0/text = "打开文件"
+popup/item_0/id = 0
 popup/item_1/text = "保存文件"
 popup/item_1/id = 1
 popup/item_2/text = "另存为"

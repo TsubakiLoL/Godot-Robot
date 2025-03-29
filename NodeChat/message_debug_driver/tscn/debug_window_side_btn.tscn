@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://f8je2r3a38n8"]
 
-[ext_resource type="Script" path="res://NodeChat/message_debug_driver/script/debug_window_side_btn.gd" id="1_oxcyk"]
+[ext_resource type="Script" uid="uid://tvaeg6ts6olm" path="res://NodeChat/message_debug_driver/script/debug_window_side_btn.gd" id="1_oxcyk"]
 
 [node name="DebugWindowSideBtn" type="PanelContainer"]
 offset_right = 47.0

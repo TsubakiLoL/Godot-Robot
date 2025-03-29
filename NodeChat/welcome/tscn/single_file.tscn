@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://blmmmfb7cful4"]
 
-[ext_resource type="Script" path="res://NodeChat/welcome/script/single_file.gd" id="1_g76q6"]
+[ext_resource type="Script" uid="uid://sfqtu2qan8tg" path="res://NodeChat/welcome/script/single_file.gd" id="1_g76q6"]
 [ext_resource type="Texture2D" uid="uid://cpp2x8gd6werb" path="res://NodeChat/welcome/res/start.png" id="1_xyihy"]
 [ext_resource type="Texture2D" uid="uid://d33bxh6p3cmrc" path="res://NodeChat/welcome/res/edit.png" id="2_gtmas"]
 [ext_resource type="Texture2D" uid="uid://wwak1qcmhc0t" path="res://NodeChat/welcome/res/delete.png" id="4_horj0"]

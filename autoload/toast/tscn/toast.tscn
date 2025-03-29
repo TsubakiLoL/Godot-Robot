@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://35qxfxq6dnpk"]
 
-[ext_resource type="Script" path="res://autoload/toast/script/toast.gd" id="1_53rag"]
+[ext_resource type="Script" uid="uid://bg0kbfcoot230" path="res://autoload/toast/script/toast.gd" id="1_53rag"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1eytc"]
 corner_radius_top_left = 10
