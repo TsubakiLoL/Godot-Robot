@@ -6,28 +6,7 @@ var account_data:Array=[]
 
 var backend_path:String="http://localhost:8080"
 
-#注册API
-var register_path:String="/author/signup"
-#登录API
-var login_path:String="/author/login"
-#更新API
-var update_path:String="/author/update"
 
-var get_auhtor_plugin_path:String="/plugin/getAuthorPlugin"
-
-var get_plugin_path:String="/plugin/getPlugin"
-
-
-var create_plugin_path:String="/plugin/createPlugin"
-
-var get_plugin_mes_path:String="/plugin/getPluginMes"
-
-
-var upload_version_path:String="/plugin/uploadVersion"
-
-
-
-var delete_version_path:String="/plugin/deleteVersion"
 func _ready() -> void:
 	
 	account_data=load_account()
@@ -74,7 +53,25 @@ enum REQUEST_TYPE{
 	CREATE_PLUGIN=6,
 	UPLOAD_VERSION=7,
 	DELETE_VERSION=8,
+	UPDATE_PLUGIN=9,
+	DELETE_PLUGIN=10,
+	GET_AUTHOR_PLUGIN_AND_NODESET=11,
 }
+const REQUEST_ADDR:Dictionary[REQUEST_TYPE,String]={
+	REQUEST_TYPE.AUTHOR_LOGIN:"/author/login",
+	REQUEST_TYPE.AUTHOR_SIGNUP:"/author/signup",
+	REQUEST_TYPE.AUTHOR_UPDATE:"/author/update",
+	REQUEST_TYPE.GET_AUTHOR_PLUGIN:"/plugin/getAuthorPlugin",
+	REQUEST_TYPE.GET_PLUGIN:"/plugin/getPlugin",
+	REQUEST_TYPE.GET_PLUGIN_MES:"/plugin/getPluginMes",
+	REQUEST_TYPE.CREATE_PLUGIN:"/plugin/createPlugin",
+	REQUEST_TYPE.UPLOAD_VERSION:"/plugin/uploadVersion",
+	REQUEST_TYPE.DELETE_VERSION:"/plugin/deleteVersion",
+	REQUEST_TYPE.UPDATE_PLUGIN:"/plugin/updatePlugin",
+	REQUEST_TYPE.DELETE_PLUGIN:"/plugin/deletePlugin",
+	REQUEST_TYPE.GET_AUTHOR_PLUGIN_AND_NODESET:"/plugin/getAuthorPluginAndNodeset"
+}
+
 
 func request_from_data(type:REQUEST_TYPE,data:Dictionary,callback:Callable):
 	var new_http_node:HTTPRequest=HTTPRequest.new()
@@ -83,28 +80,9 @@ func request_from_data(type:REQUEST_TYPE,data:Dictionary,callback:Callable):
 	new_http_node.timeout=20
 	var request_addr:String
 	#确定API地址
-	match type:
-		REQUEST_TYPE.AUTHOR_LOGIN:
-			request_addr=backend_path+login_path
-		REQUEST_TYPE.AUTHOR_SIGNUP:
-			request_addr=backend_path+register_path
-		REQUEST_TYPE.AUTHOR_UPDATE:
-			request_addr=backend_path+update_path
-		REQUEST_TYPE.GET_AUTHOR_PLUGIN:
-			request_addr=backend_path+get_auhtor_plugin_path
-		REQUEST_TYPE.GET_PLUGIN:
-			request_addr=backend_path+get_plugin_path
-		REQUEST_TYPE.GET_PLUGIN_MES:
-			request_addr=backend_path+get_plugin_mes_path
-		REQUEST_TYPE.CREATE_PLUGIN:
-			request_addr=backend_path+create_plugin_path
-		REQUEST_TYPE.UPLOAD_VERSION:
-			request_addr=backend_path+upload_version_path
-		REQUEST_TYPE.DELETE_VERSION:
-			request_addr=backend_path+delete_version_path
+	request_addr=backend_path+REQUEST_ADDR[type]
 	post(new_http_node,request_addr,data)
-	
-	pass
+
 
 
 func request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray,call_back:Callable,node:HTTPRequest) -> void:
@@ -123,8 +101,8 @@ func request_completed(result: int, response_code: int, headers: PackedStringArr
 		push_error("Request Failed")
 		return
 	var json=JSON.parse_string(str)
+	print(json)
 	if json is Dictionary and not json.has("error"):
-		print(json)
 		node.queue_free()
 		if call_back!=null and call_back.is_valid():
 			call_back.call(true,json)

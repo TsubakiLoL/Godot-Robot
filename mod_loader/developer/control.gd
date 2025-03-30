@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 	
 #请求某个作者的插件列表
 func request_author_plugin(author_id:String):
-	AuthorAccount.request_from_data(AuthorAccount.REQUEST_TYPE.GET_AUTHOR_PLUGIN,{"id":author_id},plugin_get)
+	AuthorAccount.request_from_data(AuthorAccount.REQUEST_TYPE.GET_AUTHOR_PLUGIN_AND_NODESET,{"id":author_id},plugin_get)
 
 func plugin_get(is_success:bool,mes:Dictionary):
 	if is_success:
@@ -31,9 +31,10 @@ func create_tree(data:Dictionary):
 	%Tree.clear();
 	%Tree.create_item().set_text(0,data["name"])
 	var arrar:Array=data["plugin"]
+	var version_root:TreeItem=%Tree.create_item()
+	version_root.set_text(0,"创建的插件")
 	for i in arrar:
-		var item:TreeItem=%Tree.create_item()
-		
+		var item:TreeItem=%Tree.create_item(version_root)
 		item.set_text(0,i["plugin_name"])
 		var plugin_id=i["plugin_id"]
 		tree_item_and_item_dic[item]=Plugin.new(i["plugin_id"],i["plugin_name"],i["author_id"],i["introduction"])
@@ -42,22 +43,17 @@ func create_tree(data:Dictionary):
 			var version_item:TreeItem=%Tree.create_item(item)
 			version_item.set_text(0,j)
 			tree_item_and_item_dic[version_item]=Version.new(j,version[j]["path"],plugin_id,version[j]["package_name"])
-		pass
+	var node_set_array:Array=data["nodeset"]
+	var nodeset_root:TreeItem=%Tree.create_item()
+	nodeset_root.set_text(0,"创建的节点集")
 	
-	
-	pass
+	for i in node_set_array:
+		var item:TreeItem=%Tree.create_item(nodeset_root)
+		item.set_text(0,i["nodeset_name"])
+		tree_item_and_item_dic[item]=NodeSet.new(i["nodeset_id"],i["introduction"],i["author_id"],i["nodeset_name"])
 
 
-func _on_add_plugin_pressed() -> void:
-	if AuthorAccount.has_account():
-		var new_window=ADD_PLUGIN_MES.instantiate()
-		add_child(new_window)
-		new_window.create_plugin.connect(request_create_new_plugin)
-		new_window.popup()
-	else:
-		$DrawerContainer.change_open()
-		Toast.popup("你还没有账户！")
-	pass # Replace with function body.
+
 
 #当弹出框要求创建新插件时触发
 func request_create_new_plugin(plugin_name:String,plugin_introduction:String):
@@ -112,9 +108,7 @@ func _on_tree_gui_input(event: InputEvent) -> void:
 			elif real_item is Version:
 				%version_menu.position=window_pos
 				%version_menu.popup()
-				#弹出版本右键菜单
-				
-				pass
+			
 		else:
 			var mouse_position=get_global_mouse_position()
 			var window_pos=Vector2i(mouse_position.x,mouse_position.y)+get_window().position
@@ -161,7 +155,24 @@ func _on_plugin_menu_id_pressed(id: int) -> void:
 			pass
 			pass
 		1:
-			
+			var plugin:Plugin=tree_item_and_item_dic[%Tree.get_selected()]
+			generate_new_confirm('你确定要删除插件"'+plugin.plugin_name+'"吗？',
+			func():
+				AuthorAccount.request_from_data(AuthorAccount.REQUEST_TYPE.DELETE_PLUGIN,
+				{
+					"author_id":AuthorAccount.account_data[0],
+					"password":AuthorAccount.account_data[1].md5_text(),
+					"plugin_id":plugin.plugin_id,
+				},
+				func(is_success:bool,data:Dictionary):
+					if is_success:
+						Toast.popup("删除成功")
+					else:
+						Toast.popup("出现错误")
+					fresh()
+					
+				)
+			)
 			
 			pass
 		
@@ -205,8 +216,22 @@ func create_plugin_version_request(plugin:Plugin,version_name:String,file_path:S
 				Toast.popup("出现错误！")
 
 func update_plugin_mes_request(plugin:Plugin,new_plugin_name:String,new_plugin_introduction:String):
-	
-	
+	if AuthorAccount.has_account():
+			var data={}
+			data["author_id"]=AuthorAccount.account_data[0]
+			data["password"]=AuthorAccount.account_data[1].md5_text()
+			data["plugin_id"]=plugin.plugin_id
+			data["plugin_name"]=new_plugin_name
+			data["plugin_introduction"]=new_plugin_introduction
+			print(data)
+			AuthorAccount.request_from_data(AuthorAccount.REQUEST_TYPE.UPDATE_PLUGIN,data,
+			func(is_success:bool,data:Dictionary):
+				if is_success:
+					Toast.popup("更新成功")
+				else:
+					Toast.popup("出错")
+				fresh()
+			)
 	pass
 
 
@@ -251,5 +276,21 @@ func fresh():
 func _on_fresh_menu_id_pressed(id: int) -> void:
 	match id:
 		0:
+			#刷新
 			fresh()
+		1:
+			#新建插件
+			if AuthorAccount.has_account():
+				var new_window=ADD_PLUGIN_MES.instantiate()
+				add_child(new_window)
+				new_window.create_plugin.connect(request_create_new_plugin)
+				new_window.popup()
+			else:
+				$DrawerContainer.change_open()
+				Toast.popup("你还没有账户！")
+			pass
+		2:
+			#新建节点集
+			
+			pass
 	pass # Replace with function body.

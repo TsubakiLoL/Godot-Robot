@@ -23,6 +23,7 @@ func set_plugin(plugin:Plugin):
 func _on_mod_list_item_selected(index: int) -> void:
 	var item:String=%mod_list.get_item_text(index)
 	%file_path.text="mod:"+item
+	%plugin_package_name.text=item
 	pass # Replace with function body.
 
 

@@ -19,7 +19,7 @@ func set_plugin(plugin:Plugin):
 
 
 func _on_accept_pressed() -> void:
-	var new_plugin_name=%plugin_introduction.text
+	var new_plugin_name=%plugin_name.text
 	var new_plugin_introduction=%plugin_introduction.text
 	if new_plugin_name=="":
 		return
