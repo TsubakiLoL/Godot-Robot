@@ -6,36 +6,25 @@
 [ext_resource type="Texture2D" uid="uid://wwak1qcmhc0t" path="res://NodeChat/welcome/res/delete.png" id="4_horj0"]
 [ext_resource type="Texture2D" uid="uid://bwt6rxdr1vcu1" path="res://NodeChat/welcome/res/data.png" id="5_g8ocj"]
 
-[node name="single_file" type="Control"]
+[node name="single_file" type="PanelContainer"]
 custom_minimum_size = Vector2(0, 50)
-layout_mode = 3
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 0.187
-offset_bottom = -71.176
+offset_bottom = 50.0
 grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 script = ExtResource("1_g76q6")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 color = Color(0.317647, 0.317647, 0.317647, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="name" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -47,6 +36,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="run" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("1_xyihy")
@@ -84,10 +74,7 @@ size_flags_horizontal = 3
 icon = ExtResource("5_g8ocj")
 expand_icon = true
 
-[node name="Timer" type="Timer" parent="."]
-
 [connection signal="pressed" from="HBoxContainer/run" to="." method="_on_run_pressed"]
 [connection signal="pressed" from="HBoxContainer/edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="HBoxContainer/delete" to="." method="_on_delete_pressed"]
 [connection signal="pressed" from="HBoxContainer/data_select" to="." method="_on_data_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

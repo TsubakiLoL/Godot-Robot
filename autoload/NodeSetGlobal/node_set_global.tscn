@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsvlryb2cox1y"]
+
+[ext_resource type="Script" uid="uid://frapjm0ojyks" path="res://autoload/NodeSetGlobal/node_set_global.gd" id="1_d5se8"]
+
+[node name="NodeSetGlobal" type="Node"]
+script = ExtResource("1_d5se8")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

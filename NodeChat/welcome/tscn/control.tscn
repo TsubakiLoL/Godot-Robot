@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctcut434jsvlp"]
+[gd_scene load_steps=16 format=3 uid="uid://ctcut434jsvlp"]
 
 [ext_resource type="PackedScene" uid="uid://ch4ecmb0t6je5" path="res://NodeChat/welcome/tscn/file_system.tscn" id="1_iag73"]
 [ext_resource type="Script" uid="uid://68c0kld6ujlk" path="res://NodeChat/welcome/script/control.gd" id="1_vb2ii"]
 [ext_resource type="Texture2D" uid="uid://drpbh8f2efant" path="res://RobotIcon.png" id="2_e0dpr"]
 [ext_resource type="Texture2D" uid="uid://cgt12xvgnx33x" path="res://NodeChat/welcome/res/tsubaki_1.png" id="2_mldix"]
-[ext_resource type="PackedScene" uid="uid://4itgyo6ryn02" path="res://NodeChat/WebFileSys/tscn/webfile.tscn" id="3_0o8h4"]
 [ext_resource type="PackedScene" uid="uid://vt1oy0yuew3c" path="res://NodeChat/doc/tscn/docwin.tscn" id="3_c853p"]
 [ext_resource type="PackedScene" uid="uid://g7f4rfphh8t" path="res://mod_loader/plugin_list.tscn" id="5_yajvs"]
 [ext_resource type="PackedScene" uid="uid://dc4xifb11cg1e" path="res://mod_loader/developer/control.tscn" id="7_8curv"]
@@ -109,15 +108,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_k4bsg")
 text = "节点集
 "
 
-[node name="nodeset_market" type="Button" parent="Control/select/ScrollContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_styles/pressed = SubResource("StyleBoxFlat_71rxn")
-theme_override_styles/normal = SubResource("StyleBoxFlat_k4bsg")
-text = "逻辑市场"
-
 [node name="plugin" type="Button" parent="Control/select/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
@@ -218,7 +208,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 2
-current_tab = 4
+current_tab = 2
 tabs_visible = false
 
 [node name="welcome" type="Control" parent="Control2/TabContainer"]
@@ -350,47 +340,9 @@ anchors_preset = -1
 anchor_top = 0.143
 offset_top = 0.0559998
 
-[node name="nodeset_market" type="Control" parent="Control2/TabContainer"]
-visible = false
+[node name="plugin" type="Control" parent="Control2/TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Control2/TabContainer/nodeset_market"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Control" type="Control" parent="Control2/TabContainer/nodeset_market/MarginContainer"]
-layout_mode = 2
-
-[node name="title" type="Label" parent="Control2/TabContainer/nodeset_market/MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.118
-offset_bottom = 0.255997
-grow_horizontal = 2
-text = "逻辑市场"
-label_settings = SubResource("LabelSettings_u0o70")
-
-[node name="Webfile" parent="Control2/TabContainer/nodeset_market/MarginContainer/Control" instance=ExtResource("3_0o8h4")]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.117834
-metadata/_edit_use_anchors_ = true
-
-[node name="plugin" type="Control" parent="Control2/TabContainer"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Control2/TabContainer/plugin"]
 layout_mode = 1
@@ -421,8 +373,9 @@ label_settings = SubResource("LabelSettings_u0o70")
 layout_mode = 1
 
 [node name="developer" type="Control" parent="Control2/TabContainer"]
+visible = false
 layout_mode = 2
-metadata/_tab_index = 4
+metadata/_tab_index = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Control2/TabContainer/developer"]
 layout_mode = 1
@@ -459,18 +412,16 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-metadata/_tab_index = 5
+metadata/_tab_index = 4
 
 [node name="docwin" parent="." instance=ExtResource("3_c853p")]
 visible = false
 
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/welcome" to="." method="_on_welcome_pressed"]
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/nodeset" to="." method="_on_file_pressed"]
-[connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/nodeset_market" to="." method="_on_nodeset_market_pressed"]
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/plugin" to="." method="_on_plugin_pressed"]
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/developer" to="." method="_on_developer_pressed"]
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/doc" to="." method="_on_doc_pressed"]
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/editor" to="." method="_on_editor_pressed"]
 [connection signal="toggled" from="Control/select/ScrollContainer/VBoxContainer/online" to="." method="_on_online_toggled"]
 [connection signal="edit_file" from="Control2/TabContainer/nodeset/MarginContainer/Control/Control" to="." method="_on_control_edit_file"]
-[connection signal="linked_num_update" from="Control2/TabContainer/nodeset_market/MarginContainer/Control/Webfile" to="." method="_on_webfile_linked_num_update"]

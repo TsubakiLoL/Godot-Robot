@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://ch4ecmb0t6je5"]
+[gd_scene load_steps=5 format=3 uid="uid://ch4ecmb0t6je5"]
 
 [ext_resource type="Script" uid="uid://c3pc64o1gy2tk" path="res://NodeChat/welcome/script/file_system.gd" id="1_4n2lk"]
+[ext_resource type="Script" uid="uid://l3lrxr867tl5" path="res://tool/DrawerContainer.gd" id="2_m6bvl"]
+[ext_resource type="PackedScene" uid="uid://u2mfnyksrwsl" path="res://NodeChat/welcome/tscn/texture_button.tscn" id="3_m6bvl"]
+[ext_resource type="PackedScene" uid="uid://ckou0hsw0h5mx" path="res://NodeChat/welcome/tscn/nodeset_market.tscn" id="4_btwxi"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -36,18 +39,36 @@ grow_horizontal = 2
 
 [node name="refresh_file" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 0
 text = "刷新节点集"
 
 [node name="load_file" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 text = "加载节点集"
 
 [node name="add_file" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 text = "创建节点集"
+
+[node name="DrawerContainer" type="Container" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_m6bvl")
+custom_button_size = Vector2(80, 0)
+button_tscn = ExtResource("3_m6bvl")
+button_model = 2
+animation_model = 8
+is_open = false
+
+[node name="NodesetMarket" parent="DrawerContainer" instance=ExtResource("4_btwxi")]
+layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/refresh_file" to="." method="_on_refresh_file_pressed"]
 [connection signal="pressed" from="HBoxContainer/load_file" to="." method="_on_load_file_pressed"]

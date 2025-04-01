@@ -80,10 +80,7 @@ func _on_doc_pressed() -> void:
 	pass # Replace with function body.
 
 
-func _on_nodeset_market_pressed() -> void:
-	tab_container.set_current_tab(2)
-	%Webfile.refresh()
-	pass # Replace with function body.
+
 
 
 func _on_online_toggled(toggled_on: bool) -> void:
@@ -146,17 +143,17 @@ func show_mod_panel(panel):
 	for i in %mod_panel_add_pos.get_children():
 		i.hide()
 	panel.show()
-	%TabContainer.current_tab=5
+	%TabContainer.current_tab=4
 
 func _ready() -> void:
 	load_panel()
 
 
 func _on_plugin_pressed() -> void:
-	tab_container.set_current_tab(3)
+	tab_container.set_current_tab(2)
 	pass # Replace with function body.
 
 
 func _on_developer_pressed() -> void:
-	tab_container.set_current_tab(4)
+	tab_container.set_current_tab(3)
 	pass # Replace with function body.

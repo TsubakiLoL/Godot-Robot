@@ -1,0 +1,102 @@
+extends Node
+
+@export var file_messege:String="user://file_mes.txt"
+signal node_set_update
+var data_cache:Dictionary={}
+#持有实例的字典
+var nodeset_instance_cache:Dictionary[String,NodeRoot]={}
+func _ready() -> void:
+	reload()
+#将数据保存到字典
+func save():
+	var js=JSON.stringify(data_cache)
+	var f=FileAccess.open(file_messege,FileAccess.WRITE)
+	if f !=null:
+		f.store_string(js)
+		f.close()
+#添加nodeset记录
+func add_nodeset(file_path:String,data_path:String):
+	if not data_cache.has(file_path):
+		data_cache[file_path]=data_path
+		save()
+		node_set_update.emit()
+func delete_nodeset(file_path:String):
+	if data_cache.has(file_path):
+		data_cache.erase(file_path)
+		save()
+		node_set_update.emit()
+	if has_instance(file_path):
+		stop_instance(file_path)
+
+func has_nodeset(path:String)->bool:
+	return data_cache.has(path)
+
+
+func update_data_path(file_path:String,data_path:String):
+	data_cache[file_path]=data_path
+	save()
+	node_set_update.emit()
+
+#获取全部节点集合信息
+func get_all_nodeset_mes()->Array:
+	var res:Array=[]
+	for i in data_cache.keys():
+		res.append([i,data_cache[i]])
+	return res
+	pass
+
+func has_instance(path:String)->bool:
+	return nodeset_instance_cache.has(path)
+func stop_instance(path:String):
+	if has_instance(path):
+		var instance:NodeRoot=nodeset_instance_cache[path]
+		instance.delete()
+		nodeset_instance_cache.erase(path)
+		node_set_update.emit()
+	
+	pass
+func open_instance(path:String):
+	stop_instance(path)
+	if has_nodeset(path):
+		var data_path=data_cache[path]
+		var f=FileAccess.open(path,FileAccess.READ)
+		if f!=null:
+			var str=f.get_as_text()
+			var res=Serializater.parse_string(str)
+			if res!=null:
+				nodeset_instance_cache[path]=res
+				res.data_path=data_path
+				res.start()
+		node_set_update.emit()
+
+
+
+func reload():
+	#如果没有文件，则创建并写入空数组
+	var f=FileAccess.open(file_messege,FileAccess.READ)
+	if f==null:
+		f=FileAccess.open(file_messege,FileAccess.WRITE)
+		f.store_string("{}")
+		f.close()
+	else:
+		var str=f.get_as_text()
+		var js=JSON.parse_string(str)
+		if js is Dictionary:
+			data_cache=js
+		else:
+			f.close()
+			f=FileAccess.open(file_messege,FileAccess.WRITE)
+			f.store_string("{}")
+			f.close()
+		f.close()
+	node_set_update.emit()
+	pass
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_timer_timeout() -> void:
+	for i in nodeset_instance_cache.values():
+		i.judge()
+	pass # Replace with function body.
