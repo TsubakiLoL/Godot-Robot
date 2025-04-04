@@ -338,3 +338,6 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_8goo0")
 }
+
+[connection signal="text_submitted" from="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/search_input" to="." method="_on_search_input_text_submitted"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/search" to="." method="_on_search_pressed"]

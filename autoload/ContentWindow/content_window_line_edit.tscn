@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://0qvu0d4i2jh0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgoua"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7u5me"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11otl"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="content_window_line_edit" type="LineEdit"]
+unique_name_in_owner = true
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_fgoua")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_7u5me")
+theme_override_styles/normal = SubResource("StyleBoxFlat_11otl")

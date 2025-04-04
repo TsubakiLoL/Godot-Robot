@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg2rdq5ohpwa1"]
+
+[ext_resource type="Script" uid="uid://bmlt3iel6ob57" path="res://autoload/ContentWindow/content_window_file_button.gd" id="1_gfw3x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_on8i8"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="content_window_file_button" type="Button"]
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource("StyleBoxFlat_on8i8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_on8i8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_on8i8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_on8i8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_on8i8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_on8i8")
+text = "选择文件"
+script = ExtResource("1_gfw3x")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

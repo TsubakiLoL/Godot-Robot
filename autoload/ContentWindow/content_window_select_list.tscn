@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://mo6vxiuh5wy2"]
+
+[ext_resource type="Script" uid="uid://sf3xo5h47cyb" path="res://autoload/ContentWindow/content_window_select_list.gd" id="1_4ytfg"]
+
+[node name="select_list" type="OptionButton"]
+unique_name_in_owner = true
+offset_right = 193.0
+offset_bottom = 36.0
+script = ExtResource("1_4ytfg")
+
+[connection signal="item_selected" from="." to="." method="_on_item_selected"]

@@ -59,6 +59,7 @@ enum REQUEST_TYPE{
 	CREATE_NODESET=12,
 	DELETE_NODESET=13,
 	SEARCH_NODESET=14,
+	GET_NODESET=15,
 }
 const REQUEST_ADDR:Dictionary[REQUEST_TYPE,String]={
 	REQUEST_TYPE.AUTHOR_LOGIN:"/author/login",
@@ -77,6 +78,7 @@ const REQUEST_ADDR:Dictionary[REQUEST_TYPE,String]={
 	REQUEST_TYPE.CREATE_NODESET:"/nodeset/create",
 	REQUEST_TYPE.DELETE_NODESET:"/nodeset/delete",
 	REQUEST_TYPE.SEARCH_NODESET:"/nodeset/search",
+	REQUEST_TYPE.GET_NODESET:"/nodeset/get",
 }
 
 

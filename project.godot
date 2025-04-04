@@ -31,6 +31,7 @@ ModLoaderWinControl="*res://autoload/ModLoaderWinControl/ModLoaderWinControl.tsc
 Zip="*res://autoload/ZIP/ZIP.tscn"
 AuthorAccount="*res://mod_loader/developer/autoload/author_account.tscn"
 NodeSetGlobal="*res://autoload/NodeSetGlobal/node_set_global.tscn"
+Content="*res://autoload/ContentWindow/content.tscn"
 
 [debug]
 

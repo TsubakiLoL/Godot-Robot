@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://u7ut5lr1q07q"]
+
+[node name="content_window_label" type="Label"]
+size_flags_horizontal = 3
+text = "条目名字"

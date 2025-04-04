@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://fgsu87dftjju"]
+[gd_scene load_steps=9 format=3 uid="uid://het5x70xxrte"]
 
-[ext_resource type="Script" uid="uid://ds2ywyw5xckrq" path="res://mod_loader/developer/add_plugin_mes.gd" id="1_4o6q4"]
+[ext_resource type="Script" uid="uid://dffy8wiklauix" path="res://NodeChat/welcome/tscn/add_node_set_mes.gd" id="1_dnqt1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ct22l"]
 bg_color = Color(0, 0, 0, 1)
@@ -57,6 +57,17 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8dsu"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ybttv"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 1
@@ -68,12 +79,13 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="AddPluginMes" type="Window"]
-title = "创建新的插件"
+[node name="AddNodeSetMes" type="Window"]
+auto_translate_mode = 1
+title = "创建新的节点集"
 initial_position = 2
 size = Vector2i(500, 300)
 exclusive = true
-script = ExtResource("1_4o6q4")
+script = ExtResource("1_dnqt1")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -132,9 +144,9 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "插件名"
+text = "节点集"
 
-[node name="plugin_name" type="LineEdit" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="nodeset_name" type="LineEdit" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -152,7 +164,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "介绍"
 
-[node name="plugin_introduction" type="TextEdit" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+[node name="nodeset_introduction" type="TextEdit" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -163,6 +175,38 @@ theme_override_styles/read_only = SubResource("StyleBoxFlat_jnjl1")
 wrap_mode = 1
 scroll_fit_content_height = true
 scroll_fit_content_width = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "文件"
+
+[node name="file" type="LineEdit" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_4o6q4")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_t4lay")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3vubv")
+
+[node name="select_file" type="Button" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource("StyleBoxFlat_h8dsu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_h8dsu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_h8dsu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h8dsu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h8dsu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_h8dsu")
+text = " 选择文件"
+
+[node name="node_set_list" type="OptionButton" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -190,5 +234,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ybttv")
 text = " 取消 "
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3/select_file" to="." method="_on_select_file_pressed"]
+[connection signal="item_selected" from="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer3/node_set_list" to="." method="_on_node_set_list_item_selected"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/accept" to="." method="_on_accept_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/refuse" to="." method="_on_refuse_pressed"]

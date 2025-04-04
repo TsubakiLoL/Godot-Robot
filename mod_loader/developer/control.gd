@@ -2,6 +2,7 @@ extends Control
 const ADD_PLUGIN_MES = preload("res://mod_loader/developer/add_plugin_mes.tscn")
 const ADD_VERSION_MES = preload("res://mod_loader/developer/add_version_mes.tscn")
 const UPDATE_PLUGIN_MES = preload("res://mod_loader/developer/update_plugin_mes.tscn")
+const ADD_NODE_SET_MES = preload("res://NodeChat/welcome/tscn/add_node_set_mes.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if AuthorAccount.has_account():
@@ -85,7 +86,9 @@ func _on_tree_item_selected() -> void:
 			
 			print("选中版本")
 			pass
-		
+		elif item is NodeSet:
+			
+			print("选中插件")
 		
 		pass
 	pass # Replace with function body.
@@ -108,7 +111,12 @@ func _on_tree_gui_input(event: InputEvent) -> void:
 			elif real_item is Version:
 				%version_menu.position=window_pos
 				%version_menu.popup()
-			
+			elif  real_item is NodeSet:
+				%nodeset_menu.position=window_pos
+				%nodeset_menu.popup()
+				
+				pass
+				
 		else:
 			var mouse_position=get_global_mouse_position()
 			var window_pos=Vector2i(mouse_position.x,mouse_position.y)+get_window().position
@@ -257,10 +265,8 @@ func generate_new_confirm(text:String,accept_call=null,refuse_call=null):
 			node.queue_free()
 	res.confirmed.connect(accept_function.bind(res).bind(accept_call))
 	res.canceled.connect(refuse_function.bind(res).bind(refuse_call))
-	
 	res.cancel_button_text="取消"
 	res.ok_button_text="确定"
-	
 	res.dialog_text=text
 	add_child(res)
 	res.popup_centered()
@@ -291,6 +297,55 @@ func _on_fresh_menu_id_pressed(id: int) -> void:
 			pass
 		2:
 			#新建节点集
-			
+			var new_window=ADD_NODE_SET_MES.instantiate()
+			add_child(new_window)
+			new_window.request_create_nodeset.connect(request_create_nodeset)
+			new_window.popup()
 			pass
+	pass # Replace with function body.
+
+
+
+func request_create_nodeset(nodeset_name:String,nodeset_introduction:String,file_path:String):
+	if AuthorAccount.has_account():
+		var f=FileAccess.open(file_path,FileAccess.READ)
+		var data:PackedByteArray=f.get_buffer(f.get_length())
+		AuthorAccount.request_from_data(AuthorAccount.REQUEST_TYPE.CREATE_NODESET,
+		{
+			"author_id":AuthorAccount.account_data[0],
+			"password":AuthorAccount.account_data[1].md5_text(),
+			"nodeset_name":nodeset_name,
+			"introduction":nodeset_introduction,
+			"file":data
+		},
+		func(is_success:bool,data:Dictionary):
+				if is_success:
+					Toast.popup("更新成功")
+				else:
+					Toast.popup("出错")
+				fresh()
+		)
+	pass
+
+
+func _on_nodeset_menu_id_pressed(id: int) -> void:
+	var item:NodeSet=tree_item_and_item_dic[%Tree.get_selected()]
+	generate_new_confirm('你确定要删除节点集"'+item.nodeset_name+'"吗？',
+			func():
+				AuthorAccount.request_from_data(AuthorAccount.REQUEST_TYPE.DELETE_NODESET,
+				{
+					"author_id":AuthorAccount.account_data[0],
+					"password":AuthorAccount.account_data[1].md5_text(),
+					"nodeset_id":item.nodeset_id,
+				},
+				func(is_success:bool,data:Dictionary):
+					if is_success:
+						Toast.popup("删除成功")
+					else:
+						Toast.popup("出现错误")
+					fresh()
+					
+				)
+	)
+	
 	pass # Replace with function body.

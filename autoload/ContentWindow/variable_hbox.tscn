@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhnvo85okrfl3"]
+
+[ext_resource type="Script" uid="uid://pu4cqoufvafc" path="res://autoload/ContentWindow/variable_hbox.gd" id="1_3g0xw"]
+
+[node name="VariableHbox" type="HBoxContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_3g0xw")
