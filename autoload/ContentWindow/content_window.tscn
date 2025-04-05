@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpas0r8hd2wfb"]
+[gd_scene load_steps=6 format=3 uid="uid://dpas0r8hd2wfb"]
 
 [ext_resource type="Script" uid="uid://ds8yajs11s4ln" path="res://autoload/ContentWindow/content_window.gd" id="1_nohtv"]
 
@@ -12,6 +12,9 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_nohtv"]
+font_color = Color(0.537011, 0.537011, 0.537011, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rd53p"]
 bg_color = Color(0, 0, 0, 1)
@@ -79,7 +82,18 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="item_add_pos" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer"]
+[node name="vbox" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="tip" type="Label" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/vbox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "这是一条提示"
+label_settings = SubResource("LabelSettings_nohtv")
+autowrap_mode = 3
+
+[node name="item_add_pos" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/vbox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

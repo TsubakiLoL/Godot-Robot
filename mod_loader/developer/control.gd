@@ -161,7 +161,6 @@ func _on_plugin_menu_id_pressed(id: int) -> void:
 			new_window.create_plugin_version.connect(create_plugin_version_request)
 			new_window.popup()
 			pass
-			pass
 		1:
 			var plugin:Plugin=tree_item_and_item_dic[%Tree.get_selected()]
 			generate_new_confirm('你确定要删除插件"'+plugin.plugin_name+'"吗？',

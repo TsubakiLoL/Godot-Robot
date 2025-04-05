@@ -16,5 +16,5 @@ func _init(nodeset_id:String,introduction:String,author_name:String,nodeset_name
 	self.author_name=author_name
 	self.nodeset_name=nodeset_name
 	self.nodeset_id=nodeset_id
-	
+	self.introduction=introduction
 	pass

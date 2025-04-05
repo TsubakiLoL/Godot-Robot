@@ -208,7 +208,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 2
-current_tab = 3
+current_tab = 2
 tabs_visible = false
 
 [node name="welcome" type="Control" parent="Control2/TabContainer"]
@@ -341,7 +341,6 @@ anchor_top = 0.143
 offset_top = 0.0559998
 
 [node name="plugin" type="Control" parent="Control2/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -374,6 +373,7 @@ label_settings = SubResource("LabelSettings_u0o70")
 layout_mode = 1
 
 [node name="developer" type="Control" parent="Control2/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 

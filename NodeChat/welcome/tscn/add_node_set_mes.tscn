@@ -84,6 +84,7 @@ auto_translate_mode = 1
 title = "创建新的节点集"
 initial_position = 2
 size = Vector2i(500, 300)
+transient = true
 exclusive = true
 script = ExtResource("1_dnqt1")
 

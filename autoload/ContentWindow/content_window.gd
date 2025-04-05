@@ -13,7 +13,7 @@ var variable_instance:Dictionary[String,VariableHbox]={
 }
 
 var call_back
-func request_pop(data:Dictionary,callback=null):
+func request_pop(data:Dictionary,callback=null,tips:String=""):
 	for i in data.keys():
 		var value=data[i]
 		if value is Array and value[0] is VariableConfig:
@@ -25,6 +25,11 @@ func request_pop(data:Dictionary,callback=null):
 			new_hbox.instantiate_variable(i,value[0],value[1])
 			variable_instance[i]=new_hbox
 	self.call_back=callback
+	if tips!="":
+		%tip.text=tips
+		%tip.show()
+	else:
+		%tip.hide()
 	popup()
 func _on_close_requested() -> void:
 	hide()
@@ -89,6 +94,7 @@ func _on_accept_pressed() -> void:
 			return
 	if call_back is Callable and call_back.is_valid():
 		call_back.call(result)
+	queue_free()
 	pass # Replace with function body.
 
 

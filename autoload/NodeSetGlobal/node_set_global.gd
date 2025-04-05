@@ -1,5 +1,8 @@
 extends Node
 
+
+
+var nodeset_download_path:String="user://"
 @export var file_messege:String="user://file_mes.txt"
 signal node_set_update
 var data_cache:Dictionary={}
@@ -100,3 +103,16 @@ func _on_timer_timeout() -> void:
 	for i in nodeset_instance_cache.values():
 		i.judge()
 	pass # Replace with function body.
+
+
+
+#在目录下生成新的用户名
+func get_new_nodeset_download_path(origin_name:String,backend:String):
+	if not FileAccess.file_exists(nodeset_download_path+"/"+origin_name+backend):
+		
+		return nodeset_download_path+"/"+origin_name+backend
+	var index=0
+	while FileAccess.file_exists(nodeset_download_path+"/"+origin_name+"_"+str(index)+backend):
+		
+		index+=1
+	return nodeset_download_path+"/"+origin_name+"_"+str(index)+backend

@@ -4,7 +4,7 @@ var load_path:String="user://"
 var account_data:Array=[]
 
 
-var backend_path:String="http://localhost:8080"
+var backend_path:String="http://8.219.243.185:9997"
 
 
 func _ready() -> void:
