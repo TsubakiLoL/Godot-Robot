@@ -208,11 +208,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 2
-current_tab = 2
+current_tab = 0
 tabs_visible = false
 
 [node name="welcome" type="Control" parent="Control2/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -341,6 +340,7 @@ anchor_top = 0.143
 offset_top = 0.0559998
 
 [node name="plugin" type="Control" parent="Control2/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 

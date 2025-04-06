@@ -119,6 +119,10 @@ func _on_iirose_chat_pressed() -> void:
 
 ##根据modloader加载的面板加载部分插件
 func load_panel():
+	for i in %mod_panel_btn_add_pos.get_children():
+		i.queue_free()
+	for i in %mod_panel_add_pos.get_children():
+		i.queue_free()
 	var all_panel=ModLoader.get_all_panel()
 	for i in all_panel:
 		var n=i[0]
@@ -147,6 +151,7 @@ func show_mod_panel(panel):
 
 func _ready() -> void:
 	load_panel()
+	ModLoader.mod_changed.connect(load_panel)
 
 
 func _on_plugin_pressed() -> void:

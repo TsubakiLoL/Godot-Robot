@@ -36,8 +36,8 @@ signal mod_changed()
 
 func _ready() -> void:
 	#设置路径为可执行文件的同级mod文件夹
-	#load_path=OS.get_executable_path().get_base_dir()+"/mod"
-	#load_model_path=OS.get_executable_path().get_base_dir()+"/model"
+	load_path=OS.get_executable_path().get_base_dir()+"/mod"
+	load_model_path=OS.get_executable_path().get_base_dir()+"/model"
 	load_mod_from_path(load_path)
 
 #从指定的路径加载模块数据
@@ -145,7 +145,6 @@ func install_mod(mod_name:String,mod_data:Dictionary):
 					if not tscn_script is GDScript:
 						tscn_script=null
 				mod_panel_db[mod_name].append([i,tscn,tscn_script])
-	mod_changed.emit()
 #依据mod名称卸载mod
 func uninstall_mod(mod_name:String):
 	print("卸载模块:"+mod_name)
@@ -176,7 +175,6 @@ func uninstall_mod(mod_name:String):
 	#卸载面板
 	if mod_panel_db.has(mod_name):
 		mod_panel_db.erase(mod_name)
-	mod_changed.emit()
 #获取全部节点的队列
 func get_all_node_class():
 	var res:Array=[]
@@ -247,7 +245,7 @@ func reload():
 	#mod加载的在主界面的面板的数据
 	mod_panel_db={}
 	load_mod_from_path(load_path)
-	
+	mod_changed.emit()
 	
 	
 	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dchlg7ehd5dgp"]
+[gd_scene load_steps=7 format=3 uid="uid://dchlg7ehd5dgp"]
 
 [ext_resource type="Script" uid="uid://cfxdn5c28ybtf" path="res://mod_loader/developer/developer.gd" id="1_6rilq"]
 [ext_resource type="Texture2D" uid="uid://drpbh8f2efant" path="res://RobotIcon.png" id="1_i5bn6"]
@@ -10,6 +10,13 @@ font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_6rilq"]
 font_size = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rilq"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="developer" type="Control"]
 layout_mode = 3
@@ -52,7 +59,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_i5bn6")
 theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_i5bn6")
 theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_i5bn6")
 theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_i5bn6")
-current_tab = 1
+current_tab = 3
 clip_tabs = false
 tabs_visible = false
 
@@ -119,6 +126,7 @@ text = "没有账户？前往注册"
 metadata/_edit_use_anchors_ = true
 
 [node name="register" type="Control" parent="account_panel/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -133,33 +141,6 @@ label_settings = SubResource("LabelSettings_i5bn6")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="register_name" type="LineEdit" parent="account_panel/TabContainer/register"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.257813
-anchor_top = 0.248457
-anchor_right = 0.834201
-anchor_bottom = 0.342593
-offset_bottom = -1.52588e-05
-placeholder_text = "用户名"
-caret_blink = true
-metadata/_edit_use_anchors_ = true
-
-[node name="register_password" type="LineEdit" parent="account_panel/TabContainer/register"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.257813
-anchor_top = 0.419753
-anchor_right = 0.834201
-anchor_bottom = 0.513889
-offset_top = -3.05176e-05
-placeholder_text = "密码"
-secret = true
-secret_character = "汪"
-metadata/_edit_use_anchors_ = true
-
 [node name="register" type="Button" parent="account_panel/TabContainer/register"]
 layout_mode = 1
 anchors_preset = -1
@@ -168,15 +149,6 @@ anchor_top = 0.677469
 anchor_right = 0.377604
 anchor_bottom = 0.751543
 text = "注册"
-metadata/_edit_use_anchors_ = true
-
-[node name="author_id" type="LineEdit" parent="account_panel/TabContainer/register"]
-layout_mode = 0
-anchor_left = 0.415799
-anchor_top = 0.677469
-anchor_right = 0.861979
-anchor_bottom = 0.770062
-editable = false
 metadata/_edit_use_anchors_ = true
 
 [node name="goto_login" type="LinkButton" parent="account_panel/TabContainer/register"]
@@ -188,6 +160,80 @@ anchor_right = 0.546875
 anchor_bottom = 0.768519
 text = "已有账户？前往登录"
 metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="account_panel/TabContainer/register"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.100694
+anchor_top = 0.225309
+anchor_right = 0.927083
+anchor_bottom = 0.641975
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="account_panel/TabContainer/register/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="account_panel/TabContainer/register/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "账户"
+
+[node name="register_name" type="LineEdit" parent="account_panel/TabContainer/register/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "用户名"
+caret_blink = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="account_panel/TabContainer/register/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="account_panel/TabContainer/register/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "密码"
+
+[node name="register_password" type="LineEdit" parent="account_panel/TabContainer/register/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "密码"
+secret = true
+secret_character = "汪"
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="account_panel/TabContainer/register/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="account_panel/TabContainer/register/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "头像/url"
+
+[node name="register_head" type="LineEdit" parent="account_panel/TabContainer/register/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 30
+placeholder_text = "头像/url"
+secret_character = "汪"
+metadata/_edit_use_anchors_ = true
+
+[node name="select_file" type="Button" parent="account_panel/TabContainer/register/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+text = "选择文件"
 
 [node name="mes" type="Control" parent="account_panel/TabContainer"]
 visible = false
@@ -203,7 +249,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="account_panel/TabContainer/mes"]
+[node name="head" type="TextureRect" parent="account_panel/TabContainer/mes"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0460069
@@ -211,6 +258,7 @@ anchor_top = 0.12963
 anchor_right = 0.256577
 anchor_bottom = 0.491922
 texture = ExtResource("1_i5bn6")
+expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
@@ -226,18 +274,158 @@ label_settings = SubResource("LabelSettings_6rilq")
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="quit_login" type="Button" parent="account_panel/TabContainer/mes"]
+[node name="VBoxContainer" type="VBoxContainer" parent="account_panel/TabContainer/mes"]
+layout_mode = 2
+anchor_left = 0.0720486
+anchor_top = 0.521605
+anchor_right = 0.946181
+anchor_bottom = 0.888889
+metadata/_edit_use_anchors_ = true
+
+[node name="update_user" type="Button" parent="account_panel/TabContainer/mes/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "更改信息"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="quit_login" type="Button" parent="account_panel/TabContainer/mes/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "退出登录"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="update_developer" type="Control" parent="account_panel/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="Label" type="Label" parent="account_panel/TabContainer/update_developer"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.257813
-anchor_top = 0.677469
-anchor_right = 0.377604
-anchor_bottom = 0.751543
-text = "退出登录"
+anchor_left = 0.0164931
+anchor_right = 0.446181
+anchor_bottom = 0.179012
+text = "更新信息"
+label_settings = SubResource("LabelSettings_i5bn6")
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="account_panel/TabContainer/update_developer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0720486
+anchor_top = 0.185185
+anchor_right = 0.946181
+anchor_bottom = 0.770062
+theme_override_styles/panel = SubResource("StyleBoxFlat_6rilq")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="account_panel/TabContainer/update_developer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="mes" type="Label" parent="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.439049, 0.439049, 0.439049, 1)
+theme_override_font_sizes/font_size = 30
+text = "账户信息：
+             ID:xxxxxxx
+            名字：xxxxxx
+            头像:xxxxxx"
+autowrap_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "更改姓名"
+
+[node name="change_name" type="LineEdit" parent="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 30
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "更改头像"
+
+[node name="change_head" type="LineEdit" parent="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 30
+
+[node name="update_select_file" type="Button" parent="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "选择文件"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "更改密码"
+
+[node name="change_password" type="LineEdit" parent="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 30
+secret = true
+
+[node name="accept_update" type="Button" parent="account_panel/TabContainer/update_developer"]
+layout_mode = 0
+anchor_left = 0.173611
+anchor_top = 0.845679
+anchor_right = 0.290799
+anchor_bottom = 0.915123
+text = "确定"
+metadata/_edit_use_anchors_ = true
+
+[node name="refuse_update" type="Button" parent="account_panel/TabContainer/update_developer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.690972
+anchor_top = 0.845679
+anchor_right = 0.80816
+anchor_bottom = 0.915123
+text = "取消"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="account_panel/TabContainer/login/login" to="." method="_on_login_pressed"]
 [connection signal="pressed" from="account_panel/TabContainer/login/goto_register" to="." method="_on_goto_register_pressed"]
 [connection signal="pressed" from="account_panel/TabContainer/register/register" to="." method="_on_register_pressed"]
 [connection signal="pressed" from="account_panel/TabContainer/register/goto_login" to="." method="_on_goto_login_pressed"]
-[connection signal="pressed" from="account_panel/TabContainer/mes/quit_login" to="." method="_on_quit_login_pressed"]
+[connection signal="pressed" from="account_panel/TabContainer/register/VBoxContainer/HBoxContainer5/select_file" to="." method="_on_select_file_pressed"]
+[connection signal="pressed" from="account_panel/TabContainer/mes/VBoxContainer/update_user" to="." method="_on_update_user_pressed"]
+[connection signal="pressed" from="account_panel/TabContainer/mes/VBoxContainer/quit_login" to="." method="_on_quit_login_pressed"]
+[connection signal="pressed" from="account_panel/TabContainer/update_developer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4/update_select_file" to="." method="_on_update_select_file_pressed"]
+[connection signal="pressed" from="account_panel/TabContainer/update_developer/accept_update" to="." method="_on_accept_update_pressed"]
+[connection signal="pressed" from="account_panel/TabContainer/update_developer/refuse_update" to="." method="_on_refuse_update_pressed"]

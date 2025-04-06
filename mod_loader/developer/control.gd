@@ -15,8 +15,8 @@ func _process(delta: float) -> void:
 	pass
 	
 #请求某个作者的插件列表
-func request_author_plugin(author_id:String):
-	AuthorAccount.request_from_data(AuthorAccount.REQUEST_TYPE.GET_AUTHOR_PLUGIN_AND_NODESET,{"id":author_id},plugin_get)
+func request_author_plugin(author_name:String):
+	AuthorAccount.request_from_data(AuthorAccount.REQUEST_TYPE.GET_AUTHOR_PLUGIN_AND_NODESET,{"author_name":author_name},plugin_get)
 
 func plugin_get(is_success:bool,mes:Dictionary):
 	if is_success:
@@ -62,7 +62,7 @@ func request_create_new_plugin(plugin_name:String,plugin_introduction:String):
 	if AuthorAccount.has_account():
 		#发送请求
 		AuthorAccount.request_from_data(AuthorAccount.REQUEST_TYPE.CREATE_PLUGIN,{
-			"author_id":AuthorAccount.account_data[0],
+			"author_name":AuthorAccount.account_data[0],
 			"password":AuthorAccount.account_data[1].md5_text(),
 			"plugin_name":plugin_name,
 			"introduction":plugin_introduction
@@ -137,7 +137,7 @@ func _on_version_menu_id_pressed(id: int) -> void:
 			func():
 				AuthorAccount.request_from_data(AuthorAccount.REQUEST_TYPE.DELETE_VERSION,
 				{
-					"author_id":AuthorAccount.account_data[0],
+					"author_name":AuthorAccount.account_data[0],
 					"password":AuthorAccount.account_data[1].md5_text(),
 					"plugin_id":version.plugin_id,
 					"version":version.version_name
@@ -167,7 +167,7 @@ func _on_plugin_menu_id_pressed(id: int) -> void:
 			func():
 				AuthorAccount.request_from_data(AuthorAccount.REQUEST_TYPE.DELETE_PLUGIN,
 				{
-					"author_id":AuthorAccount.account_data[0],
+					"author_name":AuthorAccount.account_data[0],
 					"password":AuthorAccount.account_data[1].md5_text(),
 					"plugin_id":plugin.plugin_id,
 				},
@@ -210,7 +210,7 @@ func create_plugin_version_request(plugin:Plugin,version_name:String,file_path:S
 	else:
 		if AuthorAccount.has_account():
 			var data={}
-			data["author_id"]=AuthorAccount.account_data[0]
+			data["author_name"]=AuthorAccount.account_data[0]
 			data["password"]=AuthorAccount.account_data[1].md5_text()
 			data["plugin_id"]=plugin.plugin_id
 			data["version"]=version_name
@@ -225,7 +225,7 @@ func create_plugin_version_request(plugin:Plugin,version_name:String,file_path:S
 func update_plugin_mes_request(plugin:Plugin,new_plugin_name:String,new_plugin_introduction:String):
 	if AuthorAccount.has_account():
 			var data={}
-			data["author_id"]=AuthorAccount.account_data[0]
+			data["author_name"]=AuthorAccount.account_data[0]
 			data["password"]=AuthorAccount.account_data[1].md5_text()
 			data["plugin_id"]=plugin.plugin_id
 			data["plugin_name"]=new_plugin_name
@@ -311,7 +311,7 @@ func request_create_nodeset(nodeset_name:String,nodeset_introduction:String,file
 		var data:PackedByteArray=f.get_buffer(f.get_length())
 		AuthorAccount.request_from_data(AuthorAccount.REQUEST_TYPE.CREATE_NODESET,
 		{
-			"author_id":AuthorAccount.account_data[0],
+			"author_name":AuthorAccount.account_data[0],
 			"password":AuthorAccount.account_data[1].md5_text(),
 			"nodeset_name":nodeset_name,
 			"introduction":nodeset_introduction,
@@ -333,7 +333,7 @@ func _on_nodeset_menu_id_pressed(id: int) -> void:
 			func():
 				AuthorAccount.request_from_data(AuthorAccount.REQUEST_TYPE.DELETE_NODESET,
 				{
-					"author_id":AuthorAccount.account_data[0],
+					"author_name":AuthorAccount.account_data[0],
 					"password":AuthorAccount.account_data[1].md5_text(),
 					"nodeset_id":item.nodeset_id,
 				},

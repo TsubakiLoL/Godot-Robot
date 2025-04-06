@@ -7,12 +7,17 @@ var account_data:Array=[]
 var backend_path:String="http://8.219.243.185:9997"
 
 
+#var backend_path:String="http://localhost:8080"
+
 func _ready() -> void:
-	
+	#load_path=OS.get_executable_path().get_base_dir()
 	account_data=load_account()
 	
-	
-	pass
+
+
+
+
+
 #当前是否有账户
 func has_account()->bool:
 	return account_data.size()==2
@@ -60,6 +65,7 @@ enum REQUEST_TYPE{
 	DELETE_NODESET=13,
 	SEARCH_NODESET=14,
 	GET_NODESET=15,
+	IMAGE_UPLOAD=16,
 }
 const REQUEST_ADDR:Dictionary[REQUEST_TYPE,String]={
 	REQUEST_TYPE.AUTHOR_LOGIN:"/author/login",
@@ -79,6 +85,7 @@ const REQUEST_ADDR:Dictionary[REQUEST_TYPE,String]={
 	REQUEST_TYPE.DELETE_NODESET:"/nodeset/delete",
 	REQUEST_TYPE.SEARCH_NODESET:"/nodeset/search",
 	REQUEST_TYPE.GET_NODESET:"/nodeset/get",
+	REQUEST_TYPE.IMAGE_UPLOAD:"/image/upload",
 }
 
 
@@ -225,3 +232,49 @@ func get_download_progress(request_path:String)->Array:
 		pass
 	else:
 		return [0,0]
+
+
+func request_texture_from_url(url:String,callback):
+	
+	var new_http_node:HTTPRequest=HTTPRequest.new()
+	add_child(new_http_node)
+	new_http_node.request_completed.connect(request_texture_complete.bind(url).bind(callback))
+	new_http_node.timeout=100
+	new_http_node.request(url)
+
+
+
+
+func request_texture_complete(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray,call_back:Callable,url:String,):
+	if result!=HTTPRequest.RESULT_SUCCESS:
+		push_error("图像请求失败")
+		if call_back!=null and call_back.is_valid():
+			call_back.call(false,Texture2D.new())
+	var extension=url.get_extension()
+	match extension:
+		"jpg":
+			var image:Image=Image.new()
+			var err=image.load_jpg_from_buffer(body)
+			if err!=OK:
+				if call_back!=null and call_back.is_valid():
+					call_back.call(false,Texture2D.new())
+				push_error("无法解析的JPG图片")
+			else:
+				var texture:ImageTexture=ImageTexture.create_from_image(image)
+				if call_back!=null and call_back.is_valid():
+					call_back.call(true,texture)
+		"png":
+			var image:Image=Image.new()
+			var err=image.load_png_from_buffer(body)
+			if err!=OK:
+				if call_back!=null and call_back.is_valid():
+					call_back.call(false,Texture2D.new())
+				push_error("无法解析的JPG图片")
+			else:
+				var texture:ImageTexture=ImageTexture.create_from_image(image)
+				if call_back!=null and call_back.is_valid():
+					call_back.call(true,texture)
+			pass
+		_:
+			call_back.call(false,Texture2D.new())
+			push_error("无法解析的图片格式")

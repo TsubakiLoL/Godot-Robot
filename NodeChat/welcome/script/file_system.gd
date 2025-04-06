@@ -9,7 +9,6 @@
 
 
 extends Control
-@export var file_messege:String="user://file_mes.txt"
 signal edit_file(path:String)
 var single:PackedScene=preload("res://NodeChat/welcome/tscn/single_file.tscn")
 func _ready() -> void:
