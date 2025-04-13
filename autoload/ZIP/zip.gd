@@ -5,7 +5,8 @@ var mission_array:Array[Dictionary]=[]
 	
 enum Type{
 	ZIP=0,
-	UNZIP=1
+	UNZIP=1,
+	COPY=2
 }
 
 
@@ -21,6 +22,7 @@ enum State{
 	FREE=0,
 	ZIP=1,
 	UNZIP=2,
+	COPY=3,
 }
 var state:State=State.FREE:
 	set(value):
@@ -87,14 +89,13 @@ func exe_mission(data:Dictionary):
 			state=State.UNZIP
 			%FileUnzip.start_unzip(from,to)
 			pass
-	
-	pass
-
+		Type.COPY:
+			state=State.COPY
+			%FileCopy.start_zip(from,to)
 
 func _process(delta: float) -> void:
 	match state:
 		State.FREE:
-			
 			set_process(false)
 		State.ZIP:
 			
@@ -103,4 +104,8 @@ func _process(delta: float) -> void:
 		State.UNZIP:
 			%zip_progress.value=100*%FileUnzip.get_progress()
 			%zip_tip.text=%FileUnzip.tips
+		State.COPY:
+			%zip_progress.value=100*%FileCopy.get_progress_index()
+			%zip_tip.text=%FileUnzip.tips
+			pass
 	pass

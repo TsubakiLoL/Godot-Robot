@@ -9,8 +9,8 @@ var data_cache:Dictionary={}
 #持有实例的字典
 var nodeset_instance_cache:Dictionary[String,NodeRoot]={}
 func _ready() -> void:
-	nodeset_download_path=OS.get_executable_path().get_base_dir()+"/nodeset"
-	file_messege=OS.get_executable_path().get_base_dir()+"/file_mes.txt"
+	#nodeset_download_path=OS.get_executable_path().get_base_dir()+"/nodeset"
+	#file_messege=OS.get_executable_path().get_base_dir()+"/file_mes.txt"
 	reload()
 #将数据保存到字典
 func save():

@@ -68,3 +68,11 @@ func edit_file_request(path:String):
 
 func _on_refresh_file_pressed() -> void:
 	recreate()
+
+
+const NODESET_CLOUD = preload("res://NodeChat/welcome/tscn/nodeset_cloud.tscn")
+func _on_cloud_run_pressed() -> void:
+	var new_cloud_window=NODESET_CLOUD.instantiate()
+	add_child(new_cloud_window)
+	new_cloud_window.popup()
+	

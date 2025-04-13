@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b0yahfuelffc5"]
 
-[ext_resource type="Script" uid="uid://v7n1snxfpvhd" path="res://autoload/loadanima/tscn/load_animation.gd" id="1_71r5u"]
+[ext_resource type="Script" uid="uid://v7n1snxfpvhd" path="res://autoload/LoadAnimation/tscn/load_animation.gd" id="1_71r5u"]
 [ext_resource type="Texture2D" uid="uid://db6ihy8i7mqt2" path="res://mod_loader/market/res/load.png" id="2_gkpo8"]
 
 [sub_resource type="Animation" id="Animation_vcgl3"]

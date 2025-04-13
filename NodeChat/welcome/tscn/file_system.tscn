@@ -52,6 +52,11 @@ layout_mode = 2
 size_flags_horizontal = 0
 text = "创建节点集"
 
+[node name="cloud_run" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "云端运行"
+
 [node name="DrawerContainer" type="Container" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -73,3 +78,4 @@ layout_mode = 2
 [connection signal="pressed" from="HBoxContainer/refresh_file" to="." method="_on_refresh_file_pressed"]
 [connection signal="pressed" from="HBoxContainer/load_file" to="." method="_on_load_file_pressed"]
 [connection signal="pressed" from="HBoxContainer/add_file" to="." method="_on_add_file_pressed"]
+[connection signal="pressed" from="HBoxContainer/cloud_run" to="." method="_on_cloud_run_pressed"]

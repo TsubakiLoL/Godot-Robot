@@ -36,8 +36,8 @@ signal mod_changed()
 
 func _ready() -> void:
 	#设置路径为可执行文件的同级mod文件夹
-	load_path=OS.get_executable_path().get_base_dir()+"/mod"
-	load_model_path=OS.get_executable_path().get_base_dir()+"/model"
+	#load_path=OS.get_executable_path().get_base_dir()+"/mod"
+	#load_model_path=OS.get_executable_path().get_base_dir()+"/model"
 	load_mod_from_path(load_path)
 
 #从指定的路径加载模块数据

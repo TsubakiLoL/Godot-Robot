@@ -4,18 +4,50 @@ var load_path:String="user://"
 var account_data:Array=[]
 
 
-var backend_path:String="http://8.219.243.185:9997"
+#var backend_path:String="http://8.219.243.185:9997"
 
 
-#var backend_path:String="http://localhost:8080"
+
+var cache_dir:String="user://cache/"
+
+var backend_path:String="http://localhost:8080"
 
 func _ready() -> void:
 	#load_path=OS.get_executable_path().get_base_dir()
 	account_data=load_account()
+	judge_cache_dir()
+	empty_cache()
 	
 
+func judge_cache_dir():
+	if not DirAccess.dir_exists_absolute(cache_dir):
+		DirAccess.make_dir_recursive_absolute(cache_dir)
+
+func empty_cache():
+	var dir=DirAccess.open(cache_dir)
+	if dir!=null:
+		dir.list_dir_begin()
+		var file=dir.get_next()
+		while(file!=""):
+			dir.remove(file)
+			file=dir.get_next()
+		dir.list_dir_end()
+func create_mod_and_nodeset_path():
+	DirAccess.make_dir_recursive_absolute(cache_dir+"/Mod")
+	DirAccess.make_dir_recursive_absolute(cache_dir+"/Nodeset")
+	
+	
+	pass
 
 
+
+#打包缓存
+func pack_cache(callback):
+	var path_cache:String=cache_dir
+	if path_cache.ends_with("/"):
+		path_cache=path_cache.left(path_cache.length()-1)
+	path_cache=path_cache.get_base_dir()+"/cache.zip"
+	Zip.start_mission("打包缓存",Zip.Type.ZIP,cache_dir,path_cache,callback.bind(path_cache))
 
 
 #当前是否有账户
@@ -66,6 +98,11 @@ enum REQUEST_TYPE{
 	SEARCH_NODESET=14,
 	GET_NODESET=15,
 	IMAGE_UPLOAD=16,
+	INTERPRETER_UPLOAD=17,
+	INTERPRETER_START=18,
+	INTERPRETER_STOP=19,
+	INTERPRETER_RUNNING=20,
+	INTERPRETER_BLOG=21,
 }
 const REQUEST_ADDR:Dictionary[REQUEST_TYPE,String]={
 	REQUEST_TYPE.AUTHOR_LOGIN:"/author/login",
@@ -86,6 +123,11 @@ const REQUEST_ADDR:Dictionary[REQUEST_TYPE,String]={
 	REQUEST_TYPE.SEARCH_NODESET:"/nodeset/search",
 	REQUEST_TYPE.GET_NODESET:"/nodeset/get",
 	REQUEST_TYPE.IMAGE_UPLOAD:"/image/upload",
+	REQUEST_TYPE.INTERPRETER_UPLOAD:"/interpreter/upload",
+	REQUEST_TYPE.INTERPRETER_START:"/interpreter/start",
+	REQUEST_TYPE.INTERPRETER_STOP:"/interpreter/stop",
+	REQUEST_TYPE.INTERPRETER_RUNNING:"/interpreter/running",
+	REQUEST_TYPE.INTERPRETER_BLOG:"/interpreter/blog",
 }
 
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://oi2d0u0sqbxk"]
+[gd_scene load_steps=6 format=3 uid="uid://oi2d0u0sqbxk"]
 
 [ext_resource type="Script" uid="uid://m0pugpcl873k" path="res://autoload/ZIP/ZIP.gd" id="1_euf5l"]
 [ext_resource type="Script" uid="uid://c7uqmw2wnwe55" path="res://autoload/ZIP/file_zip.gd" id="2_5puyq"]
 [ext_resource type="Script" uid="uid://bu2nj7rlcqaex" path="res://autoload/ZIP/file_unzip.gd" id="3_235ib"]
+[ext_resource type="Script" uid="uid://uyowr4lx24gp" path="res://autoload/ZIP/file_copy.gd" id="4_f62fp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tye5j"]
 bg_color = Color(0, 0, 0, 1)
@@ -26,11 +27,15 @@ script = ExtResource("2_5puyq")
 unique_name_in_owner = true
 script = ExtResource("3_235ib")
 
+[node name="FileCopy" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_f62fp")
+
 [node name="canvas" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="Control" type="Control" parent="canvas"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,3 +96,4 @@ layout_mode = 2
 
 [connection signal="finish" from="FileZip" to="." method="mission_finished"]
 [connection signal="finish" from="FileUnzip" to="." method="mission_finished"]
+[connection signal="finish" from="FileCopy" to="." method="mission_finished"]

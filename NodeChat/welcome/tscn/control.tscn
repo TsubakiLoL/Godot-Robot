@@ -147,16 +147,6 @@ text = "作者"
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="online" type="CheckBox" parent="Control/select/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "链接到服务器"
-
-[node name="online_num" type="Label" parent="Control/select/ScrollContainer/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-
 [node name="name" type="Control" parent="Control"]
 layout_mode = 1
 anchor_left = 0.129
@@ -208,10 +198,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 2
-current_tab = 0
+current_tab = 1
 tabs_visible = false
 
 [node name="welcome" type="Control" parent="Control2/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -304,7 +295,6 @@ text = "GitHub"
 uri = "https://github.com/TsubakiLoL/IIROSE-robot-in-Godot"
 
 [node name="nodeset" type="Control" parent="Control2/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -423,5 +413,4 @@ visible = false
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/developer" to="." method="_on_developer_pressed"]
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/doc" to="." method="_on_doc_pressed"]
 [connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/editor" to="." method="_on_editor_pressed"]
-[connection signal="toggled" from="Control/select/ScrollContainer/VBoxContainer/online" to="." method="_on_online_toggled"]
 [connection signal="edit_file" from="Control2/TabContainer/nodeset/MarginContainer/Control/Control" to="." method="_on_control_edit_file"]
