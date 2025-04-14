@@ -152,6 +152,7 @@ func show_mod_panel(panel):
 func _ready() -> void:
 	load_panel()
 	ModLoader.mod_changed.connect(load_panel)
+	AuthorAccount.empty_cache()
 
 
 func _on_plugin_pressed() -> void:

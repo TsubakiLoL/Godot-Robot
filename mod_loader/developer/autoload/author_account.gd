@@ -4,16 +4,14 @@ var load_path:String="user://"
 var account_data:Array=[]
 
 
-#var backend_path:String="http://8.219.243.185:9997"
-
-
 
 var cache_dir:String="user://cache/"
 
-var backend_path:String="http://localhost:8080"
+var backend_path:String="http://8.219.243.185:9997"
 
 func _ready() -> void:
-	#load_path=OS.get_executable_path().get_base_dir()
+	load_path=OS.get_executable_path().get_base_dir()
+	cache_dir=OS.get_executable_path().get_base_dir()+"/cache/"
 	account_data=load_account()
 	judge_cache_dir()
 	empty_cache()
@@ -24,14 +22,27 @@ func judge_cache_dir():
 		DirAccess.make_dir_recursive_absolute(cache_dir)
 
 func empty_cache():
-	var dir=DirAccess.open(cache_dir)
+	delete_dir(cache_dir)
+
+func delete_dir(dir_path:String):
+	var dir=DirAccess.open(dir_path)
 	if dir!=null:
 		dir.list_dir_begin()
 		var file=dir.get_next()
 		while(file!=""):
-			dir.remove(file)
+			if dir.current_is_dir():
+				delete_dir(dir_path+"/"+file)
+				print("删除文件夹："+file)
+				dir.remove(file)
+			else:
+				print("删除文件:"+file)
+				dir.remove(file)
 			file=dir.get_next()
 		dir.list_dir_end()
+	else:
+		print("清空失败")
+	
+	pass
 func create_mod_and_nodeset_path():
 	DirAccess.make_dir_recursive_absolute(cache_dir+"/Mod")
 	DirAccess.make_dir_recursive_absolute(cache_dir+"/Nodeset")
@@ -103,6 +114,7 @@ enum REQUEST_TYPE{
 	INTERPRETER_STOP=19,
 	INTERPRETER_RUNNING=20,
 	INTERPRETER_BLOG=21,
+	INTERPRETER_INPUT=22,
 }
 const REQUEST_ADDR:Dictionary[REQUEST_TYPE,String]={
 	REQUEST_TYPE.AUTHOR_LOGIN:"/author/login",
@@ -117,7 +129,6 @@ const REQUEST_ADDR:Dictionary[REQUEST_TYPE,String]={
 	REQUEST_TYPE.UPDATE_PLUGIN:"/plugin/updatePlugin",
 	REQUEST_TYPE.DELETE_PLUGIN:"/plugin/deletePlugin",
 	REQUEST_TYPE.GET_AUTHOR_PLUGIN_AND_NODESET:"/plugin/getAuthorPluginAndNodeset",
-	
 	REQUEST_TYPE.CREATE_NODESET:"/nodeset/create",
 	REQUEST_TYPE.DELETE_NODESET:"/nodeset/delete",
 	REQUEST_TYPE.SEARCH_NODESET:"/nodeset/search",
@@ -128,6 +139,7 @@ const REQUEST_ADDR:Dictionary[REQUEST_TYPE,String]={
 	REQUEST_TYPE.INTERPRETER_STOP:"/interpreter/stop",
 	REQUEST_TYPE.INTERPRETER_RUNNING:"/interpreter/running",
 	REQUEST_TYPE.INTERPRETER_BLOG:"/interpreter/blog",
+	REQUEST_TYPE.INTERPRETER_INPUT:"/interpreter/input",
 }
 
 

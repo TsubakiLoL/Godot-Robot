@@ -47,23 +47,7 @@ func _on_timer_timeout() -> void:
 	)
 	if %need_data.button_pressed:
 		
-		AuthorAccount.request_from_data(
-		AuthorAccount.REQUEST_TYPE.INTERPRETER_BLOG,
-		{
-			"author_name":AuthorAccount.account_data[0],
-			"password":AuthorAccount.account_data[1].md5_text()
-		},
-		
-		func(is_success:bool,data:Dictionary):
-			if is_success and data.has("data"):
-				var blog_data:Array=data["data"]
-				%blog.clear()
-				for i in blog_data:
-					%blog.text+"\n"+i
-			pass
-	)
-		pass
-	pass # Replace with function body.
+		request_blog()
 
 
 
@@ -151,4 +135,60 @@ func _on_run_pressed() -> void:
 					Toast.popup("启动失败")
 				pass
 		)
+	pass # Replace with function body.
+
+
+func _on_cmd_input_text_submitted(new_text: String) -> void:
+	if new_text=="":
+		return
+	if not AuthorAccount.has_account():
+		return
+	start_animation()
+	AuthorAccount.request_from_data(
+		AuthorAccount.REQUEST_TYPE.INTERPRETER_INPUT,
+		{
+			"author_name":AuthorAccount.account_data[0],
+			"password":AuthorAccount.account_data[1].md5_text(),
+			"input":new_text,
+		},
+		func(is_success:bool,data:Dictionary):
+			stop_animation()
+			if is_success:
+				%cmd_input.clear()
+				
+				_on_timer_timeout()
+			else:
+				Toast.popup("失败")
+			
+			pass
+	)
+	pass # Replace with function body.
+
+
+func _on_about_to_popup() -> void:
+	_on_timer_timeout()
+	pass # Replace with function body.
+
+func request_blog():
+	AuthorAccount.request_from_data(
+		AuthorAccount.REQUEST_TYPE.INTERPRETER_BLOG,
+		{
+			"author_name":AuthorAccount.account_data[0],
+			"password":AuthorAccount.account_data[1].md5_text()
+		},
+		
+		func(is_success:bool,data:Dictionary):
+			if is_success and data.has("data"):
+				var blog_data:Array=data["data"]
+				%blog.clear()
+				for i in blog_data:
+					%blog.text+=("\n"+i)
+				%blog.get_v_scroll_bar().value=%blog.get_v_scroll_bar().max_value
+			pass
+	)
+
+	
+	pass
+func _on_fresh_pressed() -> void:
+	request_blog()
 	pass # Replace with function body.

@@ -36,7 +36,8 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [node name="SelectNodeset" type="Window"]
-position = Vector2i(0, 36)
+title = "选择上传节点集"
+initial_position = 4
 size = Vector2i(500, 300)
 transient = true
 exclusive = true
