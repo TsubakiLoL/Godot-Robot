@@ -227,6 +227,12 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_r5w2q")
 theme_override_styles/normal = SubResource("StyleBoxFlat_54pkl")
 text = "    上传    "
 
+[node name="download_data" type="Button" parent="MarginContainer/Control/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_r5w2q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_54pkl")
+text = "    从服务端同步    "
+
 [node name="run" type="Button" parent="MarginContainer/Control/HBoxContainer2"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_r5w2q")
@@ -280,5 +286,6 @@ libraries = {
 [connection signal="text_submitted" from="MarginContainer/Control/hbox/cmd_input" to="." method="_on_cmd_input_text_submitted"]
 [connection signal="pressed" from="MarginContainer/Control/HBoxContainer2/fresh" to="." method="_on_fresh_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/HBoxContainer2/upload" to="." method="_on_upload_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/HBoxContainer2/download_data" to="." method="_on_download_data_pressed"]
 [connection signal="pressed" from="MarginContainer/Control/HBoxContainer2/run" to="." method="_on_run_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

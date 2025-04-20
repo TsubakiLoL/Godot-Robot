@@ -192,3 +192,41 @@ func request_blog():
 func _on_fresh_pressed() -> void:
 	request_blog()
 	pass # Replace with function body.
+
+
+func _on_download_data_pressed() -> void:
+	var window=preload("res://NodeChat/welcome/tscn/download_from_server.tscn").instantiate()
+	window.request.connect(request_download_interpreter)
+	add_child(window)
+	window.popup()
+	pass # Replace with function body.
+
+func request_download_interpreter(download_mod:bool,download_nodeset:bool,download_other:bool):
+	start_animation()
+	if not AuthorAccount.has_account():
+		return
+	AuthorAccount.request_download_file(AuthorAccount.get_cache_zip_path().get_base_dir(),AuthorAccount.get_interpreter_download_path(),
+		func(is_success:bool,path:String):
+			if is_success:
+				AuthorAccount.empty_cache()
+				Zip.start_mission("解压",Zip.Type.UNZIP,path,AuthorAccount.cache_dir,
+					func():
+						
+						Toast.popup("解压成功")
+						
+						
+						AuthorAccount.copy_interpreter_data(download_mod,download_nodeset,download_other)
+						stop_animation()
+				
+				)
+				
+				pass
+			else:
+				stop_animation()
+	,
+	".zip",
+	{
+		"author_name":AuthorAccount.account_data[0],
+		"password":AuthorAccount.account_data[1].md5_text()
+	}
+)

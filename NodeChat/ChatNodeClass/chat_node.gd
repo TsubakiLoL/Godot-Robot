@@ -15,7 +15,8 @@ class_name ChatNode
 enum variable_type{
 	TYPE_STRING=0,
 	TYPE_SELECT=1,
-	TYPE_BOOL=2
+	TYPE_BOOL=2,
+	TYPE_COLOR=3
 }
 ##用于记录节点位置的变量
 var position_x:float=0
@@ -33,9 +34,12 @@ var mod_node:String
 
 ##输入节点类型数组
 var input_port_array:Array[String]=[]
+##输入端口的名字（用于可视化编辑）
+var input_port_name:Array[String]=[]
 ##输出节点类型数组
 var output_port_array:Array[String]=[]
-
+##输出端口的名字（用于可视化编辑）
+var output_port_name:Array[String]=[]
 
 ##需要从外部输入的变量
 var variable_name_array:Array[String]=[]
@@ -45,14 +49,7 @@ var variable_type_array:Array[variable_type]=[]
 var variable_type_more:Array=[]
 ##外部输入变量的显示标识
 var variable_name_view:Array[String]=[]
-##触发器类型
-#enum triger_type{
-	#TYPE_BULLET=0,
-	#TYPE_ROOM=1,
-	#TYPE_SIDE=2,
-	#TYPE_ENTER=3,
-	#TYPE_EXIT=4,
-#}
+
 ##触发器名字
 static var triger_type_name:Dictionary={
 	0:"弹幕消息",
@@ -90,13 +87,11 @@ func init_input():
 		output_port_data.append(false)
 ##执行当前端口的输入逻辑
 func act(input,to_port:int,id:String):
-	#print("节点类型：",ChatNodeGraph.node_name[type]," ID:",self.id," 端口:",to_port,"收到输入",input)
 	if to_port<input_port_array.size():
 		input_port_data[to_port]=input
 		input_port_ready[to_port]=true
 		if is_ready():
-			is_out_ready=process_input(id)
-			
+			is_out_ready=await process_input(id)
 			for i in range(input_port_ready.size()):
 				input_port_ready[i]=false
 ##当前所有输入端口的数据是否全部准备好

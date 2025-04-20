@@ -164,15 +164,9 @@ var is_in_debug:bool=false
 		
 ##收到消息
 func prompt_message(id:String,triger_type:String,mes:Dictionary):
-	#prompt_list.append({
-		#"id":id,
-		#"triger_type":triger_type,
-		#"mes":mes
-		#})
 	if not id in user_instance_array:
 		add_user_instance(id)
 	var now_state=user_instance_array[id][0]
-	#now_state.prompt_message(id,triger_type,mes)
 	now_state.sent_data_to_out([triger_type,mes],0,id)
 	if is_in_debug:
 		debug_cache.append({
@@ -181,10 +175,10 @@ func prompt_message(id:String,triger_type:String,mes:Dictionary):
 		"mes":mes,
 		"frame":[]
 		})
-		VLR_debug(id,now_state)
+		await VLR_debug(id,now_state)
 		debug_cache_update.emit()
 	else:
-		VLR(id,now_state)
+		await VLR(id,now_state)
 	
 signal debug_cache_update
 
@@ -206,7 +200,7 @@ func VLR(id:String,from_node:ChatNode):
 			var parent_node:ChatNode=stack.back()
 			var parent_index:int=stack_index.back()
 			var parent_data=stack_data.back()
-			now_node.act(parent_data[parent_node.next_node_array[parent_index][1]],parent_node.next_node_array[parent_index][2],id)
+			await now_node.act(parent_data[parent_node.next_node_array[parent_index][1]],parent_node.next_node_array[parent_index][2],id)
 			stack_index[stack_index.size()-1]+=1
 			if now_node.next_node_array.size()!=0 and now_node.is_out_ready:
 				stack.append(now_next[0])
@@ -242,17 +236,8 @@ func VLR_debug(id:String,from_node:ChatNode):
 			var parent_index:int=stack_index.back()
 			var parent_data=stack_data.back()
 			
-	
-			
-			now_node.act(parent_data[parent_node.next_node_array[parent_index][1]],parent_node.next_node_array[parent_index][2],id)
+			await now_node.act(parent_data[parent_node.next_node_array[parent_index][1]],parent_node.next_node_array[parent_index][2],id)
 			stack_index[stack_index.size()-1]+=1
-			
-			#if now_node.next_node_array.size()!=0 and( not now_node is ChatNodeState) and now_node.is_out_ready:
-				#print("入栈",ChatNodeGraph.node_name[now_node.type])
-				#stack.append(now_next[0])
-				#stack_index.append(0)
-				#stack_data.append(now_node.output_port_data)
-			#now_node.is_out_ready=false
 			if now_node.is_out_ready:
 				
 				var frame_data_n:Dictionary={
@@ -281,18 +266,12 @@ func VLR_debug(id:String,from_node:ChatNode):
 
 ##启动此根节点
 func start():
-	#IIROSE.room_message_received.connect(room_message)
-	#IIROSE.bullet_message_received.connect(bullet_message)
-	#IIROSE.side_message_received.connect(side_message)
 	PromptMessageControler.link(prompt_message)
 	read_data_from_file()
 	is_start=true
 ##结束此根节点
 func end():
 	if is_start:
-		#IIROSE.room_message_received.disconnect(room_message)
-		#IIROSE.bullet_message_received.disconnect(bullet_message)
-		#IIROSE.side_message_received.disconnect(side_message)
 		if PromptMessageControler.is_linked(prompt_message):
 			PromptMessageControler.dislink(prompt_message)
 		is_start=false

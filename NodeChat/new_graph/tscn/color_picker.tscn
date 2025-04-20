@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bvfuevhh17vgd"]
+
+[node name="ColorPicker" type="ColorPickerButton"]
+offset_right = 127.0
+offset_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

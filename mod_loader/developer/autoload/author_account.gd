@@ -54,12 +54,17 @@ func create_mod_and_nodeset_path():
 
 #打包缓存
 func pack_cache(callback):
+	var path_cache=get_cache_zip_path()
+	Zip.start_mission("打包缓存",Zip.Type.ZIP,cache_dir,path_cache,callback.bind(path_cache))
+
+func get_cache_zip_path():
 	var path_cache:String=cache_dir
 	if path_cache.ends_with("/"):
 		path_cache=path_cache.left(path_cache.length()-1)
 	path_cache=path_cache.get_base_dir()+"/cache.zip"
-	Zip.start_mission("打包缓存",Zip.Type.ZIP,cache_dir,path_cache,callback.bind(path_cache))
-
+	return path_cache
+	
+	
 
 #当前是否有账户
 func has_account()->bool:
@@ -115,6 +120,7 @@ enum REQUEST_TYPE{
 	INTERPRETER_RUNNING=20,
 	INTERPRETER_BLOG=21,
 	INTERPRETER_INPUT=22,
+	INTERPRETER_DOWNLOAD=23,
 }
 const REQUEST_ADDR:Dictionary[REQUEST_TYPE,String]={
 	REQUEST_TYPE.AUTHOR_LOGIN:"/author/login",
@@ -140,6 +146,7 @@ const REQUEST_ADDR:Dictionary[REQUEST_TYPE,String]={
 	REQUEST_TYPE.INTERPRETER_RUNNING:"/interpreter/running",
 	REQUEST_TYPE.INTERPRETER_BLOG:"/interpreter/blog",
 	REQUEST_TYPE.INTERPRETER_INPUT:"/interpreter/input",
+	REQUEST_TYPE.INTERPRETER_DOWNLOAD:"/interpreter/download"
 }
 
 
@@ -200,6 +207,21 @@ func post(http_request:HTTPRequest,addr:String,data:Dictionary) -> void:
 	append_dic(body,data,boundary)
 	http_request.request_raw(addr, headers, HTTPClient.METHOD_POST, body)
 
+func request_get(http_request:HTTPRequest,addr:String,data:Dictionary):
+	# Create some random bytes to generate our boundary value
+	var crypto = Crypto.new()
+	var random_bytes = crypto.generate_random_bytes(16)
+	var boundary = '--GODOT%s' % random_bytes.hex_encode()
+
+	# Setup the header Content-Type with our bundary
+	var headers = [
+		'Content-Type: multipart/form-data;boundary=%s' % boundary
+	]
+	
+	var body:PackedByteArray=PackedByteArray()
+	append_dic(body,data,boundary)
+	http_request.request_raw(addr, headers, HTTPClient.METHOD_GET, body)
+
 
 func append_line(buffer:PackedByteArray, line:String) -> void:
 	buffer.append_array(line.to_utf8_buffer())
@@ -235,7 +257,7 @@ func append_dic(body:PackedByteArray,dictionary:Dictionary,boundary:String):
 var download_dictionary:Dictionary={}
 
 #请求下载文件
-func request_download_file(dir_path:String,http_addr:String,callback:Callable,backend:String=".zip"):
+func request_download_file(dir_path:String,http_addr:String,callback:Callable,backend:String=".zip",data={}):
 	var diraccess:DirAccess=DirAccess.open(dir_path)
 	if diraccess==null:
 		return
@@ -249,8 +271,7 @@ func request_download_file(dir_path:String,http_addr:String,callback:Callable,ba
 	new_http_node.request_completed.connect(request_download_file_complete.bind(dir_path+"/"+path+backend).bind(http_addr).bind(callback))
 	new_http_node.download_file=dir_path+"/"+path+backend
 	download_dictionary[http_addr]=new_http_node
-	new_http_node.request(http_addr)
-	
+	request_get(new_http_node,http_addr,data)
 #下载完毕的回调
 func request_download_file_complete(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray,call_back:Callable,request_path:String,download_path:String) -> void:
 	if result!=HTTPRequest.RESULT_SUCCESS:
@@ -286,6 +307,84 @@ func get_download_progress(request_path:String)->Array:
 		pass
 	else:
 		return [0,0]
+
+#获取interpreter下载地址
+func get_interpreter_download_path():
+	return backend_path+REQUEST_ADDR[REQUEST_TYPE.INTERPRETER_DOWNLOAD]
+
+
+var mod_end:Array[String]=["gd","tscn","json","tre","res"]
+func copy_interpreter_data(res1:bool,res2:bool,res3:bool):
+	var cache_dir_path:String=cache_dir
+	if not cache_dir_path.ends_with("/"):
+		cache_dir_path+="/"
+	var mod_from:String=cache_dir+"Mod"
+	var nodeset_from:String=cache_dir+"Nodeset"
+	var mod_to:String=ModLoader.load_path
+	var nodeset_to:String=NodeSetGlobal.nodeset_download_path
+	if DirAccess.dir_exists_absolute(mod_from) and DirAccess.dir_exists_absolute(mod_to):
+		var res=find_all_files(mod_from)
+		var dirs=res[1]
+		var files=res[0]
+		var base_dir_length=mod_from.length()
+		for i:String in files:
+			var remove_base_dir:String=i.right(i.length()-base_dir_length)
+			var to_file=mod_to+"/"+remove_base_dir
+			var base_dir=to_file.get_base_dir()
+			DirAccess.make_dir_recursive_absolute(base_dir)
+			var extension=i.get_extension()
+			if extension in mod_end and res1:
+				DirAccess.copy_absolute(i,to_file)
+			elif (not extension in mod_end) and res3:
+				DirAccess.copy_absolute(i,to_file)
+	if res2 and DirAccess.dir_exists_absolute(nodeset_from) and DirAccess.dir_exists_absolute(nodeset_to):
+		var dir=DirAccess.open(nodeset_from)
+		if dir!=null:
+			dir.list_dir_begin()
+			var file=dir.get_next()
+			while file!="":
+				if not dir.current_is_dir():
+					var p:String
+					if nodeset_to.ends_with("/"):
+						p=nodeset_to+file
+					else:
+						p=nodeset_to+"/"+file
+					DirAccess.copy_absolute(nodeset_from+"/"+file,p)
+					NodeSetGlobal.add_nodeset(p,"")
+	
+	pass
+##扫描一个目录下的所有文件和文件夹
+func find_all_files(path:String)->Array:
+	var size_index:int=0
+	var file_name := ""
+	var files :Array[String]= []
+	var dirs:Array[String]=[]
+	var dir := DirAccess.open(path)
+	if dir:
+		var dir_arr:Array[DirAccess]=[dir]
+		dir.list_dir_begin()
+		while dir_arr.size()!=0:
+			file_name=dir_arr.back().get_next()
+			if file_name=="":
+				dir_arr.back().list_dir_end()
+				dir_arr.pop_back()
+				continue
+			if dir_arr.back().current_is_dir():
+				var new_dir_path:String=dir_arr.back().get_current_dir()+"/"+file_name
+				var new_dir=DirAccess.open(dir_arr.back().get_current_dir()+"/"+file_name)
+				dirs.push_back(dir_arr.back().get_current_dir()+"/"+file_name)
+				new_dir.list_dir_begin()
+				dir_arr.append(new_dir)
+			else:
+				var new_file_path:String=dir_arr.back().get_current_dir()+"/"+file_name
+				var f=FileAccess.open(new_file_path,FileAccess.READ)
+				size_index+=f.get_length()
+				f.close()
+				files.push_back(new_file_path)
+		dir.list_dir_end()
+	else:
+		print("Failed to open:"+path)
+	return [files,dirs,size_index]
 
 
 func request_texture_from_url(url:String,callback):
