@@ -351,6 +351,7 @@ func copy_interpreter_data(res1:bool,res2:bool,res3:bool):
 						p=nodeset_to+"/"+file
 					DirAccess.copy_absolute(nodeset_from+"/"+file,p)
 					NodeSetGlobal.add_nodeset(p,"")
+				file=dir.get_next()
 	
 	pass
 ##扫描一个目录下的所有文件和文件夹
