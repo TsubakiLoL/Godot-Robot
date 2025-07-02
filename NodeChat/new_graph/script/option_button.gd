@@ -19,3 +19,7 @@ func _on_item_selected(index: int) -> void:
 	if index<map_dic.size():
 		tab_select.emit(map_dic[index])
 	pass # Replace with function body.
+func set_value(value):
+	var index=map_dic.find(value)
+	if index!=-1:
+		selected=index

@@ -166,6 +166,7 @@ func request_completed(result: int, response_code: int, headers: PackedStringArr
 	if result!=HTTPRequest.RESULT_SUCCESS:
 		node.queue_free()
 		if call_back!=null and call_back.is_valid():
+			Toast.popup("请求失败")
 			call_back.call(false,{})
 		return
 		
@@ -174,6 +175,7 @@ func request_completed(result: int, response_code: int, headers: PackedStringArr
 	if str=="Fail" ||str==null:
 		node.queue_free()
 		if call_back!=null and call_back.is_valid():
+			Toast.popup("请求失败")
 			call_back.call(false,{})
 		push_error("Request Failed")
 		return
@@ -187,6 +189,7 @@ func request_completed(result: int, response_code: int, headers: PackedStringArr
 	else:
 		node.queue_free()
 		if call_back!=null and call_back.is_valid():
+			Toast.popup("请求失败")
 			call_back.call(false,{})
 		push_error("Request Failed")
 	

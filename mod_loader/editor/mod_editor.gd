@@ -12,6 +12,10 @@ const ROBOT_ICON = preload("res://RobotIcon.png")
 	"and":Color("ffaea1"),
 	"or":Color("ffaea1"),
 	"super":Color("ffaea1"),
+	"true":Color("ffaea1"),
+	"false":Color("ffaea1"),
+	"ModLoader":Color("ffaea1"),
+	"pass":Color("ffaea1"),
 	
 }
 @export var color_regins:Dictionary={
@@ -74,7 +78,7 @@ func _on_editor_gui_input(event: InputEvent) -> void:
 
 var now_select_path:String=""
 func save():
-	if now_select_path!="" and not now_select_path.ends_with(".tscn"):
+	if now_select_path!="" and not now_select_path.ends_with(".tscn") and FileAccess.file_exists(now_select_path):
 		var text:String=%editor.text
 		var f=FileAccess.open(now_select_path,FileAccess.WRITE)
 		if f!=null:

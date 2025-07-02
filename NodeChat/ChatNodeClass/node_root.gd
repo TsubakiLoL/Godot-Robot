@@ -112,9 +112,9 @@ func set_data(id:String,data_name:String,new_value:float)->void:
 	else:
 		user_data_dic[id][data_name]=new_value
 ##设置进入状态
-func set_init_state(state):
-	if init_state!=null:
-		init_state.is_init=false
+func set_init_state(state:ChatNode):
+	if init_state!=null and init_state is ChatNode:
+		init_state.set_variable_value_emit_signal("is_init",false)
 	init_state=state
 	
 
@@ -138,10 +138,6 @@ func judge()->void:
 func export_data(data:Dictionary):
 	data["time_to_delete_instance"]=time_to_delete_instance
 	data["judge_time"]=judge_time
-	if init_state!=null:
-		data["init_state"]=init_state.id
-	else:
-		data["init_state"]=null
 ##从字典中读取数据
 func load_from_data(data:Dictionary):
 	if data.has("time_to_delete_instance") and data.has("judge_time"):
@@ -164,6 +160,9 @@ var is_in_debug:bool=false
 		
 ##收到消息
 func prompt_message(id:String,triger_type:String,mes:Dictionary):
+	if init_state==null:
+		Toast.popup("缺少初始根节点")
+		return
 	if not id in user_instance_array:
 		add_user_instance(id)
 	var now_state=user_instance_array[id][0]
@@ -187,13 +186,15 @@ var message_list:Array=[]
 
 ##循环代替递归调用
 func VLR(id:String,from_node:ChatNode,from_data:Array):
+	#节点栈
 	var stack:Array[ChatNode]=[]
+	#子节点当前处理次序栈
 	var stack_index:Array[int]
+	#输出数据栈
 	var stack_data:Array=[]
 	stack.append(from_node)
 	stack_index.append(0)
 	stack_data.append(from_data)
-	
 	#输入数据缓存
 	var input_data_dic:Dictionary={}
 	#就绪数据缓存

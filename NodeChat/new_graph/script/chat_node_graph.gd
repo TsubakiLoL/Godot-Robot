@@ -58,6 +58,8 @@ func _on_resize_request(new_minsize: Vector2) -> void:
 	pass # Replace with function body.
 func init():
 	if real_var!=null:
+		variable_ui_dic.clear()
+		real_var.variable_value_changed_not_ui.connect(variable_update_ui)
 		var hbox_array:Array=[]
 		position_offset=Vector2(real_var.position_x,real_var.position_y)
 		for i in range(real_var.variable_name_array.size()):
@@ -73,6 +75,7 @@ func init():
 					if value!=null and value is String:
 						text_edit.text=value
 					new_hbox.init(text_edit)
+					variable_ui_dic[real_var.variable_name_array[i]]=text_edit
 				ChatNode.variable_type.TYPE_BOOL:
 					var check=preload("res://NodeChat/new_graph/tscn/check_button.tscn").instantiate() as CheckButton
 					check.text=real_var.variable_name_view[i]
@@ -81,6 +84,7 @@ func init():
 					if value!=null and value is bool:
 						check.button_pressed=value
 					new_hbox.init(check)
+					variable_ui_dic[real_var.variable_name_array[i]]=check
 				ChatNode.variable_type.TYPE_SELECT:
 					 #[[triger_type,["弹幕","房间","私聊","进入状态","退出状态"]]]
 					var map_dic:Array=[]
@@ -94,6 +98,7 @@ func init():
 					new_hbox.init(option)
 					var ind=map_dic.find(real_var.get(real_var.variable_name_array[i]))
 					option.select(ind)
+					variable_ui_dic[real_var.variable_name_array[i]]=option
 				ChatNode.variable_type.TYPE_COLOR:
 					var color_picker = preload("res://NodeChat/new_graph/tscn/color_picker.tscn").instantiate()
 					var value=real_var.get(real_var.variable_name_array[i])
@@ -104,6 +109,7 @@ func init():
 						func(color:Color):
 							set_variable_name(color.to_html(false),real_var.variable_name_array[i])
 					)
+					variable_ui_dic[real_var.variable_name_array[i]]=color_picker
 		var need_port_num:int=max(real_var.input_port_array.size(),real_var.output_port_array.size())
 		if need_port_num-real_var.variable_name_array.size()>0:
 			for i in range(need_port_num-real_var.variable_name_array.size()):
@@ -144,3 +150,14 @@ func set_variable_name(value,n:String):
 	if real_var!=null and real_var.get(n)!=null:
 		real_var.set(n,value)
 	pass
+	
+#变量名字和变量UI的字典
+var variable_ui_dic:Dictionary={}
+
+
+##当real var的变量值被非UI执行更新时，更新UI
+func variable_update_ui(variable_name:String,value):
+	if variable_ui_dic.has(variable_name):
+		var ui=variable_ui_dic[variable_name]
+		ui.set_value(value)
+	print("修改"+str(self)+":"+variable_name+str(value))

@@ -91,7 +91,6 @@ anchor_bottom = 0.513889
 offset_top = -3.05176e-05
 placeholder_text = "密码"
 secret = true
-secret_character = "喵"
 metadata/_edit_use_anchors_ = true
 
 [node name="login" type="Button" parent="account_panel/TabContainer/login"]
@@ -207,7 +206,6 @@ size_flags_stretch_ratio = 3.0
 theme_override_font_sizes/font_size = 30
 placeholder_text = "密码"
 secret = true
-secret_character = "汪"
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="account_panel/TabContainer/register/VBoxContainer"]

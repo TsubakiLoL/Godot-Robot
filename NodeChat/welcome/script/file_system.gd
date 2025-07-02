@@ -16,14 +16,14 @@ func _ready() -> void:
 	NodeSetGlobal.node_set_update.connect(recreate)
 #重构列表
 func recreate():
-	for i in $ScrollContainer/VBoxContainer.get_children():
+	for i in %add_pos.get_children():
 		i.queue_free()
 	var file_array=NodeSetGlobal.get_all_nodeset_mes()
 	for i in file_array:
 		var new_single=single.instantiate() as SingleFile
 		new_single.root_path=i[0]
 		new_single.data_path=i[1]
-		$ScrollContainer/VBoxContainer.add_child(new_single)
+		%add_pos.add_child(new_single)
 		new_single.edit_file_request.connect(edit_file_request)
 		
 

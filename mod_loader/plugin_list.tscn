@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://g7f4rfphh8t"]
+[gd_scene load_steps=9 format=3 uid="uid://g7f4rfphh8t"]
 
 [ext_resource type="Script" uid="uid://c5e1606y427sb" path="res://mod_loader/plugin_list.gd" id="1_5hvpf"]
 [ext_resource type="Script" uid="uid://l3lrxr867tl5" path="res://tool/DrawerContainer.gd" id="1_hh26y"]
 [ext_resource type="PackedScene" uid="uid://b3q8ug0ni4qy" path="res://mod_loader/plugin_view.tscn" id="1_muyts"]
 [ext_resource type="PackedScene" uid="uid://c6m6fu5xl6fx4" path="res://mod_loader/texture_button.tscn" id="2_0exf4"]
+[ext_resource type="Texture2D" uid="uid://rtb1pouvx2sy" path="res://icon/refresh-fill.png" id="2_mi4sc"]
+[ext_resource type="Texture2D" uid="uid://b6gxeym2mluut" path="res://icon/file-add-fill.png" id="3_46esb"]
+[ext_resource type="Texture2D" uid="uid://blvbr3qlwc836" path="res://icon/folder-open-fill.png" id="4_g2r24"]
 [ext_resource type="PackedScene" uid="uid://cfay1y41ct26n" path="res://mod_loader/market/plugin_market.tscn" id="5_eudfj"]
 
 [node name="plugin_list" type="Control"]
@@ -28,16 +31,22 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="reload" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "重载"
+icon = ExtResource("2_mi4sc")
+expand_icon = true
 
 [node name="new_mod" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "新建"
+icon = ExtResource("3_46esb")
+expand_icon = true
 
 [node name="open_file" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "打开文件目录"
+icon = ExtResource("4_g2r24")
+expand_icon = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2

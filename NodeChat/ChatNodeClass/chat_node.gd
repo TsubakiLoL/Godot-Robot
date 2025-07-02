@@ -59,6 +59,18 @@ static var triger_type_name:Dictionary={
 	4:"退出状态消息"
 }
 
+#region 更新UI
+##当被非ChatNodeGraphUI设置值时发出，用来更新可视化UI
+signal variable_value_changed_not_ui(variable_name:String,value)
+##以发射信号的方式设置值，会通知可视化UI更新
+func set_variable_value_emit_signal(variable_name:String,value):
+	var before_value=get(variable_name)
+	if before_value==null:
+		return
+	if before_value!=value:
+		set(variable_name,value)
+		variable_value_changed_not_ui.emit(variable_name,value)
+#endregion
 
 ##链接的下级节点
 var next_node_array:Array[Array]=[]
@@ -146,6 +158,8 @@ func export_data(data:Dictionary):
 	data["from_node_array"]=from_array
 ##链接到下级节点	
 func connect_with_next_node(to_node:ChatNode,from_port:int,to_port:int)->bool:
+	if to_node==self:
+		return false
 	if from_port<output_port_array.size() and to_port<to_node.input_port_array.size():
 		if output_port_array[from_port]==to_node.input_port_array[to_port]:
 			for i in next_node_array:

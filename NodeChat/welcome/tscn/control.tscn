@@ -75,7 +75,7 @@ layout_mode = 1
 anchor_left = 0.129032
 anchor_top = 0.165123
 anchor_right = 0.861751
-anchor_bottom = 0.996914
+anchor_bottom = 0.904321
 metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/select"]
@@ -143,6 +143,14 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_71rxn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_k4bsg")
 text = "作者"
 
+[node name="settiings" type="Button" parent="Control/select/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/pressed = SubResource("StyleBoxFlat_71rxn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k4bsg")
+text = "设置"
+
 [node name="mod_panel_btn_add_pos" type="VBoxContainer" parent="Control/select/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -198,11 +206,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 2
-current_tab = 1
+current_tab = 0
 tabs_visible = false
 
 [node name="welcome" type="Control" parent="Control2/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -291,10 +298,11 @@ uri = "https://iirose.com/"
 [node name="LinkButton2" type="LinkButton" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-text = "GitHub"
+text = "Git仓库"
 uri = "https://github.com/TsubakiLoL/IIROSE-robot-in-Godot"
 
 [node name="nodeset" type="Control" parent="Control2/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

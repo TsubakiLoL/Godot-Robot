@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://blmmmfb7cful4"]
+[gd_scene load_steps=7 format=3 uid="uid://blmmmfb7cful4"]
 
 [ext_resource type="Script" uid="uid://sfqtu2qan8tg" path="res://NodeChat/welcome/script/single_file.gd" id="1_g76q6"]
 [ext_resource type="Texture2D" uid="uid://cpp2x8gd6werb" path="res://NodeChat/welcome/res/start.png" id="1_xyihy"]
-[ext_resource type="Texture2D" uid="uid://d33bxh6p3cmrc" path="res://NodeChat/welcome/res/edit.png" id="2_gtmas"]
-[ext_resource type="Texture2D" uid="uid://wwak1qcmhc0t" path="res://NodeChat/welcome/res/delete.png" id="4_horj0"]
+[ext_resource type="Texture2D" uid="uid://djwxn7vryb5p6" path="res://icon/file-edit-fill.png" id="3_2youw"]
+[ext_resource type="Texture2D" uid="uid://dfg0jeb4yjdab" path="res://icon/delete-bin-2-fill.png" id="4_nlgwr"]
 [ext_resource type="Texture2D" uid="uid://bwt6rxdr1vcu1" path="res://NodeChat/welcome/res/data.png" id="5_g8ocj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2youw"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 
 [node name="single_file" type="PanelContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -14,51 +21,65 @@ offset_bottom = 50.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2youw")
 script = ExtResource("1_g76q6")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-color = Color(0.317647, 0.317647, 0.317647, 1)
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 3
 
-[node name="name" type="Label" parent="HBoxContainer"]
+[node name="name" type="Label" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 size_flags_stretch_ratio = 10.0
-text = "example.nodeset
-"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
+text = "example.nodeset"
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="run" type="Button" parent="HBoxContainer"]
-unique_name_in_owner = true
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+
+[node name="run" type="Button" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 icon = ExtResource("1_xyihy")
 icon_alignment = 1
 expand_icon = true
 
-[node name="edit" type="Button" parent="HBoxContainer"]
+[node name="edit" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 3
-icon = ExtResource("2_gtmas")
+size_flags_horizontal = 8
+size_flags_vertical = 0
+icon = ExtResource("3_2youw")
 icon_alignment = 1
 expand_icon = true
 
-[node name="delete" type="Button" parent="HBoxContainer"]
+[node name="delete" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 3
-icon = ExtResource("4_horj0")
+size_flags_horizontal = 8
+size_flags_vertical = 0
+icon = ExtResource("4_nlgwr")
 icon_alignment = 1
 expand_icon = true
 
-[node name="data" type="Label" parent="HBoxContainer"]
+[node name="data" type="Label" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -67,14 +88,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="data_select" type="Button" parent="HBoxContainer"]
+[node name="data_select" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 icon = ExtResource("5_g8ocj")
 expand_icon = true
 
-[connection signal="pressed" from="HBoxContainer/run" to="." method="_on_run_pressed"]
-[connection signal="pressed" from="HBoxContainer/edit" to="." method="_on_edit_pressed"]
-[connection signal="pressed" from="HBoxContainer/delete" to="." method="_on_delete_pressed"]
-[connection signal="pressed" from="HBoxContainer/data_select" to="." method="_on_data_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/data_select" to="." method="_on_data_pressed"]

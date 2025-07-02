@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://bvfuevhh17vgd"]
+[gd_scene load_steps=2 format=3 uid="uid://bvfuevhh17vgd"]
+
+[ext_resource type="Script" uid="uid://cwge37t7h48rw" path="res://NodeChat/new_graph/script/color_picker.gd" id="1_4xs7y"]
 
 [node name="ColorPicker" type="ColorPickerButton"]
 offset_right = 127.0
 offset_bottom = 57.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_4xs7y")

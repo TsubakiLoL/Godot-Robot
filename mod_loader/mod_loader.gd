@@ -26,18 +26,28 @@ var mod_triger_type_name_db:Dictionary={
 var mod_panel_db:Dictionary={}
 
 #加载mod的路径
-var load_path:String="user://mod"
+var load_path:String:
+	set(val):
+		GlobalConfig.write_config_value("Mod","load_path",val)
+	get():
+		return GlobalConfig.read_config_value("Mod","load_path",load_path_default)
+
+var load_path_default=OS.get_executable_path().get_base_dir()+"/mod"
 
 #用于加载模板的路径
-var load_model_path:String="user://model"
+var load_model_path:String:
+	set(val):
+		GlobalConfig.write_config_value("Mod","model_path",val)
+	get():
+		return GlobalConfig.read_config_value("Mod","model_path",load_model_path_default)
 
+
+
+var load_model_path_default:String=OS.get_executable_path().get_base_dir()+"/model"
 ##当系统装载的插件更改时发出
 signal mod_changed()
 
 func _ready() -> void:
-	#设置路径为可执行文件的同级mod文件夹
-	load_path=OS.get_executable_path().get_base_dir()+"/mod"
-	load_model_path=OS.get_executable_path().get_base_dir()+"/model"
 	load_mod_from_path(load_path)
 
 #从指定的路径加载模块数据
