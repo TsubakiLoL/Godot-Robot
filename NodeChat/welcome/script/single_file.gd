@@ -15,12 +15,10 @@ const START = preload("res://NodeChat/welcome/res/start.png")
 signal delete_self(s:SingleFile)
 signal edit_file_request(path:String)
 var root_path:String
-var data_path:String
 
 
 func _ready() -> void:
 	%name.text=root_path
-	%data.text=data_path
 	%run.icon= STOP if NodeSetGlobal.has_instance(root_path) else START
 	pass
 
@@ -35,16 +33,6 @@ func _on_run_pressed() -> void:
 func _on_edit_pressed() -> void:
 	edit_file_request.emit(root_path)
 	pass # Replace with function body.
-
-func set_data(d_path:String):
-	data_path=d_path
-func _on_data_pressed() -> void:
-	DisplayServer.file_dialog_show("选择数据集文件"," "," ",false,DisplayServer.FILE_DIALOG_MODE_OPEN_FILE,PackedStringArray(),data_selected)
-	pass # Replace with function body.
-func data_selected(status:bool,selected_paths:PackedStringArray,selected_filter_index:int):
-	if status:
-		NodeSetGlobal.update_data_path(root_path,selected_paths[0])
-
 
 
 func _on_delete_pressed() -> void:

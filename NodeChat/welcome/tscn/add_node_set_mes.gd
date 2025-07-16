@@ -9,9 +9,9 @@ func _ready() -> void:
 func init_list():
 	var nodeset_list:Array=NodeSetGlobal.get_all_nodeset_mes()
 	for i in nodeset_list:
-		%node_set_list.add_item(i[0])
+		%node_set_list.add_item(i)
 	if nodeset_list.size()!=0:
-		%file.text=nodeset_list[0][0]
+		%file.text=nodeset_list[0]
 		pass
 
 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3q8ug0ni4qy"]
+[gd_scene load_steps=9 format=3 uid="uid://b3q8ug0ni4qy"]
 
 [ext_resource type="Script" uid="uid://iwgx7doowuyo" path="res://mod_loader/plugin_view.gd" id="1_2m3t4"]
 [ext_resource type="Texture2D" uid="uid://dyqg17edvfyeu" path="res://mod_loader/barcode-qr.svg" id="1_d0mw5"]
+[ext_resource type="Texture2D" uid="uid://djwxn7vryb5p6" path="res://icon/file-edit-fill.png" id="3_deftf"]
+[ext_resource type="Texture2D" uid="uid://dfg0jeb4yjdab" path="res://icon/delete-bin-2-fill.png" id="4_761ju"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbsse"]
 bg_color = Color(0.856067, 0.856067, 0.856067, 1)
@@ -11,6 +13,27 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hiafm"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dobyq"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqw3t"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="PanelContainer" type="PanelContainer"]
 offset_right = 404.0
@@ -50,14 +73,28 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "插件名字"
 
 [node name="edit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 10
-text = "编辑"
+theme_override_styles/focus = SubResource("StyleBoxFlat_hiafm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_hiafm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hiafm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hiafm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hiafm")
+icon = ExtResource("3_deftf")
+expand_icon = true
 
 [node name="delete" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 8
-text = "删除"
+theme_override_styles/focus = SubResource("StyleBoxFlat_dobyq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_bqw3t")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bqw3t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bqw3t")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqw3t")
+icon = ExtResource("4_761ju")
+expand_icon = true
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

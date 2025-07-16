@@ -24,7 +24,7 @@ func create_from_nodeset():
 	var all_nodeset=NodeSetGlobal.get_all_nodeset_mes()
 	for i in all_nodeset:
 		var new_check=CheckBox.new()
-		new_check.text=i[0]
+		new_check.text=i
 		new_check.toggled.connect(
 			(func(is_select:bool,path:String):
 				if is_select:

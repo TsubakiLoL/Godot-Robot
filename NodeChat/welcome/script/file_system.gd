@@ -21,8 +21,7 @@ func recreate():
 	var file_array=NodeSetGlobal.get_all_nodeset_mes()
 	for i in file_array:
 		var new_single=single.instantiate() as SingleFile
-		new_single.root_path=i[0]
-		new_single.data_path=i[1]
+		new_single.root_path=i
 		%add_pos.add_child(new_single)
 		new_single.edit_file_request.connect(edit_file_request)
 		
@@ -44,7 +43,7 @@ func _on_load_file_pressed() -> void:
 	pass # Replace with function body.
 func load_file_selected(status:bool,selected_paths:PackedStringArray,selected_filter_index:int):
 	if status:
-		NodeSetGlobal.add_nodeset(selected_paths[0],"")
+		NodeSetGlobal.add_nodeset(selected_paths[0])
 
 
 func _on_add_file_pressed() -> void:
@@ -60,7 +59,7 @@ func add_new_file(path:String):
 	if f!=null:
 		f.store_string('[{"0":{"from_node_array":[],"next_node_array":[],"position_x":0,"position_y":0,"type":0,"mod_from":"basemod","mod_node":"状态节点"}},{"init_state":"0","judge_time":2,"time_to_delete_instance":30}]')
 		f.close()
-		NodeSetGlobal.add_nodeset(path,"")
+		NodeSetGlobal.add_nodeset(path)
 
 func edit_file_request(path:String):
 	edit_file.emit(path)

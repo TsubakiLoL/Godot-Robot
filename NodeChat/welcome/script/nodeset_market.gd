@@ -140,7 +140,7 @@ func _on_download_plugin_pressed() -> void:
 	func(is_success:bool,path:String):
 		if is_success:
 			Toast.popup(path+"下载成功")
-			NodeSetGlobal.add_nodeset(path,"")
+			NodeSetGlobal.add_nodeset(path)
 		else:
 			Toast.popup(path+"下载失败")
 		pass

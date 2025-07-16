@@ -5,8 +5,7 @@ class_name NodeRoot
 var node_list:Array[ChatNode]
 ##用户实例的字典
 var user_instance_array:Dictionary={} #UID:[now_state,time_last_move,data_dic:Dictionary{}]      
-##用户数据字典
-var user_data_dic:Dictionary={}
+
 ##默认状态的进入状态引用
 var init_state
 ##当用户长时间没进行交互时，删除用户实例需要经过的时间（s）
@@ -17,8 +16,7 @@ var judge_time:float=2
 var ind=0
 ##是否启动
 var is_start:bool=false
-##data存储路径
-var data_path:String
+
 ##添加节点
 func add_node(n:ChatNode):
 	n.id=str(ind)
@@ -29,15 +27,7 @@ func find_node_by_id(id:String):
 	for i in node_list:
 		if i.id==id:
 			return i
-##从文件中读取数据
-func read_data_from_file():
-	if data_path!=null:
-		var f=FileAccess.open(data_path,FileAccess.READ)
-		if f!=null:
-			var str=f.get_as_text()
-			var data=JSON.parse_string(str)
-			if data!=null and data is Dictionary:
-				user_data_dic=data
+
 ##新建新的用户实例
 func add_user_instance(id:String):
 	if not user_instance_array.has(id):
@@ -53,64 +43,12 @@ func delete_user_instance(id:String):
 func change_state(id:String,state)->void:
 	if not user_instance_array.has(id):
 		add_user_instance(id)
-	if not user_data_dic.has(id):
-		user_data_dic[id]={}
 	user_instance_array[id][0]=state
 	user_instance_array[id][1]=Time.get_ticks_msec()
 	pass
-##获取字典内对应的data数据，如果数据不存在则创建新的数据，并返回0
-func get_data(id:String,data_name:String)->float:
-	if not user_data_dic.has(id):
-		user_data_dic[id]={}
-		user_data_dic[id][data_name]=float(0)
-		return 0
-	elif not user_data_dic[id].has(data_name):
-		user_data_dic[id][data_name]=float(0)
-		return 0
-	else:
-		var data=user_data_dic[id][data_name]
-		if data is float:
-			return data
-		else:
-			user_data_dic[id][data_name]=float(0)
-			return 0
-##从数据中获取String类型的变量，用户ID和数据名称
-func get_string(id:String,data_name:String)->Array:
-	var res=[false,""]
-	if not user_data_dic.has(id):
-		user_data_dic[id]={}
-	elif  user_data_dic[id].has(data_name):
-		var data=user_data_dic[id][data_name]
-		if data is Array and data.size()>0:
-			var ind=randi()%data.size()
-			res[0]=true
-			res[1]=data[ind]
-	return res
-##向数据中添加String类型的持久型数据，用户ID和数据名称和设置的值
-func add_string(id:String,data_name:String,value:String):
-	if not user_data_dic.has(id):
-		user_data_dic[id]={}
-	if not user_data_dic[id].has(data_name):
-		user_data_dic[id][data_name]=[value]
-	else:
-		var data=user_data_dic[id][data_name]
-		if not data is Array:
-			data=[value]
-		else:
-			data.append(value)
-		user_data_dic[id][data_name]=data
-##清除持久性数据的String类型变量，用户ID和数据名称
-func clear_string(id:String,data_name:String):
-	if not user_data_dic.has(id):
-		user_data_dic[id]={}
-	user_data_dic[id][data_name]=[]
-##设置字典内对应用户的data数据，如果数据不存在则创建新的用户数据
-func set_data(id:String,data_name:String,new_value:float)->void:
-	if not user_data_dic.has(id):
-		user_data_dic[id]={}
-		user_data_dic[id][data_name]=new_value
-	else:
-		user_data_dic[id][data_name]=new_value
+
+
+
 ##设置进入状态
 func set_init_state(state:ChatNode):
 	if init_state!=null and init_state is ChatNode:
@@ -128,12 +66,7 @@ func judge()->void:
 		if before_time is int and now_time-before_time>=time_to_delete_instance*1000:
 			delete_user_instance(i)
 			pass
-	if data_path!=null:
-		var f=FileAccess.open(data_path,FileAccess.WRITE)
-		if f !=null:
-			var str:String=JSON.stringify(user_data_dic)
-			f.store_string(str)
-			f.close()
+
 ##向字典中写入自身数据
 func export_data(data:Dictionary):
 	data["time_to_delete_instance"]=time_to_delete_instance
@@ -150,10 +83,7 @@ func delete():
 	for i in node_list:
 		i.delete()
 	call_deferred("free")
-###收到消息
-#func prompt_message(id:String,triger_type:ChatNodeTriger.triger_type,mes:Dictionary):
-	#sent_data_to_out([triger_type,mes],0,id)
-	#VLR(id)
+
 var prompt_list:Array=[]
 #当前是否在debug中
 var is_in_debug:bool=false
@@ -295,7 +225,6 @@ func VLR_debug(id:String,from_node:ChatNode,from_data:Array):
 ##启动此根节点
 func start():
 	PromptMessageControler.link(prompt_message)
-	read_data_from_file()
 	is_start=true
 ##结束此根节点
 func end():
