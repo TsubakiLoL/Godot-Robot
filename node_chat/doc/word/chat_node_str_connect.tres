@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SingleWord" load_steps=2 format=3 uid="uid://ba6tmygpc48nq"]
+
+[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://node_chat/doc/class/single_word.gd" id="1_r4y2c"]
+
+[resource]
+script = ExtResource("1_r4y2c")
+name = "字符串链接器"
+doc = "用来拼接字符串的节点。
+[i][color=yellow]输入端口：0：字符串类型
+输入端口：1：字符串类型[/color][/i]
+[i][color=blue]输出端口：0：字符串类型[/color][/i]
+将输入端口0中输入的字符串和输入端口1中的字符串拼接起来，输入到输出端口0中。
+例如，当输入端口0中输入“我是”，输入端口“1”中输入“朱雀院椿”，那么本节点的生产结果就是在输出端口0中输入“我是朱雀院椿”。"
+next_word_array = Array[ExtResource("1_r4y2c")]([])

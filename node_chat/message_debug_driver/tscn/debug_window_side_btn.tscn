@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://f8je2r3a38n8"]
+
+[ext_resource type="Script" uid="uid://tvaeg6ts6olm" path="res://node_chat/message_debug_driver/script/debug_window_side_btn.gd" id="1_oxcyk"]
+
+[node name="DebugWindowSideBtn" type="PanelContainer"]
+offset_right = 47.0
+offset_bottom = 23.0
+script = ExtResource("1_oxcyk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="name_btn" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "名字"
+
+[node name="delete" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "x"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/name_btn" to="." method="_on_name_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/delete" to="." method="_on_delete_pressed"]

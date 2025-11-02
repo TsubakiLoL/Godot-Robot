@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SingleWord" load_steps=2 format=3 uid="uid://c08vyfv1x3wdu"]
+
+[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://node_chat/doc/class/single_word.gd" id="1_yhvkl"]
+
+[resource]
+script = ExtResource("1_yhvkl")
+name = "静态字符串输出"
+doc = "静态的字符串输出节点。
+[i][color=yellow]输入端口：0：字典类型[/color][/i]
+[i][color=blue]输入端口：0：字符串类型[/color][/i]
+本节点的输出与输入无关，输入只是一个触发器，用于激发本节点进行输出。
+当接收到端口0的输入时，输出预设好的字符串到输出端口0."
+next_word_array = Array[ExtResource("1_yhvkl")]([])

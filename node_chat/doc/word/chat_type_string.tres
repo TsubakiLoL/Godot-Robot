@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SingleWord" load_steps=2 format=3 uid="uid://buwslj1ojmk35"]
+
+[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://node_chat/doc/class/single_word.gd" id="1_dpc47"]
+
+[resource]
+script = ExtResource("1_dpc47")
+name = "字符串"
+doc = "字符串是文本信息的基础传递格式。
+顾名思义,字符串，就是“字符”的“串”，是字符的一个序列，一句话，如“早上好”就是一个字符串。"
+next_word_array = Array[ExtResource("1_dpc47")]([])

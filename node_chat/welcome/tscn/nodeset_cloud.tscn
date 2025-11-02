@@ -1,0 +1,291 @@
+[gd_scene load_steps=12 format=3 uid="uid://dmklvaa6rolso"]
+
+[ext_resource type="Script" uid="uid://cmmdcs4l6f7nl" path="res://node_chat/welcome/tscn/nodeset_cloud.gd" id="1_8218d"]
+[ext_resource type="Texture2D" uid="uid://db6ihy8i7mqt2" path="res://mod_loader/market/res/load.png" id="2_17pyd"]
+
+[sub_resource type="Gradient" id="Gradient_8218d"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_17pyd"]
+gradient = SubResource("Gradient_8218d")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8218d"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17pyd"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5w2q"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54pkl"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 4
+
+[sub_resource type="Animation" id="Animation_54pkl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_r5w2q"]
+resource_name = "load"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c0t6p"]
+_data = {
+&"RESET": SubResource("Animation_54pkl"),
+&"load": SubResource("Animation_r5w2q")
+}
+
+[node name="NodesetCloud" type="Window"]
+title = "云端运行"
+initial_position = 2
+size = Vector2i(1152, 648)
+transient = true
+exclusive = true
+script = ExtResource("1_8218d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="blog" type="TextEdit" parent="MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0291519
+anchor_top = 0.216561
+anchor_right = 0.962898
+anchor_bottom = 0.89172
+metadata/_edit_use_anchors_ = true
+
+[node name="hbox" type="HBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 0
+anchor_left = 0.0309187
+anchor_top = 0.89172
+anchor_right = 0.962898
+anchor_bottom = 0.955414
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="MarginContainer/Control/hbox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = ">"
+
+[node name="cmd_input" type="LineEdit" parent="MarginContainer/Control/hbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+
+[node name="Label" type="Label" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03125
+anchor_top = 0.177469
+anchor_right = 0.0868056
+anchor_bottom = 0.212963
+text = "云端日志"
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -157.0
+offset_bottom = 20.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="MarginContainer/Control/HBoxContainer"]
+layout_mode = 2
+text = "当前运行状态："
+
+[node name="flag_label" type="Label" parent="MarginContainer/Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "运行中"
+
+[node name="flag" type="TextureRect" parent="MarginContainer/Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("GradientTexture2D_17pyd")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.625442
+anchor_top = 0.149682
+anchor_right = 0.962898
+anchor_bottom = 0.208599
+metadata/_edit_use_anchors_ = true
+
+[node name="need_data" type="CheckBox" parent="MarginContainer/Control/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8218d")
+theme_override_styles/normal = SubResource("StyleBoxFlat_17pyd")
+button_pressed = true
+text = "追踪"
+alignment = 1
+icon_alignment = 1
+
+[node name="fresh" type="Button" parent="MarginContainer/Control/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_r5w2q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_54pkl")
+text = "    刷新    "
+
+[node name="upload" type="Button" parent="MarginContainer/Control/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_r5w2q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_54pkl")
+text = "    上传    "
+
+[node name="download_data" type="Button" parent="MarginContainer/Control/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_r5w2q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_54pkl")
+text = "    从服务端同步    "
+
+[node name="run" type="Button" parent="MarginContainer/Control/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_r5w2q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_54pkl")
+text = "    运行/停止    "
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="load_animation" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="load_animation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.215686)
+
+[node name="Control" type="Control" parent="load_animation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="load_animation/Control"]
+texture = ExtResource("2_17pyd")
+
+[node name="animation" type="AnimationPlayer" parent="load_animation"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_c0t6p")
+}
+
+[connection signal="about_to_popup" from="." to="." method="_on_about_to_popup"]
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="text_submitted" from="MarginContainer/Control/hbox/cmd_input" to="." method="_on_cmd_input_text_submitted"]
+[connection signal="pressed" from="MarginContainer/Control/HBoxContainer2/fresh" to="." method="_on_fresh_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/HBoxContainer2/upload" to="." method="_on_upload_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/HBoxContainer2/download_data" to="." method="_on_download_data_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/HBoxContainer2/run" to="." method="_on_run_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

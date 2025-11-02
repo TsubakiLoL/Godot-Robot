@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfclapt4atw65"]
+
+[ext_resource type="Script" uid="uid://bl1gk08l6wndu" path="res://node_chat/welcome/tscn/config_item.gd" id="1_ohe0h"]
+
+[sub_resource type="Theme" id="Theme_ohe0h"]
+CheckBox/font_sizes/font_size = 30
+Label/font_sizes/font_size = 30
+LineEdit/font_sizes/font_size = 30
+OptionButton/font_sizes/font_size = 30
+PopupMenu/font_sizes/font_size = 30
+
+[node name="ConfigItem" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_ohe0h")
+script = ExtResource("1_ohe0h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="name_view" type="Label" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "属性名称"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Select" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Number" type="SpinBox" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Bool" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "启用"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/Text" to="." method="_on_text_text_changed"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/Select" to="." method="_on_select_item_selected"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/Number" to="." method="_on_number_value_changed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/Bool" to="." method="_on_bool_toggled"]

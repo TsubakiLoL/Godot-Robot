@@ -1,0 +1,346 @@
+[gd_scene load_steps=15 format=3 uid="uid://ckou0hsw0h5mx"]
+
+[ext_resource type="Script" uid="uid://7uj0jock25y0" path="res://node_chat/welcome/script/nodeset_market.gd" id="1_2an8j"]
+[ext_resource type="Texture2D" uid="uid://db6ihy8i7mqt2" path="res://mod_loader/market/res/load.png" id="1_mkav1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2an8j"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6108"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nace3"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3l3ly"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbkry"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pf661"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_jqqmf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/load_animation/center/load_sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_j25os"]
+resource_name = "load"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/load_animation/center/load_sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o8abu"]
+_data = {
+&"RESET": SubResource("Animation_jqqmf"),
+&"load": SubResource("Animation_j25os")
+}
+
+[sub_resource type="Animation" id="Animation_i7liw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer/load_animation_mes/center/load_sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_abqpj"]
+resource_name = "load"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer/load_animation_mes/center/load_sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8goo0"]
+_data = {
+&"RESET": SubResource("Animation_i7liw"),
+&"load": SubResource("Animation_abqpj")
+}
+
+[node name="NodesetMarket" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2an8j")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2an8j")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k6108")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="search_input" type="LineEdit" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_nace3")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_nace3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nace3")
+placeholder_text = "输入节点集名进行搜索"
+alignment = 1
+expand_to_text_length = true
+
+[node name="search" type="Button" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_3l3ly")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3l3ly")
+text = "🔍"
+
+[node name="load_animation" type="Control" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="center" type="Control" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/load_animation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="load_sprite" type="Sprite2D" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/load_animation/center"]
+scale = Vector2(0.34, 0.34)
+texture = ExtResource("1_mkav1")
+
+[node name="item_add_pos" type="ScrollContainer" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="item" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/item_add_pos"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="plugin_mes_panel" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2an8j")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="mes_panel" type="ScrollContainer" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer/mes_panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="nodeset_name" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer/mes_panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "节点集名字"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer/mes_panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="download_plugin" type="Button" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer/mes_panel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "下载"
+
+[node name="download_progress_box" type="HBoxContainer" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer/mes_panel/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="download_progress" type="ProgressBar" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer/mes_panel/VBoxContainer/download_progress_box"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_mbkry")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pf661")
+show_percentage = false
+
+[node name="download_label" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer/mes_panel/VBoxContainer/download_progress_box"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "12/112"
+horizontal_alignment = 1
+
+[node name="nodeset_introduction" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer/mes_panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍插件介绍"
+autowrap_mode = 3
+
+[node name="load_animation_mes" type="Control" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="center" type="Control" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer/load_animation_mes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="load_sprite" type="Sprite2D" parent="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer/load_animation_mes/center"]
+scale = Vector2(0.34, 0.34)
+texture = ExtResource("1_mkav1")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_o8abu")
+}
+
+[node name="mes_load_animation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_8goo0")
+}
+
+[connection signal="text_submitted" from="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/search_input" to="." method="_on_search_input_text_submitted"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/search" to="." method="_on_search_pressed"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/HBoxContainer/plugin_mes_panel/PanelContainer/MarginContainer/mes_panel/VBoxContainer/HBoxContainer/download_plugin" to="." method="_on_download_plugin_pressed"]

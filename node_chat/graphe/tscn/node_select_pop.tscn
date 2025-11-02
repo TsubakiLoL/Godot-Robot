@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b258smdmrfieh"]
+
+[ext_resource type="Script" uid="uid://b202la866ordv" path="res://node_chat/graphe/script/node_select_pop.gd" id="1_66iwf"]
+[ext_resource type="PackedScene" uid="uid://bb8ige5k2lk1h" path="res://node_chat/graphe/tscn/node_select.tscn" id="1_74nrn"]
+
+[node name="PopupPanel" type="PopupPanel"]
+size = Vector2i(230, 500)
+visible = true
+script = ExtResource("1_66iwf")
+
+[node name="node_select" parent="." instance=ExtResource("1_74nrn")]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+
+[connection signal="select_node" from="node_select" to="." method="_on_node_select_select_node"]
+[connection signal="selected" from="node_select" to="." method="_on_node_select_selected"]

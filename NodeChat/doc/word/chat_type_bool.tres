@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="SingleWord" load_steps=2 format=3 uid="uid://cak1oven783nx"]
-
-[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://NodeChat/doc/class/single_word.gd" id="1_jv12k"]
-
-[resource]
-script = ExtResource("1_jv12k")
-name = "布尔类型"
-doc = "布尔类型是一种数据类型，它只有[color=green][i] 真 [/i][/color]和[color=red][i] 假 [/i][/color]两种值，也就是true和false。"
-next_word_array = Array[ExtResource("1_jv12k")]([])

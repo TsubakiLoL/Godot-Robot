@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dim0hm78svjl0"]
+
+[ext_resource type="Script" uid="uid://dltkufloupmnc" path="res://node_chat/graphe/script/type_color_single.gd" id="1_p754s"]
+
+[sub_resource type="Gradient" id="Gradient_ytoqe"]
+offsets = PackedFloat32Array(0, 0.588235, 0.705882, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0.713726, 0.713726, 0.713726, 0, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jnclk"]
+gradient = SubResource("Gradient_ytoqe")
+fill = 1
+fill_from = Vector2(0.512048, 0.506024)
+
+[node name="HBoxContainer" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+script = ExtResource("1_p754s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("GradientTexture2D_jnclk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 5.0
+text = "链接类型"
+horizontal_alignment = 1
+vertical_alignment = 1

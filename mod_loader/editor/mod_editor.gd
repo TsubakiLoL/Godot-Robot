@@ -58,6 +58,7 @@ func init_code_edit_high_light(editor:CodeEdit):
 
 
 func _on_editor_text_changed() -> void:
+	%editor.request_code_completion(false)
 	pass # Replace with function body.
 
 

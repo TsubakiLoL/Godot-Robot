@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SingleWord" load_steps=2 format=3 uid="uid://xjbu21pd4m6e"]
+
+[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://node_chat/doc/class/single_word.gd" id="1_3e57o"]
+
+[resource]
+script = ExtResource("1_3e57o")
+name = "数字转字符串"
+doc = "用于将数字输入转为字符串的节点。
+[i][color=yellow]输入端口：0：数字类型[/color][/i]
+[i][color=blue]输出端口：0：字符串类型[/color][/i]
+当输入端口0接收到输入时，向输出端口0中输出此数字转化成字符串的数据。
+例如，输入520，输出“520”。"
+next_word_array = Array[ExtResource("1_3e57o")]([])

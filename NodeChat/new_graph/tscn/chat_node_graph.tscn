@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjmnjtdf2k0iq"]
-
-[ext_resource type="Script" uid="uid://0bkvt2ryumid" path="res://NodeChat/new_graph/script/chat_node_graph.gd" id="1_w5dsn"]
-
-[node name="GraphNode" type="GraphNode"]
-offset_right = 300.0
-offset_bottom = 200.0
-resizable = true
-script = ExtResource("1_w5dsn")

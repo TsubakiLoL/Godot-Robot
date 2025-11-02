@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SingleWord" load_steps=2 format=3 uid="uid://bmjpuolf1q21a"]
+
+[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://node_chat/doc/class/single_word.gd" id="1_nt6jq"]
+
+[resource]
+script = ExtResource("1_nt6jq")
+name = "或门"
+doc = "逻辑或门节点。
+[i][color=yellow]输入端口：0：布尔类型
+输入端口：1：布尔类型[/color][/i]
+[i][color=blue]输出端口：0：布尔类型[/color][/i]
+当输入端口0接收的布尔类型与输入端口1接收的布尔类型至少有一个为真时，才向输出端口0中输出真，否则输出假。"
+next_word_array = Array[ExtResource("1_nt6jq")]([])

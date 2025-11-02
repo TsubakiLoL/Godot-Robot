@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SingleWord" load_steps=2 format=3 uid="uid://d3gqes6rc11ah"]
+
+[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://node_chat/doc/class/single_word.gd" id="1_pdl28"]
+
+[resource]
+script = ExtResource("1_pdl28")
+name = "全局变量提取器"
+doc = "获取某一用户的全局变量的节点。
+[i][color=yellow]输入端口：0：字典类型[/color][/i]
+[i][color=blue]输出端口：0：数字类型[/color][/i]
+本节点的输入只作为触发作用，当接收到输入时，输出用户的预设名字的全局变量的值，如果没有此变量，则创建并将此值设置为0，并输出0。"
+next_word_array = Array[ExtResource("1_pdl28")]([])

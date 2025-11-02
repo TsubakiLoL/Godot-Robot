@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SingleWord" load_steps=2 format=3 uid="uid://b3h862dapn5hq"]
+
+[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://node_chat/doc/class/single_word.gd" id="1_imvk0"]
+
+[resource]
+script = ExtResource("1_imvk0")
+name = "房间信息发送器"
+doc = "发送房间信息的基础节点。
+[i][color=yellow]输入端口：0：字符串[/color][/i]
+当输入字符串时，向房间发送此字符串内容的房间信息。"
+next_word_array = Array[ExtResource("1_imvk0")]([])

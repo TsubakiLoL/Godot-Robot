@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo4hiln8w5mf1"]
-
-[ext_resource type="Script" uid="uid://cy2gfe3sxgxnv" path="res://autoload/GlobalConfig/script/global_config.gd" id="1_s068g"]
-
-[node name="GlobalConfig" type="Node"]
-script = ExtResource("1_s068g")

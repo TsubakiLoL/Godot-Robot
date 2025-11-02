@@ -12,8 +12,8 @@ config_version=5
 
 config/name="StarBot"
 config/tags=PackedStringArray("github")
-run/main_scene="res://NodeChat/welcome/tscn/control.tscn"
-config/features=PackedStringArray("4.4", "Forward Plus")
+run/main_scene="res://node_chat/welcome/tscn/control.tscn"
+config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=60
 config/icon="res://RobotIcon.png"
 
@@ -21,11 +21,10 @@ config/icon="res://RobotIcon.png"
 
 UrlGetter="*res://autoload/urlgetter/tscn/url_getter.tscn"
 LoadAnimation="*res://autoload/LoadAnimation/tscn/load_animation.tscn"
-NodeChatGlobalNum="*res://NodeChat/AutoLoad/node_chat_global_num.tscn"
-ChatGPT="*res://autoload/GPT/tscn/chat_gpt.tscn"
+NodeChatGlobalNum="*res://node_chat/autoload/node_chat_global_num.tscn"
 Toast="*res://autoload/toast/tscn/toast_root.tscn"
-GlobalConfig="*res://autoload/GlobalConfig/tscn/global_config.tscn"
-PromptMessageControler="*res://NodeChat/AutoLoad/PromptMessageControler/prompt_message_controler.tscn"
+GlobalConfig="*res://node_chat/autoload/GlobalConfig/tscn/global_config.tscn"
+PromptMessageControler="*res://node_chat/autoload/PromptMessageControler/prompt_message_controler.tscn"
 ModLoader="*res://mod_loader/mod_loader.gd"
 ModLoaderWinControl="*res://autoload/ModLoaderWinControl/ModLoaderWinControl.tscn"
 Zip="*res://autoload/ZIP/ZIP.tscn"

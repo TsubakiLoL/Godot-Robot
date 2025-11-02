@@ -85,5 +85,5 @@ func get_useful_path(package_name:String):
 
 
 func _on_open_file_pressed() -> void:
-	OS.shell_open(ProjectSettings.globalize_path(ModLoader.load_path))
+	OS.shell_open(ProjectSettings.globalize_path(ModLoader.load_mod_path))
 	pass # Replace with function body.

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SingleWord" load_steps=4 format=3 uid="uid://bbaqjvlfaojf5"]
+
+[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://node_chat/doc/class/single_word.gd" id="1_n3jjt"]
+[ext_resource type="Resource" uid="uid://bxlpllmdw6fpv" path="res://node_chat/doc/word/chat_node.tres" id="1_y7m0l"]
+[ext_resource type="Resource" uid="uid://bpft64npx2rvq" path="res://node_chat/doc/word/chat_type.tres" id="2_mk642"]
+
+[resource]
+script = ExtResource("1_n3jjt")
+name = "根"
+doc = "无"
+next_word_array = Array[ExtResource("1_n3jjt")]([ExtResource("1_y7m0l"), ExtResource("2_mk642")])

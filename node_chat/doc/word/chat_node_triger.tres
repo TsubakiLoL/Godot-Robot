@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SingleWord" load_steps=2 format=3 uid="uid://2c77dfxwuvka"]
+
+[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://node_chat/doc/class/single_word.gd" id="1_44g45"]
+
+[resource]
+script = ExtResource("1_44g45")
+name = "触发器节点"
+doc = "基础的触发器节点。
+[i][color=yellow]输入端口：0：触发器信号[/color][/i]
+[i][color=blue]输出端口：0：字典类型[/color][/i]
+接收来自状态节点的触发器信号。
+当触发信号的触发类型与当前触发器的类型相同时，向输出端口输出字典类型数据。"
+next_word_array = Array[ExtResource("1_44g45")]([])

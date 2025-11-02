@@ -25,33 +25,26 @@ var mod_triger_type_name_db:Dictionary={
 #mod加载的在主界面的面板的数据
 var mod_panel_db:Dictionary={}
 
-#加载mod的路径
-var load_path:String:
-	set(val):
-		GlobalConfig.write_config_value("Mod","load_path",val)
+
+var load_mod_path:String:
 	get():
-		return GlobalConfig.read_config_value("Mod","load_path",load_path_default)
-
-var load_path_default=OS.get_executable_path().get_base_dir()+"/mod"
-
-#用于加载模板的路径
-var load_model_path:String:
-	set(val):
-		GlobalConfig.write_config_value("Mod","model_path",val)
-	get():
-		return GlobalConfig.read_config_value("Mod","model_path",load_model_path_default)
+		if OS.is_debug_build():
+			return "res://mod/"
+		else:
+			return OS.get_executable_path().get_base_dir()+"/mod" 
 
 
 
-var load_model_path_default:String=OS.get_executable_path().get_base_dir()+"/model"
+var load_model_path:String=OS.get_executable_path().get_base_dir()+"/model"
 ##当系统装载的插件更改时发出
 signal mod_changed()
 
 func _ready() -> void:
-	load_mod_from_path(load_path)
+	load_mod_from_path(load_mod_path)
 
 #从指定的路径加载模块数据
 func load_mod_from_path(path:String):
+	print("开始加载插件：%s"%[path])
 	var file_name := ""
 	var files := []
 	var dir := DirAccess.open(path)
@@ -73,8 +66,6 @@ func load_mod_from_path(path:String):
 				if not dic.has("name"):
 					file_name = dir.get_next()
 					continue
-				#if not dic.has("depend"):
-					#continue
 				var mod_name:String=dic["name"]
 				dic["mod_path"]=sub_path
 				install_mod(mod_name,dic)
@@ -118,7 +109,10 @@ func install_mod(mod_name:String,mod_data:Dictionary):
 				continue
 			var tscn=new_script.new()
 			tscn.name=i
+			if tscn is ChatSingleton:
+				tscn.singleton_name=mod_name+"/"+i
 			add_child(tscn)
+			
 			mod_autoload_db[mod_name+"/"+i]=tscn
 	#加载节点类文件
 	if mod_data.has("node"):
@@ -254,7 +248,7 @@ func reload():
 
 	#mod加载的在主界面的面板的数据
 	mod_panel_db={}
-	load_mod_from_path(load_path)
+	load_mod_from_path(load_mod_path)
 	mod_changed.emit()
 	
 	
@@ -266,7 +260,7 @@ func has_mod(mod_name:String)->bool:
 
 #获取mod加载的根节点
 func get_load_path():
-	var path:String=load_path
+	var path:String=load_mod_path
 	if not path.ends_with("/"):
 		path+="/"
 	return path

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="SingleWord" load_steps=27 format=3 uid="uid://bxlpllmdw6fpv"]
+
+[ext_resource type="Resource" uid="uid://cdolv551esfon" path="res://node_chat/doc/word/chat_node_state.tres" id="1_y3lv4"]
+[ext_resource type="Resource" uid="uid://2c77dfxwuvka" path="res://node_chat/doc/word/chat_node_triger.tres" id="2_0d3f8"]
+[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://node_chat/doc/class/single_word.gd" id="2_kc0vx"]
+[ext_resource type="Resource" uid="uid://chgpwqc4d5vkb" path="res://node_chat/doc/word/chat_node_sent_bullet_message.tres" id="3_nkxdu"]
+[ext_resource type="Resource" uid="uid://bp54yd867e0vy" path="res://node_chat/doc/word/chat_node_sent_bullet_message_static.tres" id="4_x3fhs"]
+[ext_resource type="Resource" uid="uid://b3h862dapn5hq" path="res://node_chat/doc/word/chat_node_sent_room_message.tres" id="5_3wdnx"]
+[ext_resource type="Resource" uid="uid://bhg5kd8mgrh5a" path="res://node_chat/doc/word/chat_node_sent_room_message_static.tres" id="6_8biau"]
+[ext_resource type="Resource" uid="uid://cyhbt8gscbdh" path="res://node_chat/doc/word/chat_node_dic_to_str.tres" id="7_povcg"]
+[ext_resource type="Resource" uid="uid://c8oqfamnb4d3f" path="res://node_chat/doc/word/chat_node_change_state.tres" id="8_r0722"]
+[ext_resource type="Resource" uid="uid://co65rvperieoj" path="res://node_chat/doc/word/chat_node_str_judge.tres" id="9_p5465"]
+[ext_resource type="Resource" uid="uid://5iphct23k76x" path="res://node_chat/doc/word/chat_node_sent_room_message_multi_input.tres" id="10_rqcyf"]
+[ext_resource type="Resource" uid="uid://cwy1gci3kylil" path="res://node_chat/doc/word/chat_node_and.tres" id="11_chp82"]
+[ext_resource type="Resource" uid="uid://bmjpuolf1q21a" path="res://node_chat/doc/word/chat_node_or.tres" id="12_a517s"]
+[ext_resource type="Resource" uid="uid://6hd2w17odf8b" path="res://node_chat/doc/word/chat_node_not.tres" id="13_s7h20"]
+[ext_resource type="Resource" uid="uid://ba6tmygpc48nq" path="res://node_chat/doc/word/chat_node_str_connect.tres" id="14_ede0g"]
+[ext_resource type="Resource" uid="uid://c08vyfv1x3wdu" path="res://node_chat/doc/word/chat_node_str_output.tres" id="15_ekmfw"]
+[ext_resource type="Resource" uid="uid://byw2lwdqnhuj6" path="res://node_chat/doc/word/chat_node_at.tres" id="16_okkbt"]
+[ext_resource type="Resource" uid="uid://dkdmsbtijk0e8" path="res://node_chat/doc/word/chat_node_sent_bullet_message_multi_input.tres" id="17_74lep"]
+[ext_resource type="Resource" uid="uid://y8pt1aab7gvq" path="res://node_chat/doc/word/chat_node_regex.tres" id="18_6417p"]
+[ext_resource type="Resource" uid="uid://b3y50wdqb6ndr" path="res://node_chat/doc/word/chat_node_set_global_num.tres" id="19_ttklx"]
+[ext_resource type="Resource" uid="uid://emdjobtitqwn" path="res://node_chat/doc/word/chat_node_set_gloal_num_with_control.tres" id="20_uwt7q"]
+[ext_resource type="Resource" uid="uid://d3gqes6rc11ah" path="res://node_chat/doc/word/chat_node_get_global_num.tres" id="21_ohq4j"]
+[ext_resource type="Resource" uid="uid://otn7fj4f2tjk" path="res://node_chat/doc/word/chat_node_float_output.tres" id="22_k4dvt"]
+[ext_resource type="Resource" uid="uid://xjbu21pd4m6e" path="res://node_chat/doc/word/chat_node_float_to_str.tres" id="23_ik8bi"]
+[ext_resource type="Resource" uid="uid://dfrmta6bj6qjl" path="res://node_chat/doc/word/chat_node_str_to_float.tres" id="24_3o6c7"]
+[ext_resource type="Resource" uid="uid://dcqwxb02umpi8" path="res://node_chat/doc/word/chat_node_float_add_static.tres" id="25_lectl"]
+
+[resource]
+script = ExtResource("2_kc0vx")
+name = "节点"
+doc = "节点是项目逻辑的基础部分。
+本项目采用了流水线模式，每个节点都存在两种端口：输入与输出端口。
+可以把每个节点想象成流水线上的机器，输入端口就是机器投入生产资料的进料口，而输出端口则是产出生产结果的出口。
+每个节点可以有多个输入端口与多个输出端口，基础节点必须等待全部输入端口的数据就位后才进行生产，生产完毕后将结果输出到输出端口，并清空输入端口的数据，使得全部输入端口的数据恢复到未就位状态。
+节点输出端口的结果会传入到所有与其输出端口相连的节点的输入端口上，并使得此输入端口进入到就位状态。
+"
+next_word_array = Array[ExtResource("2_kc0vx")]([ExtResource("1_y3lv4"), ExtResource("2_0d3f8"), ExtResource("3_nkxdu"), ExtResource("4_x3fhs"), ExtResource("5_3wdnx"), ExtResource("6_8biau"), ExtResource("7_povcg"), ExtResource("8_r0722"), ExtResource("9_p5465"), ExtResource("10_rqcyf"), ExtResource("11_chp82"), ExtResource("12_a517s"), ExtResource("13_s7h20"), ExtResource("14_ede0g"), ExtResource("15_ekmfw"), ExtResource("16_okkbt"), ExtResource("17_74lep"), ExtResource("18_6417p"), ExtResource("19_ttklx"), ExtResource("20_uwt7q"), ExtResource("21_ohq4j"), ExtResource("22_k4dvt"), ExtResource("23_ik8bi"), ExtResource("24_3o6c7"), ExtResource("25_lectl")])

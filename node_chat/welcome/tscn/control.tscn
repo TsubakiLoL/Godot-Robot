@@ -1,0 +1,435 @@
+[gd_scene load_steps=17 format=3 uid="uid://ctcut434jsvlp"]
+
+[ext_resource type="PackedScene" uid="uid://ch4ecmb0t6je5" path="res://node_chat/welcome/tscn/file_system.tscn" id="1_iag73"]
+[ext_resource type="Script" uid="uid://68c0kld6ujlk" path="res://node_chat/welcome/script/control.gd" id="1_vb2ii"]
+[ext_resource type="Texture2D" uid="uid://drpbh8f2efant" path="res://RobotIcon.png" id="2_e0dpr"]
+[ext_resource type="Texture2D" uid="uid://cgt12xvgnx33x" path="res://node_chat/welcome/res/tsubaki_1.png" id="2_mldix"]
+[ext_resource type="PackedScene" uid="uid://vt1oy0yuew3c" path="res://node_chat/doc/tscn/docwin.tscn" id="3_c853p"]
+[ext_resource type="PackedScene" uid="uid://g7f4rfphh8t" path="res://mod_loader/plugin_list.tscn" id="5_yajvs"]
+[ext_resource type="PackedScene" uid="uid://dc4xifb11cg1e" path="res://mod_loader/developer/control.tscn" id="7_8curv"]
+[ext_resource type="PackedScene" uid="uid://cfmclb1le1bd1" path="res://node_chat/welcome/tscn/config.tscn" id="7_hyf2v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4bsg"]
+bg_color = Color(0.215686, 0.215686, 0.215686, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71rxn"]
+bg_color = Color(0.211765, 0.6, 0.6, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_muesx"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_uytei"]
+font_size = 70
+font_color = Color(0.427451, 0.427451, 0.427451, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_acbw1"]
+font_size = 30
+font_color = Color(0.505882, 0.505882, 0.505882, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cfwyl"]
+font_color = Color(0.658824, 0.658824, 0.658824, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_th2kt"]
+font_size = 50
+font_color = Color(0.443137, 0.443137, 0.443137, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u0o70"]
+font_size = 50
+font_color = Color(0.443137, 0.443137, 0.443137, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vb2ii")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.259294, 0.259294, 0.259294, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.188
+anchor_bottom = 1.0
+offset_right = 0.423996
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[node name="select" type="Control" parent="Control"]
+layout_mode = 1
+anchor_left = 0.129032
+anchor_top = 0.165123
+anchor_right = 0.861751
+anchor_bottom = 0.904321
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/select"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/select/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="welcome" type="Button" parent="Control/select/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_k4bsg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_71rxn")
+text = "欢迎"
+
+[node name="nodeset" type="Button" parent="Control/select/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_k4bsg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_71rxn")
+text = "节点集
+"
+
+[node name="plugin" type="Button" parent="Control/select/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_k4bsg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_71rxn")
+text = "插件
+"
+
+[node name="developer" type="Button" parent="Control/select/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_k4bsg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_71rxn")
+text = "开发者"
+
+[node name="doc" type="Button" parent="Control/select/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_k4bsg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_71rxn")
+text = "文档"
+
+[node name="editor" type="Button" parent="Control/select/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_k4bsg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_71rxn")
+text = "作者"
+
+[node name="settiings" type="Button" parent="Control/select/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_k4bsg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_71rxn")
+text = "设置"
+
+[node name="mod_panel_btn_add_pos" type="VBoxContainer" parent="Control/select/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="name" type="Control" parent="Control"]
+layout_mode = 1
+anchor_left = 0.129
+anchor_top = 0.02
+anchor_right = 0.862
+anchor_bottom = 0.142
+offset_left = 0.00699806
+offset_top = 0.039999
+offset_right = -0.0540161
+offset_bottom = -0.0160065
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/name"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="Control/name/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_e0dpr")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/name/HBoxContainer"]
+layout_mode = 2
+text = "StarBot"
+label_settings = SubResource("LabelSettings_muesx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.188
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.423996
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="Control2"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 2
+current_tab = 4
+tabs_visible = false
+
+[node name="welcome" type="Control" parent="Control2/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control2/TabContainer/welcome"]
+visible = false
+modulate = Color(0.407843, 0.407843, 0.407843, 1)
+clip_contents = true
+layout_mode = 0
+anchor_top = 0.0806173
+anchor_right = 1.0
+anchor_bottom = 0.999995
+offset_top = -0.24
+offset_bottom = 469.003
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 2
+texture = ExtResource("2_mldix")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="back" type="VBoxContainer" parent="Control2/TabContainer/welcome"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2/TabContainer/welcome"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control2/TabContainer/welcome/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_e0dpr")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "欢迎使用！"
+label_settings = SubResource("LabelSettings_uytei")
+
+[node name="tip" type="Label" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "基于Godot的通用自应答机器人"
+label_settings = SubResource("LabelSettings_acbw1")
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "本项目是基于状态机和工厂流水线模式的一个预设机器人框架，通过可视化节点进行预设逻辑的编辑"
+label_settings = SubResource("LabelSettings_acbw1")
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "相关链接"
+label_settings = SubResource("LabelSettings_cfwyl")
+horizontal_alignment = 2
+
+[node name="LinkButton" type="LinkButton" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "蔷薇花园"
+uri = "https://iirose.com/"
+
+[node name="LinkButton2" type="LinkButton" parent="Control2/TabContainer/welcome/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Git仓库"
+uri = "https://github.com/TsubakiLoL/IIROSE-robot-in-Godot"
+
+[node name="nodeset" type="Control" parent="Control2/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2/TabContainer/nodeset"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Control" type="Control" parent="Control2/TabContainer/nodeset/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control2/TabContainer/nodeset/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.118
+offset_bottom = 0.255997
+grow_horizontal = 2
+text = "节点集"
+label_settings = SubResource("LabelSettings_th2kt")
+
+[node name="Control" parent="Control2/TabContainer/nodeset/MarginContainer/Control" instance=ExtResource("1_iag73")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.143
+offset_top = 0.0559998
+
+[node name="plugin" type="Control" parent="Control2/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2/TabContainer/plugin"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Control" type="Control" parent="Control2/TabContainer/plugin/MarginContainer"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="Control2/TabContainer/plugin/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.118
+offset_bottom = 0.255997
+grow_horizontal = 2
+text = "插件"
+label_settings = SubResource("LabelSettings_u0o70")
+
+[node name="plugin_list" parent="Control2/TabContainer/plugin/MarginContainer/Control" instance=ExtResource("5_yajvs")]
+layout_mode = 1
+
+[node name="developer" type="Control" parent="Control2/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2/TabContainer/developer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Control" type="Control" parent="Control2/TabContainer/developer/MarginContainer"]
+layout_mode = 2
+
+[node name="title" type="Label" parent="Control2/TabContainer/developer/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.118
+offset_bottom = 0.255997
+grow_horizontal = 2
+text = "开发者面板"
+label_settings = SubResource("LabelSettings_u0o70")
+
+[node name="Control" parent="Control2/TabContainer/developer/MarginContainer/Control" instance=ExtResource("7_8curv")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0987261
+metadata/_edit_use_anchors_ = true
+
+[node name="option" type="Control" parent="Control2/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="OptionPanel" parent="Control2/TabContainer/option" instance=ExtResource("7_hyf2v")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="mod_panel_add_pos" type="Panel" parent="Control2/TabContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 5
+
+[node name="docwin" parent="." instance=ExtResource("3_c853p")]
+visible = false
+
+[connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/welcome" to="." method="_on_welcome_pressed"]
+[connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/nodeset" to="." method="_on_file_pressed"]
+[connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/plugin" to="." method="_on_plugin_pressed"]
+[connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/developer" to="." method="_on_developer_pressed"]
+[connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/doc" to="." method="_on_doc_pressed"]
+[connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/editor" to="." method="_on_editor_pressed"]
+[connection signal="pressed" from="Control/select/ScrollContainer/VBoxContainer/settiings" to="." method="_on_settiings_pressed"]
+[connection signal="edit_file" from="Control2/TabContainer/nodeset/MarginContainer/Control/Control" to="." method="_on_control_edit_file"]

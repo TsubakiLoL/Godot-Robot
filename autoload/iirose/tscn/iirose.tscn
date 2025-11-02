@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwqbx4pknqgf2"]
-
-[ext_resource type="Script" uid="uid://dqka6i3jvsx0d" path="res://autoload/iirose/script/iirose.gd" id="1_dmn20"]
-
-[node name="IIROSE" type="Node"]
-process_mode = 3
-script = ExtResource("1_dmn20")

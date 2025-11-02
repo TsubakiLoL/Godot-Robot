@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://ed5nvfgdino2"]
+
+[ext_resource type="Script" uid="uid://bvyvops5cr00x" path="res://node_chat/new_graph/script/chat_node_graph_hbox.gd" id="1_m0svy"]
+
+[node name="ChatNodeGraphHbox" type="HBoxContainer"]
+offset_right = 375.0
+offset_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_m0svy")
+
+[node name="port_left" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "default"
+vertical_alignment = 1
+
+[node name="add_pos" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="port_right" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "default"
+vertical_alignment = 1

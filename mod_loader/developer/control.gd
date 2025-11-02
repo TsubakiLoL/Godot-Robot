@@ -2,7 +2,7 @@ extends Control
 const ADD_PLUGIN_MES = preload("res://mod_loader/developer/add_plugin_mes.tscn")
 const ADD_VERSION_MES = preload("res://mod_loader/developer/add_version_mes.tscn")
 const UPDATE_PLUGIN_MES = preload("res://mod_loader/developer/update_plugin_mes.tscn")
-const ADD_NODE_SET_MES = preload("res://NodeChat/welcome/tscn/add_node_set_mes.tscn")
+const ADD_NODE_SET_MES = preload("res://node_chat/welcome/tscn/add_node_set_mes.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if AuthorAccount.has_account():

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SingleWord" load_steps=2 format=3 uid="uid://bs5aqgui6jmqq"]
+
+[ext_resource type="Script" uid="uid://cneoy5dw40say" path="res://node_chat/doc/class/single_word.gd" id="1_ko1a8"]
+
+[resource]
+script = ExtResource("1_ko1a8")
+name = "状态转换信号"
+doc = "状态转换信号实际上是一个布尔类型，为了防止滥用而进行了特殊规定。"
+next_word_array = Array[ExtResource("1_ko1a8")]([])
